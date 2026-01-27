@@ -695,12 +695,12 @@ export default function Register() {
                 <div className="bg-white/90 rounded-xl p-5 md:p-6">
                   <div className="text-3xl md:text-4xl mb-3">📧</div>
                   <h4 className="font-bold text-black mb-2 text-base md:text-lg">Confirmation Email</h4>
-                  <p className="text-gray-700 text-sm md:text-base">You'll receive a detailed email with all the information about your selected batch</p>
+                  <p className="text-gray-700 text-sm md:text-base">You&apos;ll receive a detailed email with all the information about your selected batch</p>
                 </div>
                 <div className="bg-white/90 rounded-xl p-5 md:p-6">
                   <div className="text-3xl md:text-4xl mb-3">📅</div>
                   <h4 className="font-bold text-black mb-2 text-base md:text-lg">Next Steps</h4>
-                  <p className="text-gray-700 text-sm md:text-base">We'll guide you through the onboarding process and course details</p>
+                  <p className="text-gray-700 text-sm md:text-base">We&apos;ll guide you through the onboarding process and course details</p>
                 </div>
                 <div className="bg-white/90 rounded-xl p-5 md:p-6">
                   <div className="text-3xl md:text-4xl mb-3">🚀</div>

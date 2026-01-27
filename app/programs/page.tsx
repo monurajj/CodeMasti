@@ -221,7 +221,7 @@ export default function Programs() {
                   key={program.id}
                   onClick={() => setActiveTab(program.id)}
                   aria-label={`View ${program.name} program details for ${program.classes}`}
-                  aria-pressed={activeTab === program.id}
+                  aria-selected={activeTab === program.id}
                   role="tab"
                   className={`w-full md:w-auto px-6 py-4 md:px-8 md:py-4 rounded-full font-bold text-base md:text-lg transition-all duration-300 shadow-lg transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 ${
                     activeTab === program.id

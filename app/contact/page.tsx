@@ -246,7 +246,7 @@ export default function Contact() {
               Get in <span className="text-yellow-500">Touch</span>
             </h1>
             <p className="text-base md:text-xl text-gray-700 mb-6 max-w-3xl mx-auto">
-              Have questions? Want to join the waitlist? We'd love to hear from you!
+              Have questions? Want to join the waitlist? We&apos;d love to hear from you!
             </p>
             <div className="w-32 h-1.5 bg-yellow-400 mx-auto rounded-full"></div>
           </div>
@@ -408,7 +408,7 @@ export default function Contact() {
 
                   <div>
                     <label htmlFor="studentClass" className="block text-sm font-semibold text-black mb-2">
-                      Student's Class (if applicable)
+                      Student&apos;s Class (if applicable)
                     </label>
                     <select
                       id="studentClass"
@@ -509,7 +509,7 @@ export default function Contact() {
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <h3 className="font-bold text-black mb-2">When will CodeMasti launch?</h3>
-                  <p className="text-gray-700 text-sm">We're currently in development and will launch soon. Join our waitlist to be notified!</p>
+                  <p className="text-gray-700 text-sm">We&apos;re currently in development and will launch soon. Join our waitlist to be notified!</p>
                 </div>
                 <div>
                   <h3 className="font-bold text-black mb-2">What age groups do you serve?</h3>
@@ -517,7 +517,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h3 className="font-bold text-black mb-2">How much will it cost?</h3>
-                  <p className="text-gray-700 text-sm">We're committed to cost-efficient pricing for Indian families. Details will be announced at launch.</p>
+                  <p className="text-gray-700 text-sm">We&apos;re committed to cost-efficient pricing for Indian families. Details will be announced at launch.</p>
                 </div>
                 <div>
                   <h3 className="font-bold text-black mb-2">Do you offer school partnerships?</h3>

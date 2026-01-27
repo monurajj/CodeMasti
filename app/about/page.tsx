@@ -201,7 +201,7 @@ export default function About() {
                     <span className="text-2xl">😰</span>
                     <div>
                       <h3 className="font-bold text-black mb-2">Fear of Coding</h3>
-                      <p className="text-gray-700">Many students believe coding is difficult or only for "smart" kids.</p>
+                      <p className="text-gray-700">Many students believe coding is difficult or only for &quot;smart&quot; kids.</p>
                     </div>
                   </div>
                 </div>
@@ -336,7 +336,7 @@ export default function About() {
                 Our Vision
               </h2>
               <p className="text-xl text-gray-200 mb-6 leading-relaxed">
-                To build India's most trusted, affordable, and impact-driven coding education platform, creating a generation of students who:
+                To build India&apos;s most trusted, affordable, and impact-driven coding education platform, creating a generation of students who:
               </p>
               <div className="space-y-4 text-lg">
                 <p className="flex items-center gap-3">
@@ -420,10 +420,10 @@ export default function About() {
               {/* Mission Quote */}
               <div className="mt-10 pt-8 border-t-2 border-yellow-200 text-center">
                 <p className="text-xl md:text-2xl font-semibold text-black italic mb-2">
-                  "We are not just teaching coding."
+                  &quot;We are not just teaching coding.&quot;
                 </p>
                 <p className="text-lg md:text-xl text-gray-700">
-                  "We are shaping how students think, solve, and create in an AI-driven world."
+                  &quot;We are shaping how students think, solve, and create in an AI-driven world.&quot;
                 </p>
               </div>
             </div>

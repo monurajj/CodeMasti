@@ -80,7 +80,7 @@ export default function Home() {
       setCurrentTagline((prev) => (prev + 1) % taglines.length);
     }, 3000);
     return () => clearInterval(interval);
-  }, []);
+  }, [taglines.length]);
 
   // Countdown timer
   useEffect(() => {
@@ -513,7 +513,7 @@ export default function Home() {
                     {/* Mission Statement */}
                     <div className="pt-4 border-t border-yellow-200">
                       <p className="text-gray-700 italic text-sm md:text-base">
-                        "Building India's most trusted, affordable, and impact-driven coding education platform"
+                        &quot;Building India&apos;s most trusted, affordable, and impact-driven coding education platform&quot;
                       </p>
                     </div>
                   </div>
