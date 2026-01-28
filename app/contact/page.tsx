@@ -551,6 +551,15 @@ export default function Contact() {
               <p className="text-sm text-gray-400">
                 © 2024 CodeMasti. All rights reserved.
               </p>
+              <div className="flex items-center gap-4 mt-2 justify-center md:justify-start">
+                <Link href="/terms" className="text-xs text-gray-500 hover:text-yellow-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-black rounded" aria-label="Terms & Conditions">
+                  Terms & Conditions
+                </Link>
+                <span className="text-gray-600">|</span>
+                <Link href="/refund" className="text-xs text-gray-500 hover:text-yellow-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-black rounded" aria-label="Refund Policy">
+                  Refund Policy
+                </Link>
+              </div>
             </div>
             <div className="flex items-center gap-6 text-sm">
               <Link href="/about" className="text-gray-400 hover:text-yellow-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-black rounded" aria-label="Learn more about CodeMasti">
