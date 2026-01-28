@@ -159,24 +159,24 @@ export default function Terms() {
                 <a href="https://www.codemasti.com/" className="text-yellow-600 hover:text-yellow-700 underline">
                   https://www.codemasti.com/
                 </a>
-                {' '}('Website'), including the related mobile site and mobile application (hereinafter
-                referred to as 'Platform').
+                {' '}(&apos;Website&apos;), including the related mobile site and mobile application (hereinafter
+                referred to as &apos;Platform&apos;).
               </p>
 
               <p className="text-gray-700 mb-6">
                 The Platform is owned by with its registered office at Purahara Aurangabad Bihar
                 , a company incorporated under the Companies Act, 1956 8228907407
-                (hereinafter referred to as 'Platform Owner', 'we', 'us', 'our').
+                (hereinafter referred to as &apos;Platform Owner&apos;, &apos;we&apos;, &apos;us&apos;, &apos;our&apos;).
               </p>
 
               <p className="text-gray-700 mb-6">
                 Your use of the Platform and services and tools are governed by the following terms and
-                conditions ("Terms of Use") as applicable to the Platform including the applicable policies which
+                conditions (&quot;Terms of Use&quot;) as applicable to the Platform including the applicable policies which
                 are incorporated herein by way of reference. If You transact on the Platform, You shall be subject
                 to the policies that are applicable to the Platform for such transaction. By mere use of the Platform,
                 You shall be contracting with the Platform Owner and these terms and conditions including the
                 policies constitute Your binding obligations, with Platform Owner. These Terms of Use relate to
-                your use of our website, goods (as applicable) or services (as applicable) (collectively, 'Services').
+                your use of our website, goods (as applicable) or services (as applicable) (collectively, &apos;Services&apos;).
                 Any terms and conditions proposed by You which are in addition to or which conflict with these
                 Terms of Use are expressly rejected by the Platform Owner and shall be of no force or effect.
                 These Terms of Use can be modified at any time without assigning any reason. It is your
@@ -184,7 +184,7 @@ export default function Terms() {
               </p>
 
               <p className="text-gray-700 mb-6">
-                For the purpose of these Terms of Use, wherever the context so requires 'you', 'your' or 'user' shall
+                For the purpose of these Terms of Use, wherever the context so requires &apos;you&apos;, &apos;your&apos; or &apos;user&apos; shall
                 mean any natural or legal person who has agreed to become a user/buyer on the Platform.
               </p>
 
@@ -243,7 +243,7 @@ export default function Terms() {
                 <li>
                   You shall indemnify and hold harmless Platform Owner, its affiliates, group companies (as
                   applicable) and their respective officers, directors, agents, and employees, from any claim or
-                  demand, or actions including reasonable attorney's fees, made by any third party or penalty
+                  demand, or actions including reasonable attorney&apos;s fees, made by any third party or penalty
                   imposed due to or arising out of Your breach of this Terms of Use, privacy Policy and other
                   Policies, or Your violation of any law, rules or regulations or the rights (including
                   infringement of intellectual property rights) of a third party.
