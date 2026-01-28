@@ -276,9 +276,23 @@ export default function Contact() {
                     <div className="text-3xl">📱</div>
                     <div>
                       <h3 className="font-bold text-black mb-1">Phone</h3>
-                      <a href="tel:+918228907407" className="text-gray-700 hover:text-yellow-500 transition-colors">
-                        +91 8228907407
-                      </a>
+                      <div className="space-y-2">
+                        <div>
+                          <a href="tel:+918228907407" className="text-gray-700 hover:text-yellow-500 transition-colors block">
+                            +91 8228907407
+                          </a>
+                        </div>
+                        <div>
+                          <a href="tel:+919523042613" className="text-gray-700 hover:text-yellow-500 transition-colors block">
+                            +91 9523042613
+                          </a>
+                        </div>
+                        <div>
+                          <a href="tel:+917541062514" className="text-gray-700 hover:text-yellow-500 transition-colors block">
+                            +91 7541062514
+                          </a>
+                        </div>
+                      </div>
                     </div>
                   </div>
 

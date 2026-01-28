@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import ErrorBoundaryWrapper from "@/components/ErrorBoundaryWrapper";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import { generateWebSiteSchema, generateLocalBusinessSchema } from "@/lib/seo-utils";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -209,6 +210,7 @@ export default function RootLayout({
             Skip to main content
           </a>
           {children}
+          <WhatsAppButton />
         </ErrorBoundaryWrapper>
       </body>
     </html>

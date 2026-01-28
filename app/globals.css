@@ -73,3 +73,17 @@ textarea:focus-visible {
   white-space: nowrap;
   border-width: 0;
 }
+
+/* WhatsApp Button Animation */
+@keyframes bounce-gentle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-bounce-gentle {
+  animation: bounce-gentle 2s ease-in-out infinite;
+}

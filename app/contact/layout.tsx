@@ -6,7 +6,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://codemasti.com";
 export const metadata: Metadata = {
   ...genMeta({
     title: "Contact CodeMasti | Get in Touch | Join Waitlist",
-    description: "Have questions about CodeMasti? Contact us at info.codemasti@gmail.com or call +91-8228907407. Join our waitlist, learn about programs, get pricing information, or partner with us for school programs. We're here to help!",
+    description: "Have questions about CodeMasti? Contact us at info.codemasti@gmail.com or call +91-8228907407, +91-9523042613, or +91-7541062514. Join our waitlist, learn about programs, get pricing information, or partner with us for school programs. We're here to help!",
     keywords: [
       "contact CodeMasti",
       "CodeMasti email",
