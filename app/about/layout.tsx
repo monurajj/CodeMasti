@@ -21,30 +21,21 @@ export const metadata: Metadata = {
   }),
 };
 
-// Generate structured data for about page
-export function generateStructuredData() {
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: siteUrl },
-    { name: "About", url: `${siteUrl}/about` },
-  ]);
-
-  return {
-    breadcrumb: breadcrumbSchema,
-  };
-}
-
 export default function AboutLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const structuredData = generateStructuredData();
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: siteUrl },
+    { name: "About", url: `${siteUrl}/about` },
+  ]);
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData.breadcrumb) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       {children}
     </>

@@ -26,8 +26,11 @@ export const metadata: Metadata = {
   }),
 };
 
-// Generate structured data for programs
-export function generateStructuredData() {
+export default function ProgramsLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: "Home", url: siteUrl },
     { name: "Programs", url: `${siteUrl}/programs` },
@@ -78,26 +81,15 @@ export function generateStructuredData() {
     url: "/programs?batch=innovators",
   });
 
-  return {
-    breadcrumb: breadcrumbSchema,
-    courses: [sparkCourseSchema, buildersCourseSchema, innovatorsCourseSchema],
-  };
-}
-
-export default function ProgramsLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const structuredData = generateStructuredData();
+  const courses = [sparkCourseSchema, buildersCourseSchema, innovatorsCourseSchema];
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData.breadcrumb) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      {structuredData.courses.map((course, index) => (
+      {courses.map((course, index) => (
         <script
           key={index}
           type="application/ld+json"

@@ -21,8 +21,11 @@ export const metadata: Metadata = {
   }),
 };
 
-// Generate structured data for contact page
-export function generateStructuredData() {
+export default function ContactLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: "Home", url: siteUrl },
     { name: "Contact", url: `${siteUrl}/contact` },
@@ -55,28 +58,15 @@ export function generateStructuredData() {
     },
   ]);
 
-  return {
-    breadcrumb: breadcrumbSchema,
-    faq: faqSchema,
-  };
-}
-
-export default function ContactLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const structuredData = generateStructuredData();
-
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData.breadcrumb) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData.faq) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       {children}
     </>

@@ -22,30 +22,21 @@ export const metadata: Metadata = {
   }),
 };
 
-// Generate structured data for register page
-export function generateStructuredData() {
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: siteUrl },
-    { name: "Register", url: `${siteUrl}/register` },
-  ]);
-
-  return {
-    breadcrumb: breadcrumbSchema,
-  };
-}
-
 export default function RegisterLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const structuredData = generateStructuredData();
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: siteUrl },
+    { name: "Register", url: `${siteUrl}/register` },
+  ]);
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData.breadcrumb) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       {children}
     </>
