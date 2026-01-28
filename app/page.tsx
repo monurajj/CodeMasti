@@ -266,51 +266,51 @@ export default function Home() {
             data-animate
             className={`transition-all duration-1000 delay-300 ${mounted && isVisible.countdown ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
           >
-            <div className="mt-8">
+            <div className="mt-8 px-2 sm:px-0">
               <p className="text-lg md:text-xl text-gray-700 font-semibold mb-4 text-center">
                 Launching on <span className="text-yellow-600 font-bold">May 2, 2026</span>
               </p>
-              <div className="flex items-center justify-center gap-3 md:gap-4">
+              <div className="flex items-center justify-center gap-1.5 sm:gap-2 md:gap-4 px-2">
                 {/* Days */}
                 <div className="flex flex-col items-center">
-                  <div className="bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-xl p-4 md:p-6 w-20 md:w-24 shadow-lg border-2 border-yellow-600 flex items-center justify-center">
-                    <div className="text-3xl md:text-4xl font-bold text-black font-mono tabular-nums text-center">
+                  <div className="bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-xl p-3 sm:p-4 md:p-6 w-16 sm:w-20 md:w-24 shadow-lg border-2 border-yellow-600 flex items-center justify-center">
+                    <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-black font-mono tabular-nums text-center">
                       {String(timeLeft.days).padStart(2, '0')}
                     </div>
                   </div>
                   <p className="text-xs md:text-sm text-gray-600 font-semibold mt-2 uppercase tracking-wide">Days</p>
                 </div>
 
-                <span className="text-2xl md:text-3xl font-bold text-yellow-500 animate-pulse-slow">:</span>
+                <span className="text-xl sm:text-2xl md:text-3xl font-bold text-yellow-500 animate-pulse-slow">:</span>
 
                 {/* Hours */}
                 <div className="flex flex-col items-center">
-                  <div className="bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-xl p-4 md:p-6 w-20 md:w-24 shadow-lg border-2 border-yellow-600 flex items-center justify-center">
-                    <div className="text-3xl md:text-4xl font-bold text-black font-mono tabular-nums text-center">
+                  <div className="bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-xl p-3 sm:p-4 md:p-6 w-16 sm:w-20 md:w-24 shadow-lg border-2 border-yellow-600 flex items-center justify-center">
+                    <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-black font-mono tabular-nums text-center">
                       {String(timeLeft.hours).padStart(2, '0')}
                     </div>
                   </div>
                   <p className="text-xs md:text-sm text-gray-600 font-semibold mt-2 uppercase tracking-wide">Hours</p>
                 </div>
 
-                <span className="text-2xl md:text-3xl font-bold text-yellow-500 animate-pulse-slow">:</span>
+                <span className="text-xl sm:text-2xl md:text-3xl font-bold text-yellow-500 animate-pulse-slow">:</span>
 
                 {/* Minutes */}
                 <div className="flex flex-col items-center">
-                  <div className="bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-xl p-4 md:p-6 w-20 md:w-24 shadow-lg border-2 border-yellow-600 flex items-center justify-center">
-                    <div className="text-3xl md:text-4xl font-bold text-black font-mono tabular-nums text-center">
+                  <div className="bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-xl p-3 sm:p-4 md:p-6 w-16 sm:w-20 md:w-24 shadow-lg border-2 border-yellow-600 flex items-center justify-center">
+                    <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-black font-mono tabular-nums text-center">
                       {String(timeLeft.minutes).padStart(2, '0')}
                     </div>
                   </div>
                   <p className="text-xs md:text-sm text-gray-600 font-semibold mt-2 uppercase tracking-wide">Minutes</p>
                 </div>
 
-                <span className="text-2xl md:text-3xl font-bold text-yellow-500 animate-pulse-slow">:</span>
+                <span className="text-xl sm:text-2xl md:text-3xl font-bold text-yellow-500 animate-pulse-slow">:</span>
 
                 {/* Seconds */}
                 <div className="flex flex-col items-center">
-                  <div className="bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-xl p-4 md:p-6 w-20 md:w-24 shadow-lg border-2 border-yellow-600 flex items-center justify-center animate-pulse-slow">
-                    <div className="text-3xl md:text-4xl font-bold text-black font-mono tabular-nums text-center">
+                  <div className="bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-xl p-3 sm:p-4 md:p-6 w-16 sm:w-20 md:w-24 shadow-lg border-2 border-yellow-600 flex items-center justify-center animate-pulse-slow">
+                    <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-black font-mono tabular-nums text-center">
                       {String(timeLeft.seconds).padStart(2, '0')}
                     </div>
                   </div>

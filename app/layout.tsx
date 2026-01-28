@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import ErrorBoundaryWrapper from "@/components/ErrorBoundaryWrapper";
+import { generateWebSiteSchema, generateLocalBusinessSchema } from "@/lib/seo-utils";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,6 +30,25 @@ export const metadata: Metadata = {
     "AI readiness",
     "logical thinking",
     "problem solving",
+    "coding classes for children",
+    "online coding courses",
+    "coding for beginners",
+    "programming classes India",
+    "coding school",
+    "edtech India",
+    "coding curriculum",
+    "Python for kids",
+    "coding training",
+    "computer programming classes",
+    "coding academy",
+    "learn programming online",
+    "coding tutor",
+    "programming education",
+    "coding skills",
+    "tech education",
+    "future-ready education",
+    "coding foundation",
+    "programming fundamentals",
   ],
   authors: [{ name: "CodeMasti Team" }],
   creator: "CodeMasti",
@@ -73,9 +93,12 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
+    icon: [
+      { url: "/logoimage.png", sizes: "32x32", type: "image/png" },
+      { url: "/logoimage.png", sizes: "16x16", type: "image/png" },
+    ],
+    shortcut: "/logoimage.png",
+    apple: "/logoimage.png",
   },
   verification: {
     // Add your verification codes here when available
@@ -93,12 +116,26 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "EducationalOrganization",
   name: "CodeMasti",
-  description: "A cost-efficient, future-ready coding education platform for school students from Class 5 to Class 10",
+  alternateName: "CodeMasti - Coding Education Platform",
+  description: "A cost-efficient, future-ready coding education platform for school students from Class 5 to Class 10. Learn to think like a creator, not just consume technology.",
   url: siteUrl,
   logo: `${siteUrl}/logotext.png`,
+  image: `${siteUrl}/logotext.png`,
+  foundingDate: "2024",
+  founder: [
+    {
+      "@type": "Person",
+      name: "Aditya Raj",
+    },
+    {
+      "@type": "Person",
+      name: "Monu Raj",
+    },
+  ],
   contactPoint: {
     "@type": "ContactPoint",
     email: "info.codemasti@gmail.com",
+    telephone: "+91-8228907407",
     contactType: "Customer Service",
     areaServed: "IN",
     availableLanguage: ["en", "hi"],
@@ -106,6 +143,7 @@ const organizationSchema = {
   address: {
     "@type": "PostalAddress",
     addressCountry: "IN",
+    addressRegion: "India",
   },
   sameAs: [
     // Add your social media profiles here when available
@@ -115,8 +153,31 @@ const organizationSchema = {
   ],
   offers: {
     "@type": "Offer",
-    description: "Cost-efficient coding education programs for students",
+    description: "Cost-efficient coding education programs for students from Class 5 to Class 10",
     priceCurrency: "INR",
+    availability: "https://schema.org/PreOrder",
+  },
+  educationalCredentialAwarded: "Certificate",
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "CodeMasti Programs",
+    itemListElement: [
+      {
+        "@type": "OfferCatalog",
+        name: "SPARK Program",
+        description: "Coding program for Class 5-6 students",
+      },
+      {
+        "@type": "OfferCatalog",
+        name: "BUILDERS Program",
+        description: "Coding program for Class 7-8 students",
+      },
+      {
+        "@type": "OfferCatalog",
+        name: "INNOVATORS Program",
+        description: "Coding program for Class 9-10 students",
+      },
+    ],
   },
 };
 
@@ -125,12 +186,23 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const websiteSchema = generateWebSiteSchema();
+  const localBusinessSchema = generateLocalBusinessSchema();
+
   return (
     <html lang="en">
       <body className={inter.className}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
         />
         <ErrorBoundaryWrapper>
           <a href="#main-content" className="skip-to-content">
