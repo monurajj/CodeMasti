@@ -343,14 +343,14 @@ export default function Contact() {
                   Stay updated with our latest news and launch updates
                 </p>
                 <div className="flex justify-center gap-4">
-                  <a href="#" className="w-12 h-12 bg-black/20 rounded-full flex items-center justify-center cursor-pointer hover:bg-black/30 transition-all focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2" aria-label="Follow us on Facebook">
-                    <span className="text-2xl" aria-hidden="true">📘</span>
-                  </a>
-                  <a href="#" className="w-12 h-12 bg-black/20 rounded-full flex items-center justify-center cursor-pointer hover:bg-black/30 transition-all focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2" aria-label="Follow us on Instagram">
+                  <a 
+                    href="https://www.instagram.com/codemasti_official/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 bg-black/20 rounded-full flex items-center justify-center cursor-pointer hover:bg-black/30 transition-all focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2" 
+                    aria-label="Follow us on Instagram"
+                  >
                     <span className="text-2xl" aria-hidden="true">📷</span>
-                  </a>
-                  <a href="#" className="w-12 h-12 bg-black/20 rounded-full flex items-center justify-center cursor-pointer hover:bg-black/30 transition-all focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2" aria-label="Follow us on Twitter">
-                    <span className="text-2xl" aria-hidden="true">🐦</span>
                   </a>
                 </div>
               </div>
