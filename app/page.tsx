@@ -642,6 +642,14 @@ export default function Home() {
                 </Link>
                 <span className="text-gray-600">|</span>
                 <Link 
+                  href="/privacy"
+                  className="text-xs text-gray-500 hover:text-yellow-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-black rounded"
+                  aria-label="Privacy Policy"
+                >
+                  Privacy Policy
+                </Link>
+                <span className="text-gray-600">|</span>
+                <Link 
                   href="/refund"
                   className="text-xs text-gray-500 hover:text-yellow-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-black rounded"
                   aria-label="Refund Policy"

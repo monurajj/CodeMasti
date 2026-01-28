@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Particles from "@/components/Particles";
 
-export default function Terms() {
+export default function Privacy() {
   const [mounted, setMounted] = useState(false);
   const [isVisible, setIsVisible] = useState<{ [key: string]: boolean }>({});
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -133,7 +133,7 @@ export default function Terms() {
             className={`text-center mb-12 transition-all duration-1000 ${mounted && isVisible.header ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
           >
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-black mb-4">
-              Terms & <span className="text-yellow-500">Conditions</span>
+              Privacy <span className="text-yellow-500">Policy</span>
             </h1>
             <div className="w-32 h-1.5 bg-yellow-400 mx-auto rounded-full"></div>
           </div>
@@ -146,126 +146,114 @@ export default function Terms() {
           >
             <div className="prose prose-lg max-w-none">
               <p className="text-gray-700 mb-6">
-                This document is an electronic record in terms of Information Technology Act, 2000 and rules
-                there under as applicable and the amended provisions pertaining to electronic records in various
-                statutes as amended by the Information Technology Act, 2000. This electronic record is generated
-                by a computer system and does not require any physical or digital signatures.
+                <strong>Last Updated:</strong> {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
               </p>
 
               <p className="text-gray-700 mb-6">
-                This document is published in accordance with the provisions of Rule 3 (1) of the Information
-                Technology (Intermediaries guidelines) Rules, 2011 that require publishing the rules and
-                regulations, privacy policy and Terms of Use for access or usage of domain name{' '}
+                This Privacy Policy describes how CodeMasti (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) collects, uses, and protects your personal information when you use our website located at{' '}
                 <a href="https://www.codemasti.com/" className="text-yellow-600 hover:text-yellow-700 underline">
                   https://www.codemasti.com/
                 </a>
-                {' '}(&apos;Website&apos;), including the related mobile site and mobile application (hereinafter
-                referred to as &apos;Platform&apos;).
+                {' '}(the &quot;Platform&quot;). By using our Platform, you agree to the collection and use of information in accordance with this Privacy Policy.
               </p>
 
+              <h2 className="text-2xl font-bold text-black mt-8 mb-4">1. Information We Collect</h2>
+              <p className="text-gray-700 mb-4">
+                We collect information that you provide directly to us, including:
+              </p>
+              <ul className="list-disc list-inside space-y-2 text-gray-700 mb-6">
+                <li><strong>Personal Information:</strong> Name, email address, phone number, and student class information when you register for our courses or contact us.</li>
+                <li><strong>Account Information:</strong> Information you provide when creating an account or profile on our Platform.</li>
+                <li><strong>Communication Data:</strong> Messages, inquiries, and other communications you send to us.</li>
+                <li><strong>Usage Data:</strong> Information about how you access and use our Platform, including your IP address, browser type, device information, and pages visited.</li>
+              </ul>
+
+              <h2 className="text-2xl font-bold text-black mt-8 mb-4">2. How We Use Your Information</h2>
+              <p className="text-gray-700 mb-4">
+                We use the information we collect to:
+              </p>
+              <ul className="list-disc list-inside space-y-2 text-gray-700 mb-6">
+                <li>Provide, maintain, and improve our educational services and Platform.</li>
+                <li>Process your registrations and manage your account.</li>
+                <li>Send you updates, newsletters, and information about our courses and services.</li>
+                <li>Respond to your inquiries, comments, and requests.</li>
+                <li>Monitor and analyze usage patterns and trends to improve user experience.</li>
+                <li>Detect, prevent, and address technical issues and security threats.</li>
+                <li>Comply with legal obligations and enforce our Terms of Use.</li>
+              </ul>
+
+              <h2 className="text-2xl font-bold text-black mt-8 mb-4">3. Information Sharing and Disclosure</h2>
+              <p className="text-gray-700 mb-4">
+                We do not sell, trade, or rent your personal information to third parties. We may share your information only in the following circumstances:
+              </p>
+              <ul className="list-disc list-inside space-y-2 text-gray-700 mb-6">
+                <li><strong>Service Providers:</strong> We may share information with third-party service providers who perform services on our behalf, such as email delivery, data storage, and analytics.</li>
+                <li><strong>Legal Requirements:</strong> We may disclose information if required by law or in response to valid legal requests.</li>
+                <li><strong>Business Transfers:</strong> In the event of a merger, acquisition, or sale of assets, your information may be transferred as part of that transaction.</li>
+                <li><strong>With Your Consent:</strong> We may share your information with your explicit consent or at your direction.</li>
+              </ul>
+
+              <h2 className="text-2xl font-bold text-black mt-8 mb-4">4. Data Security</h2>
               <p className="text-gray-700 mb-6">
-                The Platform is owned by with its registered office at Purahara Aurangabad Bihar
-                , a company incorporated under the Companies Act, 1956 8228907407
-                (hereinafter referred to as &apos;Platform Owner&apos;, &apos;we&apos;, &apos;us&apos;, &apos;our&apos;).
+                We implement appropriate technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the Internet or electronic storage is 100% secure, and we cannot guarantee absolute security.
               </p>
 
+              <h2 className="text-2xl font-bold text-black mt-8 mb-4">5. Cookies and Tracking Technologies</h2>
               <p className="text-gray-700 mb-6">
-                Your use of the Platform and services and tools are governed by the following terms and
-                conditions (&quot;Terms of Use&quot;) as applicable to the Platform including the applicable policies which
-                are incorporated herein by way of reference. If You transact on the Platform, You shall be subject
-                to the policies that are applicable to the Platform for such transaction. By mere use of the Platform,
-                You shall be contracting with the Platform Owner and these terms and conditions including the
-                policies constitute Your binding obligations, with Platform Owner. These Terms of Use relate to
-                your use of our website, goods (as applicable) or services (as applicable) (collectively, &apos;Services&apos;).
-                Any terms and conditions proposed by You which are in addition to or which conflict with these
-                Terms of Use are expressly rejected by the Platform Owner and shall be of no force or effect.
-                These Terms of Use can be modified at any time without assigning any reason. It is your
-                responsibility to periodically review these Terms of Use to stay informed of updates.
+                We use cookies and similar tracking technologies to track activity on our Platform and store certain information. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our Platform.
               </p>
 
+              <h2 className="text-2xl font-bold text-black mt-8 mb-4">6. Your Rights and Choices</h2>
+              <p className="text-gray-700 mb-4">
+                You have the right to:
+              </p>
+              <ul className="list-disc list-inside space-y-2 text-gray-700 mb-6">
+                <li>Access and receive a copy of your personal information.</li>
+                <li>Correct inaccurate or incomplete information.</li>
+                <li>Request deletion of your personal information.</li>
+                <li>Object to or restrict the processing of your information.</li>
+                <li>Opt-out of marketing communications by following the unsubscribe instructions in our emails.</li>
+                <li>Withdraw consent where we rely on consent as the legal basis for processing.</li>
+              </ul>
+
+              <h2 className="text-2xl font-bold text-black mt-8 mb-4">7. Children&apos;s Privacy</h2>
               <p className="text-gray-700 mb-6">
-                For the purpose of these Terms of Use, wherever the context so requires &apos;you&apos;, &apos;your&apos; or &apos;user&apos; shall
-                mean any natural or legal person who has agreed to become a user/buyer on the Platform.
+                Our Platform is designed for students from Class 5 to Class 10. We take the privacy of children seriously. If you are a parent or guardian and believe your child has provided us with personal information, please contact us immediately. We will take steps to delete such information from our records.
               </p>
 
-              <p className="text-gray-700 mb-8 font-semibold">
-                ACCESSING, BROWSING OR OTHERWISE USING THE PLATFORM INDICATES YOUR
-                AGREEMENT TO ALL THE TERMS AND CONDITIONS UNDER THESE TERMS OF USE,
-                SO PLEASE READ THE TERMS OF USE CAREFULLY BEFORE PROCEEDING.
+              <h2 className="text-2xl font-bold text-black mt-8 mb-4">8. Data Retention</h2>
+              <p className="text-gray-700 mb-6">
+                We retain your personal information for as long as necessary to fulfill the purposes outlined in this Privacy Policy, unless a longer retention period is required or permitted by law. When we no longer need your information, we will securely delete or anonymize it.
               </p>
 
-              <h2 className="text-2xl font-bold text-black mt-8 mb-4">The use of Platform and/or availing of our Services is subject to the following Terms of Use:</h2>
+              <h2 className="text-2xl font-bold text-black mt-8 mb-4">9. Third-Party Links</h2>
+              <p className="text-gray-700 mb-6">
+                Our Platform may contain links to third-party websites or services. We are not responsible for the privacy practices of these third parties. We encourage you to read the privacy policies of any third-party websites you visit.
+              </p>
 
-              <ol className="list-decimal list-inside space-y-4 text-gray-700 mb-6">
-                <li>
-                  To access and use the Services, you agree to provide true, accurate and complete information
-                  to us during and after registration, and you shall be responsible for all acts done through the
-                  use of your registered account on the Platform.
-                </li>
-                <li>
-                  Neither we nor any third parties provide any warranty or guarantee as to the accuracy,
-                  timeliness, performance, completeness or suitability of the information and materials offered
-                  on this website or through the Services, for any specific purpose. You acknowledge that such
-                  information and materials may contain inaccuracies or errors and we expressly exclude
-                  liability for any such inaccuracies or errors to the fullest extent permitted by law.
-                </li>
-                <li>
-                  Your use of our Services and the Platform is solely and entirely at your own risk and
-                  discretion for which we shall not be liable to you in any manner. You are required to
-                  independently assess and ensure that the Services meet your requirements.
-                </li>
-                <li>
-                  The contents of the Platform and the Services are proprietary to us and are licensed to us.
-                  You will not have any authority to claim any intellectual property rights, title, or interest in
-                  its contents. The contents includes and is not limited to the design, layout, look and graphics.
-                </li>
-                <li>
-                  You acknowledge that unauthorized use of the Platform and/or the Services may lead to
-                  action against you as per these Terms of Use and/or applicable laws.
-                </li>
-                <li>
-                  You agree to pay us the charges associated with availing the Services.
-                </li>
-                <li>
-                  You agree not to use the Platform and/ or Services for any purpose that is unlawful, illegal or
-                  forbidden by these Terms, or Indian or local laws that might apply to you.
-                </li>
-                <li>
-                  You agree and acknowledge that website and the Services may contain links to other third
-                  party websites. On accessing these links, you will be governed by the terms of use, privacy
-                  policy and such other policies of such third party websites. These links are provided for your
-                  convenience for provide further information.
-                </li>
-                <li>
-                  You understand that upon initiating a transaction for availing the Services you are entering
-                  into a legally binding and enforceable contract with the Platform Owner for the Services.
-                </li>
-                <li>
-                  You shall indemnify and hold harmless Platform Owner, its affiliates, group companies (as
-                  applicable) and their respective officers, directors, agents, and employees, from any claim or
-                  demand, or actions including reasonable attorney&apos;s fees, made by any third party or penalty
-                  imposed due to or arising out of Your breach of this Terms of Use, privacy Policy and other
-                  Policies, or Your violation of any law, rules or regulations or the rights (including
-                  infringement of intellectual property rights) of a third party.
-                </li>
-                <li>
-                  Notwithstanding anything contained in these Terms of Use, the parties shall not be liable for
-                  any failure to perform an obligation under these Terms if performance is prevented or
-                  delayed by a force majeure event.
-                </li>
-                <li>
-                  These Terms and any dispute or claim relating to it, or its enforceability, shall be governed
-                  by and construed in accordance with the laws of India.
-                </li>
-                <li>
-                  All disputes arising out of or in connection with these Terms shall be subject to the exclusive
-                  jurisdiction of the courts in and .
-                </li>
-                <li>
-                  All concerns or communications relating to these Terms must be communicated to us using
-                  the contact information provided on this website.
-                </li>
-              </ol>
+              <h2 className="text-2xl font-bold text-black mt-8 mb-4">10. Changes to This Privacy Policy</h2>
+              <p className="text-gray-700 mb-6">
+                We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the &quot;Last Updated&quot; date. You are advised to review this Privacy Policy periodically for any changes.
+              </p>
+
+              <h2 className="text-2xl font-bold text-black mt-8 mb-4">11. Contact Us</h2>
+              <p className="text-gray-700 mb-6">
+                If you have any questions about this Privacy Policy or our data practices, please contact us at:
+              </p>
+              <div className="bg-gray-50 rounded-lg p-4 mb-6">
+                <p className="text-gray-700 mb-2">
+                  <strong>Email:</strong>{' '}
+                  <a href="mailto:info.codemasti@gmail.com" className="text-yellow-600 hover:text-yellow-700 underline">
+                    info.codemasti@gmail.com
+                  </a>
+                </p>
+                <p className="text-gray-700 mb-2">
+                  <strong>Phone:</strong> +91 8228907407, +91 9523042613, +91 7541062514
+                </p>
+                <p className="text-gray-700">
+                  <strong>Address:</strong> Purahara Aurangabad Bihar, India
+                </p>
+              </div>
             </div>
           </div>
         </div>
