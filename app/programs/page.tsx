@@ -53,7 +53,11 @@ export default function Programs() {
         "Creative problem solving",
         "Introduction to how computers think"
       ],
-      outcome: "Students enjoy coding and feel confident exploring technology."
+      outcome: "Students enjoy coding and feel confident exploring technology.",
+      registrationFee: "₹2,499",
+      monthlyFee: "₹1,499",
+      timetable: "2 live classes/week (Saturday + Sunday)",
+      additionalInfo: "Weekly practice challenges + Project work (guided + independent)"
     },
     {
       id: "builders",
@@ -69,7 +73,11 @@ export default function Programs() {
         "Mini projects & challenges",
         "Introduction to AI concepts (conceptual)"
       ],
-      outcome: "Students can write code and build simple applications independently."
+      outcome: "Students can write code and build simple applications independently.",
+      registrationFee: "₹2,999",
+      monthlyFee: "₹1,999",
+      timetable: "2 live classes/week (Saturday + Sunday)",
+      additionalInfo: "Weekly practice challenges + Project work (guided + independent)"
     },
     {
       id: "innovators",
@@ -85,7 +93,11 @@ export default function Programs() {
         "AI tools & automation concepts",
         "Career awareness & tech exposure"
       ],
-      outcome: "Students think like engineers and innovators."
+      outcome: "Students think like engineers and innovators.",
+      registrationFee: "₹3,499",
+      monthlyFee: "₹2,499",
+      timetable: "2 live classes/week (Saturday + Sunday)",
+      additionalInfo: "Weekly practice challenges + Project work (guided + independent)"
     }
   ];
 
@@ -366,6 +378,104 @@ export default function Programs() {
                         <p className="font-semibold text-black">
                           {program.outcome}
                         </p>
+                      </div>
+
+                      {/* Fee Structure */}
+                      <div className={`p-5 rounded-lg border-2 ${
+                        program.color === "orange"
+                          ? "bg-gradient-to-br from-orange-100 to-orange-50 border-orange-400"
+                          : program.color === "blue"
+                          ? "bg-gradient-to-br from-blue-100 to-blue-50 border-blue-400"
+                          : program.color === "green"
+                          ? "bg-gradient-to-br from-green-100 to-green-50 border-green-400"
+                          : "bg-gradient-to-br from-yellow-100 to-yellow-50 border-yellow-400"
+                      }`}>
+                        <h4 className={`text-xl font-bold mb-4 ${
+                          program.color === "orange" ? "text-orange-700" :
+                          program.color === "blue" ? "text-blue-700" :
+                          program.color === "green" ? "text-green-700" : "text-yellow-700"
+                        }`}>
+                          💰 Fee Structure
+                        </h4>
+                        <div className="space-y-3">
+                          <div className="bg-white rounded-lg p-4 border-2 border-gray-200">
+                            <div className="flex justify-between items-center">
+                              <span className="text-gray-700 font-semibold">Registration Fee:</span>
+                              <span className={`text-xl font-bold ${
+                                program.color === "orange" ? "text-orange-600" :
+                                program.color === "blue" ? "text-blue-600" :
+                                program.color === "green" ? "text-green-600" : "text-yellow-600"
+                              }`}>
+                                {program.registrationFee}
+                              </span>
+                            </div>
+                            <p className="text-xs text-gray-600 mt-1">(includes first month)</p>
+                          </div>
+                          <div className="bg-white rounded-lg p-4 border-2 border-gray-200">
+                            <div className="flex justify-between items-center">
+                              <span className="text-gray-700 font-semibold">Monthly Fee:</span>
+                              <span className={`text-xl font-bold ${
+                                program.color === "orange" ? "text-orange-600" :
+                                program.color === "blue" ? "text-blue-600" :
+                                program.color === "green" ? "text-green-600" : "text-yellow-600"
+                              }`}>
+                                {program.monthlyFee}
+                              </span>
+                            </div>
+                            <p className="text-xs text-gray-600 mt-1">(from 2nd month onwards)</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Course Timetable */}
+                      <div className={`p-5 rounded-lg border-2 ${
+                        program.color === "orange"
+                          ? "bg-orange-50 border-orange-300"
+                          : program.color === "blue"
+                          ? "bg-blue-50 border-blue-300"
+                          : program.color === "green"
+                          ? "bg-green-50 border-green-300"
+                          : "bg-yellow-50 border-yellow-300"
+                      }`}>
+                        <h4 className={`text-xl font-bold mb-4 ${
+                          program.color === "orange" ? "text-orange-700" :
+                          program.color === "blue" ? "text-blue-700" :
+                          program.color === "green" ? "text-green-700" : "text-yellow-700"
+                        }`}>
+                          📅 Course Timetable
+                        </h4>
+                        <div className="space-y-3">
+                          <div className="bg-white rounded-lg p-4 border-2 border-gray-200">
+                            <div className="flex items-start gap-3">
+                              <span className={`text-2xl ${
+                                program.color === "orange" ? "text-orange-500" :
+                                program.color === "blue" ? "text-blue-500" :
+                                program.color === "green" ? "text-green-500" : "text-yellow-500"
+                              }`}>
+                                🎓
+                              </span>
+                              <div>
+                                <p className="font-semibold text-black mb-1">Live Class Schedule</p>
+                                <p className="text-gray-700">{program.timetable}</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="bg-white rounded-lg p-4 border-2 border-gray-200">
+                            <div className="flex items-start gap-3">
+                              <span className={`text-2xl ${
+                                program.color === "orange" ? "text-orange-500" :
+                                program.color === "blue" ? "text-blue-500" :
+                                program.color === "green" ? "text-green-500" : "text-yellow-500"
+                              }`}>
+                                ➕
+                              </span>
+                              <div>
+                                <p className="font-semibold text-black mb-1">Additional Activities</p>
+                                <p className="text-gray-700">{program.additionalInfo}</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
 
                       {/* Register Button */}

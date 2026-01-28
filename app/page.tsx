@@ -323,6 +323,67 @@ export default function Home() {
             </div>
           </div>
 
+          {/* Key Milestones & Timeline */}
+          <div 
+            id="timeline"
+            data-animate
+            className={`transition-all duration-1000 delay-400 ${mounted && isVisible.timeline ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+          >
+            <div className="mt-12 max-w-4xl mx-auto">
+              <div className="bg-gradient-to-br from-yellow-50 via-white to-yellow-50 rounded-2xl p-6 md:p-8 shadow-lg border-2 border-yellow-300">
+                <h2 className="text-2xl md:text-3xl font-bold text-black mb-6 text-center">
+                  <span className="text-yellow-600">Key Milestones & Timeline</span>
+                </h2>
+                
+                <div className="space-y-6">
+                  {/* Launch Timeline */}
+                  <div className="bg-white rounded-xl p-5 md:p-6 border-2 border-gray-200">
+                    <h3 className="text-xl font-bold text-black mb-4">Launch Timeline</h3>
+                    <ul className="space-y-3 text-gray-700">
+                      <li className="flex items-start gap-3">
+                        <span className="text-yellow-500 font-bold mt-1">•</span>
+                        <span><strong>Counselling & Admission Start:</strong> February 2026</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-yellow-500 font-bold mt-1">•</span>
+                        <span><strong>Platform Launch Date:</strong> <span className="text-yellow-600 font-bold">2 May 2026 (Saturday)</span></span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-yellow-500 font-bold mt-1">•</span>
+                        <span><strong>First Batch Commencement:</strong> <span className="text-yellow-600 font-bold">3 May 2026 (Sunday)</span></span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  {/* Scholarship Timeline */}
+                  <div className="bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-xl p-5 md:p-6 border-2 border-yellow-600">
+                    <h3 className="text-xl font-bold text-black mb-4">🎓 Early Bird Scholarship (on Registration Fee)</h3>
+                    <div className="grid md:grid-cols-3 gap-4">
+                      <div className="bg-white rounded-lg p-4 text-center">
+                        <div className="text-2xl font-bold text-yellow-600 mb-2">75%</div>
+                        <div className="text-sm font-semibold text-black mb-1">Scholarship</div>
+                        <div className="text-xs text-gray-600">1 Feb - 28 Feb 2026</div>
+                      </div>
+                      <div className="bg-white rounded-lg p-4 text-center">
+                        <div className="text-2xl font-bold text-yellow-600 mb-2">50%</div>
+                        <div className="text-sm font-semibold text-black mb-1">Scholarship</div>
+                        <div className="text-xs text-gray-600">1 Mar - 30 Mar 2026</div>
+                      </div>
+                      <div className="bg-white rounded-lg p-4 text-center">
+                        <div className="text-2xl font-bold text-yellow-600 mb-2">25%</div>
+                        <div className="text-sm font-semibold text-black mb-1">Scholarship</div>
+                        <div className="text-xs text-gray-600">1 Apr - 30 Apr 2026</div>
+                      </div>
+                    </div>
+                    <p className="text-sm text-black mt-4 text-center font-medium">
+                      Register early to save more! 🎉
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Tagline Rotator - Black Text for Readability */}
           <div 
             id="tagline"
