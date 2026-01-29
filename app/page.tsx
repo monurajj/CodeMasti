@@ -456,7 +456,7 @@ export default function Home() {
                 </h3>
                 <p className="text-sm md:text-base text-gray-600 font-semibold relative z-10">Class 5-6</p>
                 <p className="text-sm md:text-base text-black mt-2 relative z-10">Ignite curiosity & remove fear of coding</p>
-                <Link href="/programs" className="mt-4 inline-block px-4 py-2 bg-orange-400 text-white font-semibold rounded-lg hover:bg-orange-500 hover:scale-110 transition-all duration-300 text-sm md:text-base relative z-10 animate-button-pulse focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2" aria-label="Learn more about SPARK program for Class 5-6">
+                <Link href="/programs?batch=spark" className="mt-4 inline-block px-4 py-2 bg-orange-400 text-white font-semibold rounded-lg hover:bg-orange-500 hover:scale-110 transition-all duration-300 text-sm md:text-base relative z-10 animate-button-pulse focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2" aria-label="Learn more about SPARK program for Class 5-6">
                   Learn More
                 </Link>
               </div>
@@ -466,14 +466,14 @@ export default function Home() {
                 className="bg-white rounded-xl p-5 md:p-6 border-2 border-blue-400 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:scale-105 relative overflow-hidden group animate-card-float"
                 style={{ animationDelay: '0.2s' }}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="text-3xl md:text-4xl mb-3 animate-bounce-gentle" style={{ animationDelay: '0.1s' }}>🧱</div>
-                <h3 className="text-lg md:text-xl font-bold text-black mb-2">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                <div className="text-3xl md:text-4xl mb-3 relative z-10 animate-bounce-gentle" style={{ animationDelay: '0.1s' }}>🧱</div>
+                <h3 className="text-lg md:text-xl font-bold text-black mb-2 relative z-10">
                   <span className="text-blue-500">BUILDERS</span>
                 </h3>
-                <p className="text-sm md:text-base text-gray-600 font-semibold">Class 7-8</p>
-                <p className="text-sm md:text-base text-black mt-2">Build strong coding foundations</p>
-                <Link href="/programs" className="mt-4 inline-block px-4 py-2 bg-blue-400 text-white font-semibold rounded-lg hover:bg-blue-500 hover:scale-110 transition-all duration-300 text-sm md:text-base animate-button-pulse focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2" aria-label="Learn more about BUILDERS program for Class 7-8">
+                <p className="text-sm md:text-base text-gray-600 font-semibold relative z-10">Class 7-8</p>
+                <p className="text-sm md:text-base text-black mt-2 relative z-10">Build strong coding foundations</p>
+                <Link href="/programs?batch=builders" className="mt-4 inline-block px-4 py-2 bg-blue-400 text-white font-semibold rounded-lg hover:bg-blue-500 hover:scale-110 transition-all duration-300 text-sm md:text-base relative z-10 animate-button-pulse focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2" aria-label="Learn more about BUILDERS program for Class 7-8">
                   Learn More
                 </Link>
               </div>
@@ -492,7 +492,7 @@ export default function Home() {
                 <p className="text-sm md:text-base text-gray-600 font-semibold relative z-10">Class 9-10</p>
                 <p className="text-sm md:text-base text-black mt-2 relative z-10">Apply skills to real-world problems</p>
                 
-                <Link href="/programs" className="mt-4 inline-block px-4 py-2 bg-green-400 text-white font-semibold rounded-lg hover:bg-green-500 hover:scale-110 transition-all duration-300 text-sm md:text-base relative z-10 animate-button-pulse focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2" aria-label="Learn more about INNOVATORS program for Class 9-10">
+                <Link href="/programs?batch=innovators" className="mt-4 inline-block px-4 py-2 bg-green-400 text-white font-semibold rounded-lg hover:bg-green-500 hover:scale-110 transition-all duration-300 text-sm md:text-base relative z-10 animate-button-pulse focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2" aria-label="Learn more about INNOVATORS program for Class 9-10">
                   Learn More
                 </Link>
               </div>

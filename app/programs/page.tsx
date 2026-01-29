@@ -1,19 +1,27 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, Suspense } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Particles from "@/components/Particles";
+import { useSearchParams } from "next/navigation";
 
-export default function Programs() {
+function ProgramsContent() {
   const [mounted, setMounted] = useState(false);
   const [isVisible, setIsVisible] = useState<{ [key: string]: boolean }>({});
   const [activeTab, setActiveTab] = useState<string>("spark");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const searchParams = useSearchParams();
 
   useEffect(() => {
     setMounted(true);
+    
+    // Check URL parameters for batch selection
+    const batchParam = searchParams.get("batch");
+    if (batchParam && ["spark", "builders", "innovators"].includes(batchParam)) {
+      setActiveTab(batchParam);
+    }
     
     // Intersection Observer for scroll animations
     const observer = new IntersectionObserver(
@@ -36,7 +44,7 @@ export default function Programs() {
     return () => {
       observer.disconnect();
     };
-  }, []);
+  }, [searchParams]);
 
   const programs = [
     {
@@ -640,5 +648,20 @@ export default function Programs() {
         }
       `}</style>
     </div>
+  );
+}
+
+export default function Programs() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-yellow-500 mx-auto"></div>
+          <p className="mt-4 text-gray-600">Loading programs...</p>
+        </div>
+      </div>
+    }>
+      <ProgramsContent />
+    </Suspense>
   );
 }

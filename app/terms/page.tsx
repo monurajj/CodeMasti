@@ -169,6 +169,10 @@ export default function Terms() {
                 (hereinafter referred to as &apos;Platform Owner&apos;, &apos;we&apos;, &apos;us&apos;, &apos;our&apos;).
               </p>
 
+              <p className="text-gray-800 mb-6 font-semibold text-center bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded">
+                THIS BUSINESS IS OWNED BY MR MONU KUMAR
+              </p>
+
               <p className="text-gray-700 mb-6">
                 Your use of the Platform and services and tools are governed by the following terms and
                 conditions (&quot;Terms of Use&quot;) as applicable to the Platform including the applicable policies which
