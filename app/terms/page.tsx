@@ -130,7 +130,7 @@ export default function Terms() {
           <div 
             id="header"
             data-animate
-            className={`text-center mb-12 transition-all duration-1000 ${mounted && isVisible.header ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+            className={`text-center mb-12 transition-all duration-1000 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
           >
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-black mb-4">
               Terms & <span className="text-yellow-500">Conditions</span>
@@ -142,7 +142,7 @@ export default function Terms() {
           <div 
             id="content"
             data-animate
-            className={`bg-white rounded-2xl p-6 md:p-10 shadow-lg border-2 border-gray-200 transition-all duration-1000 delay-200 ${mounted && isVisible.content ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+            className={`bg-white rounded-2xl p-6 md:p-10 shadow-lg border-2 border-gray-200 transition-all duration-1000 delay-200 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
           >
             <div className="prose prose-lg max-w-none">
               <p className="text-gray-700 mb-6">
