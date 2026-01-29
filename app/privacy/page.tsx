@@ -146,64 +146,321 @@ export default function Privacy() {
           >
             <div className="prose prose-lg max-w-none">
               <p className="text-gray-700 mb-6">
-                <strong>Last Updated:</strong> {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                This Privacy Policy outlines CodeMasti&apos;s policies for collecting, using, and sharing personal information 
+                about our customers and users. This policy is clearly stated and updated on our website to ensure transparency 
+                and compliance with data protection regulations.
+              </p>
+
+              <p className="text-gray-600 text-sm mb-8 italic">
+                Last Updated: January 29, 2025
               </p>
 
               <p className="text-gray-700 mb-6">
-                This Privacy Policy describes how CodeMasti (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) collects, uses, and protects your personal information when you use our website located at{' '}
+                This Privacy Policy describes how CodeMasti (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) collects, uses, stores, protects, 
+                and shares your personal information when you use our website located at{' '}
                 <a href="https://www.codemasti.com/" className="text-yellow-600 hover:text-yellow-700 underline">
                   https://www.codemasti.com/
                 </a>
-                {' '}(the &quot;Platform&quot;). By using our Platform, you agree to the collection and use of information in accordance with this Privacy Policy.
+                {' '}(the &quot;Platform&quot;). By using our Platform, you agree to the collection and use of information in accordance 
+                with this Privacy Policy. A missing or incomplete privacy policy may result in failure of customer payments.
               </p>
 
-              <h2 className="text-2xl font-bold text-black mt-8 mb-4">1. Information We Collect</h2>
+              <h2 className="text-2xl font-bold text-black mt-8 mb-4">1. Types of User Data We Collect</h2>
               <p className="text-gray-700 mb-4">
-                We collect information that you provide directly to us, including:
+                We collect the following types of user data to provide and improve our services:
               </p>
-              <ul className="list-disc list-inside space-y-2 text-gray-700 mb-6">
-                <li><strong>Personal Information:</strong> Name, email address, phone number, and student class information when you register for our courses or contact us.</li>
-                <li><strong>Account Information:</strong> Information you provide when creating an account or profile on our Platform.</li>
-                <li><strong>Communication Data:</strong> Messages, inquiries, and other communications you send to us.</li>
-                <li><strong>Usage Data:</strong> Information about how you access and use our Platform, including your IP address, browser type, device information, and pages visited.</li>
+              
+              <h3 className="text-xl font-semibold text-black mt-6 mb-3">1.1 Personal Identification Information</h3>
+              <ul className="list-disc list-inside space-y-2 text-gray-700 mb-4 ml-4">
+                <li><strong>Name:</strong> Full name of the student and/or parent/guardian</li>
+                <li><strong>Email Address:</strong> Primary email address for account communication and course updates</li>
+                <li><strong>Phone Number:</strong> Contact phone number(s) for account verification and important notifications</li>
+                <li><strong>Student Information:</strong> Student&apos;s class/grade level (Class 5-10), age, and academic information</li>
+                <li><strong>Address:</strong> Billing address and location information (if provided)</li>
+              </ul>
+
+              <h3 className="text-xl font-semibold text-black mt-6 mb-3">1.2 Account and Registration Information</h3>
+              <ul className="list-disc list-inside space-y-2 text-gray-700 mb-4 ml-4">
+                <li>Username and password (encrypted)</li>
+                <li>Account preferences and settings</li>
+                <li>Program enrollment details and course selections</li>
+                <li>Payment information (processed securely through third-party payment gateways - we do not store full credit card details)</li>
+              </ul>
+
+              <h3 className="text-xl font-semibold text-black mt-6 mb-3">1.3 Communication Data</h3>
+              <ul className="list-disc list-inside space-y-2 text-gray-700 mb-4 ml-4">
+                <li>Messages, inquiries, and feedback sent through our contact forms</li>
+                <li>Email correspondence between you and CodeMasti</li>
+                <li>Support tickets and customer service interactions</li>
+                <li>Survey responses and feedback (if you choose to participate)</li>
+              </ul>
+
+              <h3 className="text-xl font-semibold text-black mt-6 mb-3">1.4 Usage and Technical Data</h3>
+              <ul className="list-disc list-inside space-y-2 text-gray-700 mb-4 ml-4">
+                <li><strong>Device Information:</strong> Device type, operating system, browser type and version</li>
+                <li><strong>IP Address:</strong> Internet Protocol address used to connect to our Platform</li>
+                <li><strong>Log Data:</strong> Pages visited, time spent on pages, click patterns, and navigation paths</li>
+                <li><strong>Session Information:</strong> Login times, session duration, and activity logs</li>
+                <li><strong>Performance Data:</strong> Platform performance metrics and error reports</li>
+              </ul>
+
+              <h3 className="text-xl font-semibold text-black mt-6 mb-3">1.5 Educational and Learning Data</h3>
+              <ul className="list-disc list-inside space-y-2 text-gray-700 mb-6 ml-4">
+                <li>Class attendance records</li>
+                <li>Assignment submissions and project work</li>
+                <li>Progress tracking and performance metrics</li>
+                <li>Course completion status</li>
+                <li>Certificates and achievements earned</li>
               </ul>
 
               <h2 className="text-2xl font-bold text-black mt-8 mb-4">2. How We Use Your Information</h2>
               <p className="text-gray-700 mb-4">
-                We use the information we collect to:
+                We use the information we collect for the following purposes:
               </p>
-              <ul className="list-disc list-inside space-y-2 text-gray-700 mb-6">
-                <li>Provide, maintain, and improve our educational services and Platform.</li>
-                <li>Process your registrations and manage your account.</li>
-                <li>Send you updates, newsletters, and information about our courses and services.</li>
-                <li>Respond to your inquiries, comments, and requests.</li>
-                <li>Monitor and analyze usage patterns and trends to improve user experience.</li>
-                <li>Detect, prevent, and address technical issues and security threats.</li>
-                <li>Comply with legal obligations and enforce our Terms of Use.</li>
+              <ul className="list-disc list-inside space-y-2 text-gray-700 mb-6 ml-4">
+                <li><strong>Service Delivery:</strong> Provide, maintain, and improve our educational services and Platform, including course access, live classes, and learning materials</li>
+                <li><strong>Account Management:</strong> Process your registrations, manage your account, and maintain your enrollment records</li>
+                <li><strong>Communication:</strong> Send you updates, newsletters, course announcements, and information about our services (you can opt-out of marketing communications)</li>
+                <li><strong>Customer Support:</strong> Respond to your inquiries, comments, requests, and provide technical support</li>
+                <li><strong>Payment Processing:</strong> Process payments, manage billing, and handle refund requests</li>
+                <li><strong>Personalization:</strong> Customize your learning experience and provide personalized content and recommendations</li>
+                <li><strong>Analytics and Improvement:</strong> Monitor and analyze usage patterns, trends, and Platform performance to improve user experience</li>
+                <li><strong>Security:</strong> Detect, prevent, and address technical issues, security threats, fraud, and unauthorized access</li>
+                <li><strong>Legal Compliance:</strong> Comply with legal obligations, enforce our Terms of Use, and respond to legal requests</li>
+                <li><strong>Research and Development:</strong> Conduct research and analysis to improve our educational programs and services (using anonymized data where possible)</li>
               </ul>
 
-              <h2 className="text-2xl font-bold text-black mt-8 mb-4">3. Information Sharing and Disclosure</h2>
+              <h2 className="text-2xl font-bold text-black mt-8 mb-4">3. How User Data is Protected and Stored</h2>
+              
+              <h3 className="text-xl font-semibold text-black mt-6 mb-3">3.1 Data Protection Measures</h3>
               <p className="text-gray-700 mb-4">
-                We do not sell, trade, or rent your personal information to third parties. We may share your information only in the following circumstances:
+                We implement comprehensive security measures to protect your personal information:
               </p>
-              <ul className="list-disc list-inside space-y-2 text-gray-700 mb-6">
-                <li><strong>Service Providers:</strong> We may share information with third-party service providers who perform services on our behalf, such as email delivery, data storage, and analytics.</li>
-                <li><strong>Legal Requirements:</strong> We may disclose information if required by law or in response to valid legal requests.</li>
-                <li><strong>Business Transfers:</strong> In the event of a merger, acquisition, or sale of assets, your information may be transferred as part of that transaction.</li>
-                <li><strong>With Your Consent:</strong> We may share your information with your explicit consent or at your direction.</li>
+              <ul className="list-disc list-inside space-y-2 text-gray-700 mb-4 ml-4">
+                <li><strong>Encryption:</strong> All data transmitted between your device and our servers is encrypted using SSL/TLS protocols</li>
+                <li><strong>Secure Storage:</strong> Personal data is stored on secure servers with restricted access</li>
+                <li><strong>Access Controls:</strong> Only authorized personnel have access to personal information, and access is logged and monitored</li>
+                <li><strong>Password Security:</strong> Passwords are hashed using industry-standard algorithms (we never store plain-text passwords)</li>
+                <li><strong>Regular Security Audits:</strong> We conduct regular security assessments and vulnerability testing</li>
+                <li><strong>Firewall Protection:</strong> Our servers are protected by firewalls and intrusion detection systems</li>
+                <li><strong>Data Backup:</strong> Regular encrypted backups are maintained to prevent data loss</li>
               </ul>
 
-              <h2 className="text-2xl font-bold text-black mt-8 mb-4">4. Data Security</h2>
+              <h3 className="text-xl font-semibold text-black mt-6 mb-3">3.2 Data Storage</h3>
+              <p className="text-gray-700 mb-4">
+                Your data is stored in the following manner:
+              </p>
+              <ul className="list-disc list-inside space-y-2 text-gray-700 mb-4 ml-4">
+                <li><strong>Location:</strong> Data is primarily stored on secure cloud servers located in India and/or other jurisdictions as required for service delivery</li>
+                <li><strong>Retention Period:</strong> We retain your personal information for as long as necessary to provide our services, comply with legal obligations, resolve disputes, and enforce our agreements (typically 3-5 years after account closure, unless longer retention is required by law)</li>
+                <li><strong>Deletion:</strong> When data is no longer needed, it is securely deleted or anonymized in accordance with our data retention policy</li>
+                <li><strong>Backup Storage:</strong> Backups may retain data for additional periods but are also subject to secure deletion procedures</li>
+              </ul>
+
+              <h3 className="text-xl font-semibold text-black mt-6 mb-3">3.3 Limitations</h3>
               <p className="text-gray-700 mb-6">
-                We implement appropriate technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the Internet or electronic storage is 100% secure, and we cannot guarantee absolute security.
+                While we implement industry-standard security measures, no method of transmission over the Internet or 
+                electronic storage is 100% secure. We cannot guarantee absolute security, but we continuously work to 
+                improve our security practices and respond promptly to any security incidents.
               </p>
 
-              <h2 className="text-2xl font-bold text-black mt-8 mb-4">5. Cookies and Tracking Technologies</h2>
+              <h2 className="text-2xl font-bold text-black mt-8 mb-4">4. Third-Party Data Sharing</h2>
+              <p className="text-gray-700 mb-4">
+                <strong>We do not sell, trade, or rent your personal information to third parties for their marketing purposes.</strong> 
+                However, we may share your information with third parties in the following circumstances:
+              </p>
+              
+              <h3 className="text-xl font-semibold text-black mt-6 mb-3">4.1 Service Providers and Business Partners</h3>
+              <p className="text-gray-700 mb-4">
+                We share information with trusted third-party service providers who assist us in operating our Platform and providing services:
+              </p>
+              <ul className="list-disc list-inside space-y-2 text-gray-700 mb-4 ml-4">
+                <li><strong>Payment Processors:</strong> We share payment information with secure payment gateway providers (such as Razorpay, Stripe, or similar) to process transactions. These providers are PCI-DSS compliant and handle payment data according to their own privacy policies.</li>
+                <li><strong>Cloud Hosting Services:</strong> Data may be stored on cloud infrastructure provided by third-party hosting services (such as AWS, Google Cloud, or similar) that maintain strict security standards.</li>
+                <li><strong>Email Service Providers:</strong> We use email service providers to send transactional and marketing emails (if you opt-in).</li>
+                <li><strong>Analytics Providers:</strong> We may use analytics services (such as Google Analytics) to understand Platform usage patterns. These services may collect anonymized usage data.</li>
+                <li><strong>Customer Support Tools:</strong> We may use third-party customer support platforms to manage inquiries and support requests.</li>
+                <li><strong>Learning Management Systems:</strong> If we use third-party LMS platforms, student progress and course data may be shared with these platforms.</li>
+              </ul>
+              <p className="text-gray-700 mb-4">
+                All third-party service providers are contractually obligated to:
+              </p>
+              <ul className="list-disc list-inside space-y-2 text-gray-700 mb-6 ml-4">
+                <li>Use your information only for the purposes we specify</li>
+                <li>Maintain appropriate security measures to protect your data</li>
+                <li>Comply with applicable data protection laws</li>
+                <li>Not use your information for their own marketing purposes without your consent</li>
+              </ul>
+
+              <h3 className="text-xl font-semibold text-black mt-6 mb-3">4.2 Legal Requirements</h3>
+              <p className="text-gray-700 mb-4">
+                We may disclose your information if required by law or in the following situations:
+              </p>
+              <ul className="list-disc list-inside space-y-2 text-gray-700 mb-6 ml-4">
+                <li>To comply with legal obligations, court orders, or government requests</li>
+                <li>To enforce our Terms of Use or other agreements</li>
+                <li>To protect the rights, property, or safety of CodeMasti, our users, or others</li>
+                <li>To investigate fraud, security threats, or other illegal activities</li>
+                <li>In connection with legal proceedings or regulatory investigations</li>
+              </ul>
+
+              <h3 className="text-xl font-semibold text-black mt-6 mb-3">4.3 Business Transfers</h3>
               <p className="text-gray-700 mb-6">
-                We use cookies and similar tracking technologies to track activity on our Platform and store certain information. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our Platform.
+                In the event of a merger, acquisition, reorganization, or sale of assets, your information may be transferred 
+                as part of that transaction. We will notify you via email and/or a prominent notice on our Platform of any such 
+                change in ownership or control of your personal information.
               </p>
 
-              <h2 className="text-2xl font-bold text-black mt-8 mb-4">6. Your Rights and Choices</h2>
+              <h3 className="text-xl font-semibold text-black mt-6 mb-3">4.4 With Your Consent</h3>
+              <p className="text-gray-700 mb-6">
+                We may share your information with third parties when you explicitly consent to such sharing, such as when 
+                you opt-in to receive communications from partner organizations or participate in promotional programs.
+              </p>
+
+
+              <h2 className="text-2xl font-bold text-black mt-8 mb-4">5. Use of Cookies and Tracking Technologies</h2>
+              <p className="text-gray-700 mb-4">
+                We use cookies and similar tracking technologies to enhance your experience on our Platform, analyze usage 
+                patterns, and provide personalized content. This section details our cookie practices and how you can manage them.
+              </p>
+
+              <h3 className="text-xl font-semibold text-black mt-6 mb-3">5.1 What Are Cookies?</h3>
+              <p className="text-gray-700 mb-4">
+                Cookies are small text files that are placed on your device (computer, tablet, or mobile) when you visit 
+                a website. They are widely used to make websites work more efficiently and provide information to website owners.
+              </p>
+
+              <h3 className="text-xl font-semibold text-black mt-6 mb-3">5.2 Types of Cookies We Use</h3>
+              
+              <h4 className="text-lg font-semibold text-black mt-4 mb-2">5.2.1 Essential Cookies (Strictly Necessary)</h4>
+              <p className="text-gray-700 mb-4">
+                These cookies are necessary for the Platform to function properly and cannot be disabled:
+              </p>
+              <ul className="list-disc list-inside space-y-2 text-gray-700 mb-4 ml-4">
+                <li><strong>Session Cookies:</strong> Maintain your login session and remember your preferences during your visit</li>
+                <li><strong>Security Cookies:</strong> Help detect and prevent security threats and fraudulent activity</li>
+                <li><strong>Authentication Cookies:</strong> Verify your identity and keep you logged in securely</li>
+                <li><strong>Functionality Cookies:</strong> Remember your settings and preferences (language, region, etc.)</li>
+              </ul>
+              <p className="text-gray-700 mb-6">
+                <strong>Intended Function:</strong> These cookies enable core functionality and security features. 
+                <strong>Handling:</strong> Automatically deleted when you close your browser (session cookies) or after a set period (persistent cookies).
+              </p>
+
+              <h4 className="text-lg font-semibold text-black mt-4 mb-2">5.2.2 Performance and Analytics Cookies</h4>
+              <p className="text-gray-700 mb-4">
+                These cookies help us understand how visitors interact with our Platform:
+              </p>
+              <ul className="list-disc list-inside space-y-2 text-gray-700 mb-4 ml-4">
+                <li><strong>Analytics Cookies:</strong> Collect anonymous information about how you use our Platform (pages visited, time spent, etc.)</li>
+                <li><strong>Performance Cookies:</strong> Monitor Platform performance and identify areas for improvement</li>
+                <li><strong>Error Tracking Cookies:</strong> Help us identify and fix technical issues</li>
+              </ul>
+              <p className="text-gray-700 mb-6">
+                <strong>Intended Function:</strong> To improve Platform performance, user experience, and identify technical issues. 
+                <strong>Handling:</strong> These cookies typically expire after 1-2 years. You can opt-out through your browser settings or our cookie preferences.
+              </p>
+
+              <h4 className="text-lg font-semibold text-black mt-4 mb-2">5.2.3 Functionality Cookies</h4>
+              <p className="text-gray-700 mb-4">
+                These cookies enable enhanced functionality and personalization:
+              </p>
+              <ul className="list-disc list-inside space-y-2 text-gray-700 mb-4 ml-4">
+                <li><strong>Preference Cookies:</strong> Remember your choices and preferences (theme, language, etc.)</li>
+                <li><strong>Localization Cookies:</strong> Provide content in your preferred language and region</li>
+                <li><strong>Video Player Cookies:</strong> Remember your video playback preferences and progress</li>
+              </ul>
+              <p className="text-gray-700 mb-6">
+                <strong>Intended Function:</strong> To provide a personalized experience and remember your preferences. 
+                <strong>Handling:</strong> These cookies persist for varying periods (typically 30 days to 1 year) depending on the preference.
+              </p>
+
+              <h4 className="text-lg font-semibold text-black mt-4 mb-2">5.2.4 Marketing and Advertising Cookies (Optional)</h4>
+              <p className="text-gray-700 mb-4">
+                These cookies are used to deliver relevant advertisements and track campaign effectiveness:
+              </p>
+              <ul className="list-disc list-inside space-y-2 text-gray-700 mb-4 ml-4">
+                <li><strong>Advertising Cookies:</strong> Track your browsing habits to show you relevant ads (if applicable)</li>
+                <li><strong>Social Media Cookies:</strong> Enable social media sharing and integration features</li>
+                <li><strong>Retargeting Cookies:</strong> Help us show you relevant content based on your previous visits</li>
+              </ul>
+              <p className="text-gray-700 mb-6">
+                <strong>Intended Function:</strong> To provide relevant content and measure advertising effectiveness. 
+                <strong>Handling:</strong> These cookies typically expire after 90 days to 1 year. You can opt-out at any time through cookie preferences.
+              </p>
+
+              <h3 className="text-xl font-semibold text-black mt-6 mb-3">5.3 Third-Party Cookies</h3>
+              <p className="text-gray-700 mb-4">
+                Some cookies are placed by third-party services that appear on our Platform:
+              </p>
+              <ul className="list-disc list-inside space-y-2 text-gray-700 mb-6 ml-4">
+                <li><strong>Google Analytics:</strong> Helps us analyze Platform usage (you can opt-out via Google&apos;s opt-out tool)</li>
+                <li><strong>Payment Processors:</strong> May set cookies to process payments securely</li>
+                <li><strong>Social Media Platforms:</strong> If you use social media features, these platforms may set cookies</li>
+                <li><strong>Video Platforms:</strong> If we embed videos, video platforms may set cookies</li>
+              </ul>
+              <p className="text-gray-700 mb-6">
+                These third parties have their own privacy policies and cookie practices. We encourage you to review their policies.
+              </p>
+
+              <h3 className="text-xl font-semibold text-black mt-6 mb-3">5.4 How to Manage Cookies</h3>
+              <p className="text-gray-700 mb-4">
+                You have control over cookies. Here&apos;s how to manage them:
+              </p>
+              
+              <h4 className="text-lg font-semibold text-black mt-4 mb-2">Browser Settings</h4>
+              <p className="text-gray-700 mb-4">
+                Most browsers allow you to:
+              </p>
+              <ul className="list-disc list-inside space-y-2 text-gray-700 mb-4 ml-4">
+                <li>View and delete cookies stored on your device</li>
+                <li>Block all cookies or only third-party cookies</li>
+                <li>Set preferences to be notified before cookies are set</li>
+                <li>Delete cookies automatically when you close your browser</li>
+              </ul>
+              <p className="text-gray-700 mb-4">
+                Instructions for common browsers:
+              </p>
+              <ul className="list-disc list-inside space-y-2 text-gray-700 mb-6 ml-4">
+                <li><strong>Chrome:</strong> Settings → Privacy and Security → Cookies and other site data</li>
+                <li><strong>Firefox:</strong> Options → Privacy & Security → Cookies and Site Data</li>
+                <li><strong>Safari:</strong> Preferences → Privacy → Cookies and website data</li>
+                <li><strong>Edge:</strong> Settings → Privacy, search, and services → Cookies and site permissions</li>
+              </ul>
+
+              <h4 className="text-lg font-semibold text-black mt-4 mb-2">Cookie Preferences on Our Platform</h4>
+              <p className="text-gray-700 mb-6">
+                We provide a cookie preferences tool (if implemented) where you can choose which types of cookies to accept. 
+                You can access this through a link in our footer or cookie banner. Note that disabling certain cookies may 
+                affect Platform functionality and your user experience.
+              </p>
+
+              <h4 className="text-lg font-semibold text-black mt-4 mb-2">Opt-Out Tools</h4>
+              <p className="text-gray-700 mb-6">
+                You can opt-out of certain third-party cookies:
+              </p>
+              <ul className="list-disc list-inside space-y-2 text-gray-700 mb-6 ml-4">
+                <li><strong>Google Analytics:</strong> <a href="https://tools.google.com/dlpage/gaoptout" className="text-yellow-600 hover:text-yellow-700 underline" target="_blank" rel="noopener noreferrer">Google Analytics Opt-out</a></li>
+                <li><strong>Network Advertising Initiative:</strong> <a href="http://www.networkadvertising.org/choices/" className="text-yellow-600 hover:text-yellow-700 underline" target="_blank" rel="noopener noreferrer">NAI Opt-out</a></li>
+                <li><strong>Digital Advertising Alliance:</strong> <a href="http://www.aboutads.info/choices/" className="text-yellow-600 hover:text-yellow-700 underline" target="_blank" rel="noopener noreferrer">DAA Opt-out</a></li>
+              </ul>
+
+              <h3 className="text-xl font-semibold text-black mt-6 mb-3">5.5 Impact of Disabling Cookies</h3>
+              <p className="text-gray-700 mb-6">
+                If you choose to disable cookies, some features of our Platform may not function properly:
+              </p>
+              <ul className="list-disc list-inside space-y-2 text-gray-700 mb-6 ml-4">
+                <li>You may need to re-enter information repeatedly</li>
+                <li>Your preferences may not be saved</li>
+                <li>Some features may be unavailable</li>
+                <li>Your user experience may be less personalized</li>
+              </ul>
+              <p className="text-gray-700 mb-6">
+                Essential cookies are required for the Platform to function, so disabling all cookies may prevent you from 
+                accessing certain features or the Platform entirely.
+              </p>
+
+              <h2 className="text-2xl font-bold text-black mt-8 mb-4">6. Your Rights and Choices Regarding Your Data</h2>
               <p className="text-gray-700 mb-4">
                 You have the right to:
               </p>
@@ -232,13 +489,26 @@ export default function Privacy() {
               </p>
 
               <h2 className="text-2xl font-bold text-black mt-8 mb-4">10. Changes to This Privacy Policy</h2>
+              <p className="text-gray-700 mb-4">
+                We may update this Privacy Policy from time to time to reflect changes in our practices, technology, 
+                legal requirements, or other factors. When we make changes:
+              </p>
+              <ul className="list-disc list-inside space-y-2 text-gray-700 mb-6 ml-4">
+                <li>We will update the &quot;Last Updated&quot; date at the top of this policy</li>
+                <li>We will post the updated Privacy Policy on this page</li>
+                <li>For material changes, we will notify you via email (to the address associated with your account) or through a prominent notice on our Platform</li>
+                <li>Your continued use of our Platform after changes become effective constitutes acceptance of the updated policy</li>
+              </ul>
               <p className="text-gray-700 mb-6">
-                We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the &quot;Last Updated&quot; date. You are advised to review this Privacy Policy periodically for any changes.
+                You are advised to review this Privacy Policy periodically to stay informed about how we collect, use, 
+                and protect your information. This privacy policy is clearly stated and updated on our website to ensure 
+                transparency and compliance.
               </p>
 
               <h2 className="text-2xl font-bold text-black mt-8 mb-4">11. Contact Us</h2>
-              <p className="text-gray-700 mb-6">
-                If you have any questions about this Privacy Policy or our data practices, please contact us at:
+              <p className="text-gray-700 mb-4">
+                If you have any questions, concerns, or requests regarding this Privacy Policy, your personal information, 
+                or our data practices, please contact us:
               </p>
               <div className="bg-gray-50 rounded-lg p-4 mb-6">
                 <p className="text-gray-700 mb-2">
@@ -250,8 +520,21 @@ export default function Privacy() {
                 <p className="text-gray-700 mb-2">
                   <strong>Phone:</strong> +91 8228907407, +91 9523042613, +91 7541062514
                 </p>
-                <p className="text-gray-700">
+                <p className="text-gray-700 mb-2">
                   <strong>Address:</strong> Purahara Aurangabad Bihar, India
+                </p>
+                <p className="text-gray-700 text-sm mt-3">
+                  <strong>Response Time:</strong> We aim to respond to all privacy-related inquiries within 48 hours during business days.
+                </p>
+              </div>
+
+              <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 my-8">
+                <p className="text-gray-700 font-semibold mb-2">Important Reminder:</p>
+                <p className="text-gray-700 text-sm">
+                  This Privacy Policy is clearly stated and updated on our website. A missing or incomplete privacy policy 
+                  may result in failure of customer payments. By using our Platform, you acknowledge that you have read, 
+                  understood, and agree to this Privacy Policy. If you do not agree with any part of this policy, please 
+                  do not use our Platform.
                 </p>
               </div>
             </div>
