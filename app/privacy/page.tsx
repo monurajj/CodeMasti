@@ -146,7 +146,7 @@ export default function Privacy() {
           >
             <div className="prose prose-lg max-w-none">
               <p className="text-gray-700 mb-6">
-                This Privacy Policy outlines CodeMasti&apos;s policies for collecting, using, and sharing personal information 
+                This Privacy Policy outlines CodeMasti policies for collecting, using, and sharing personal information 
                 about our customers and users. This policy is clearly stated and updated on our website to ensure transparency 
                 and compliance with data protection regulations.
               </p>
