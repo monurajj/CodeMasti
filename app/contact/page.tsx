@@ -300,9 +300,8 @@ export default function Contact() {
                     <div className="text-3xl">📍</div>
                     <div>
                       <h3 className="font-bold text-black mb-1">Location</h3>
-                      <p className="text-gray-700">Purhara, Haspura BIHAR</p>
-                      <p className="text-gray-700">AURANGABAD, Pin 824120</p>
-                      <p className="text-gray-700">India</p>
+                      <p className="text-gray-700">Purahara, Haspura, Aurangabad</p>
+                      <p className="text-gray-700">Bihar - 824120, India</p>
                     </div>
                   </div>
                 </div>

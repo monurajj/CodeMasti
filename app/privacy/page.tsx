@@ -146,10 +146,22 @@ export default function Privacy() {
           >
             <div className="prose prose-lg max-w-none">
               <p className="text-gray-700 mb-6">
-                This Privacy Policy outlines CodeMasti policies for collecting, using, and sharing personal information 
+                This Privacy Policy outlines CodeMasti&apos;s policies for collecting, using, and sharing personal information 
                 about our customers and users. This policy is clearly stated and updated on our website to ensure transparency 
                 and compliance with data protection regulations.
               </p>
+
+              <div className="bg-gray-50 rounded-lg p-4 mb-6 border-l-4 border-yellow-400">
+                <p className="text-gray-700 mb-2">
+                  <strong>Business Owner:</strong> Mr. Monu Kumar (Sole Proprietor)
+                </p>
+                <p className="text-gray-700 mb-2">
+                  <strong>Platform:</strong> CodeMasti (www.codemasti.com)
+                </p>
+                <p className="text-gray-700 text-sm">
+                  <strong>Registered Address:</strong> Purahara, Haspura, Aurangabad, Bihar - 824120, India
+                </p>
+              </div>
 
               <p className="text-gray-600 text-sm mb-8 italic">
                 Last Updated: January 29, 2025
@@ -162,12 +174,14 @@ export default function Privacy() {
                   https://www.codemasti.com/
                 </a>
                 {' '}(the &quot;Platform&quot;). By using our Platform, you agree to the collection and use of information in accordance 
-                with this Privacy Policy. A missing or incomplete privacy policy may result in failure of customer payments.
+                with this Privacy Policy. <strong>A missing or incomplete privacy policy may result in failure of customer payments.</strong>
               </p>
 
               <h2 className="text-2xl font-bold text-black mt-8 mb-4">1. Types of User Data We Collect</h2>
               <p className="text-gray-700 mb-4">
-                We collect the following types of user data to provide and improve our services:
+                <strong>Transparency in Data Collection:</strong> We are committed to being transparent about the types of user data 
+                we collect. The following sections provide detailed information about the categories of personal information we gather 
+                to provide and improve our services:
               </p>
               
               <h3 className="text-xl font-semibold text-black mt-6 mb-3">1.1 Personal Identification Information</h3>
@@ -230,7 +244,12 @@ export default function Privacy() {
                 <li><strong>Research and Development:</strong> Conduct research and analysis to improve our educational programs and services (using anonymized data where possible)</li>
               </ul>
 
-              <h2 className="text-2xl font-bold text-black mt-8 mb-4">3. How User Data is Protected and Stored</h2>
+              <h2 className="text-2xl font-bold text-black mt-8 mb-4">3. How User Data is Protected, Stored, and Shared with Third Parties</h2>
+              
+              <p className="text-gray-700 mb-4">
+                This section provides comprehensive information about how we protect your data, where and how it is stored, 
+                and whether it is shared with any third parties. Your data security and privacy are our top priorities.
+              </p>
               
               <h3 className="text-xl font-semibold text-black mt-6 mb-3">3.1 Data Protection Measures</h3>
               <p className="text-gray-700 mb-4">
@@ -321,7 +340,12 @@ export default function Privacy() {
               <h2 className="text-2xl font-bold text-black mt-8 mb-4">5. Use of Cookies and Tracking Technologies</h2>
               <p className="text-gray-700 mb-4">
                 We use cookies and similar tracking technologies to enhance your experience on our Platform, analyze usage 
-                patterns, and provide personalized content. This section details our cookie practices and how you can manage them.
+                patterns, and provide personalized content. This section provides comprehensive details about our cookie practices, 
+                including their intended function and handling, and how you can manage them.
+              </p>
+              <p className="text-gray-700 mb-4">
+                <strong>Cookie Transparency:</strong> For each type of cookie we use, we clearly specify its intended function 
+                (what it does) and handling (how long it persists, when it expires, and how you can control it).
               </p>
 
               <h3 className="text-xl font-semibold text-black mt-6 mb-3">5.1 What Are Cookies?</h3>
@@ -512,6 +536,9 @@ export default function Privacy() {
               </p>
               <div className="bg-gray-50 rounded-lg p-4 mb-6">
                 <p className="text-gray-700 mb-2">
+                  <strong>Business Owner:</strong> Mr. Monu Kumar (Sole Proprietor)
+                </p>
+                <p className="text-gray-700 mb-2">
                   <strong>Email:</strong>{' '}
                   <a href="mailto:info.codemasti@gmail.com" className="text-yellow-600 hover:text-yellow-700 underline">
                     info.codemasti@gmail.com
@@ -521,7 +548,7 @@ export default function Privacy() {
                   <strong>Phone:</strong> +91 8228907407, +91 9523042613, +91 7541062514
                 </p>
                 <p className="text-gray-700 mb-2">
-                  <strong>Address:</strong> Purahara Aurangabad Bihar, India
+                  <strong>Registered Address:</strong> Purahara, Haspura, Aurangabad, Bihar - 824120, India
                 </p>
                 <p className="text-gray-700 text-sm mt-3">
                   <strong>Response Time:</strong> We aim to respond to all privacy-related inquiries within 48 hours during business days.
@@ -530,11 +557,25 @@ export default function Privacy() {
 
               <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 my-8">
                 <p className="text-gray-700 font-semibold mb-2">Important Reminder:</p>
+                <p className="text-gray-700 text-sm mb-3">
+                  <strong>This Privacy Policy is clearly stated and updated on our website.</strong> A missing or incomplete 
+                  privacy policy may result in failure of customer payments. This policy is regularly reviewed and updated 
+                  to ensure compliance with data protection regulations and transparency with our users.
+                </p>
+                <p className="text-gray-700 text-sm mb-3">
+                  <strong>Key Points Covered in This Policy:</strong>
+                </p>
+                <ul className="list-disc list-inside space-y-1 text-gray-700 text-sm ml-4 mb-3">
+                  <li>Clear communication on types of user data we collect (Section 1)</li>
+                  <li>How user data is protected, stored, and whether it is shared with third parties (Sections 3 & 4)</li>
+                  <li>Use of cookies and details regarding their intended function and handling (Section 5)</li>
+                  <li>Your rights and choices regarding your personal information (Section 6)</li>
+                </ul>
                 <p className="text-gray-700 text-sm">
-                  This Privacy Policy is clearly stated and updated on our website. A missing or incomplete privacy policy 
-                  may result in failure of customer payments. By using our Platform, you acknowledge that you have read, 
-                  understood, and agree to this Privacy Policy. If you do not agree with any part of this policy, please 
-                  do not use our Platform.
+                  By using our Platform, you acknowledge that you have read, understood, and agree to this Privacy Policy. 
+                  If you do not agree with any part of this policy, please do not use our Platform. We encourage you to 
+                  review this policy periodically, as we may update it from time to time to reflect changes in our practices 
+                  or legal requirements.
                 </p>
               </div>
             </div>

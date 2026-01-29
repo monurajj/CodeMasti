@@ -151,11 +151,28 @@ export default function Refund() {
                 made through our Platform.
               </p>
 
+              <div className="bg-gray-50 rounded-lg p-4 mb-6 border-l-4 border-yellow-400">
+                <p className="text-gray-700 mb-2">
+                  <strong>Business Owner:</strong> Mr. Monu Kumar (Sole Proprietor)
+                </p>
+                <p className="text-gray-700 mb-2">
+                  <strong>Platform:</strong> CodeMasti (www.codemasti.com)
+                </p>
+                <p className="text-gray-700 text-sm">
+                  <strong>Registered Address:</strong> Purahara, Haspura, Aurangabad, Bihar - 824120, India
+                </p>
+              </div>
+
               <p className="text-gray-600 text-sm mb-8 italic">
                 Last Updated: January 29, 2025
               </p>
 
-              <h2 className="text-2xl font-bold text-black mt-8 mb-4">1. Refund Eligibility and Timeframes</h2>
+              <h2 className="text-2xl font-bold text-black mt-8 mb-4">1. Refund Eligibility, Timeframes, and Return/Replacement Request Process</h2>
+              
+              <p className="text-gray-700 mb-4">
+                This section outlines the eligibility criteria, timeframes for refund requests, and the process for requesting 
+                returns or replacements of our services.
+              </p>
               
               <h3 className="text-xl font-semibold text-black mt-6 mb-3">1.1 Registration Fee Refunds</h3>
               <p className="text-gray-700 mb-4">
@@ -191,7 +208,8 @@ export default function Refund() {
 
               <h2 className="text-2xl font-bold text-black mt-8 mb-4">2. Non-Refundable and Non-Cancellable Services</h2>
               <p className="text-gray-700 mb-4">
-                The following services and fees are explicitly <strong>non-refundable and non-cancellable</strong>:
+                <strong>IMPORTANT:</strong> The following services and fees are explicitly <strong>non-refundable and non-cancellable</strong>. 
+                Please review this section carefully before making any purchase or enrollment:
               </p>
               <ul className="list-disc list-inside space-y-2 text-gray-700 mb-6 ml-4">
                 <li><strong>Completed Classes:</strong> Fees for classes that have already been conducted are non-refundable.</li>
@@ -203,6 +221,11 @@ export default function Refund() {
               </ul>
 
               <h2 className="text-2xl font-bold text-black mt-8 mb-4">3. Cancellation Procedures, Fees, and Requirements</h2>
+              
+              <p className="text-gray-700 mb-4">
+                This section provides detailed information about how to cancel your enrollment, applicable cancellation fees, 
+                and the requirements that must be met for cancellation requests to be processed.
+              </p>
               
               <h3 className="text-xl font-semibold text-black mt-6 mb-3">3.1 How to Request Cancellation</h3>
               <p className="text-gray-700 mb-4">
@@ -318,19 +341,48 @@ export default function Refund() {
               <p className="text-gray-700 mb-4">
                 For any questions, cancellation requests, or refund inquiries, please contact us:
               </p>
-              <ul className="list-none space-y-2 text-gray-700 mb-6">
-                <li><strong>Email:</strong> info.codemasti@gmail.com</li>
-                <li><strong>Phone:</strong> +91 8228907407, +91 9523042613, +91 7541062514</li>
-                <li><strong>Response Time:</strong> We aim to respond to all inquiries within 24-48 hours during business days</li>
-              </ul>
+              <div className="bg-gray-50 rounded-lg p-4 mb-6">
+                <p className="text-gray-700 mb-2">
+                  <strong>Business Owner:</strong> Mr. Monu Kumar (Sole Proprietor)
+                </p>
+                <p className="text-gray-700 mb-2">
+                  <strong>Email:</strong>{' '}
+                  <a href="mailto:info.codemasti@gmail.com" className="text-yellow-600 hover:text-yellow-700 underline">
+                    info.codemasti@gmail.com
+                  </a>
+                </p>
+                <p className="text-gray-700 mb-2">
+                  <strong>Phone:</strong> +91 8228907407, +91 9523042613, +91 7541062514
+                </p>
+                <p className="text-gray-700 mb-2">
+                  <strong>Registered Address:</strong> Purahara, Haspura, Aurangabad, Bihar - 824120, India
+                </p>
+                <p className="text-gray-700 text-sm mt-3">
+                  <strong>Response Time:</strong> We aim to respond to all inquiries within 24-48 hours during business days
+                </p>
+              </div>
 
               <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 my-8">
                 <p className="text-gray-700 font-semibold mb-2">Important Note:</p>
+                <p className="text-gray-700 text-sm mb-3">
+                  This Refund and Cancellation Policy is clearly stated and updated on our website. A missing or incomplete 
+                  refund policy may result in failure of customer payments. Please read this policy carefully before making 
+                  any purchase or enrollment.
+                </p>
+                <p className="text-gray-700 text-sm mb-3">
+                  <strong>Key Points to Remember:</strong>
+                </p>
+                <ul className="list-disc list-inside space-y-1 text-gray-700 text-sm ml-4 mb-3">
+                  <li>Refund eligibility depends on timing and circumstances as outlined in Section 1</li>
+                  <li>Certain services are non-refundable as specified in Section 2</li>
+                  <li>Cancellation procedures and fees are detailed in Section 3</li>
+                  <li>All refund requests must be submitted in writing via email or phone</li>
+                  <li>Refunds are processed within 7-14 business days after approval</li>
+                </ul>
                 <p className="text-gray-700 text-sm">
-                  This Refund Policy is clearly stated and updated on our website. A missing or incomplete refund policy 
-                  may result in failure of customer payments. Please read this policy carefully before making any purchase 
-                  or enrollment. By enrolling in our programs, you acknowledge that you have read, understood, and agree 
-                  to be bound by this Refund and Cancellation Policy.
+                  By enrolling in our programs or making any purchase, you acknowledge that you have read, understood, and 
+                  agree to be bound by this Refund and Cancellation Policy. If you do not agree with any part of this policy, 
+                  please do not proceed with enrollment or purchase.
                 </p>
               </div>
             </div>

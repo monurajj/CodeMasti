@@ -164,13 +164,19 @@ export default function Terms() {
               </p>
 
               <p className="text-gray-700 mb-6">
-                The Platform is owned by with its registered office at Purahara Aurangabad Bihar
-                , a company incorporated under the Companies Act, 1956 8228907407
-                (hereinafter referred to as &apos;Platform Owner&apos;, &apos;we&apos;, &apos;us&apos;, &apos;our&apos;).
+                The Platform is owned and operated by <strong>Mr. Monu Kumar</strong> (Sole Proprietor), 
+                with its registered office at <strong>Purahara, Haspura, Aurangabad, Bihar - 824120, India</strong>. 
+                For any queries or concerns, you may contact us at <strong>+91 8228907407</strong> or email us at{' '}
+                <a href="mailto:info.codemasti@gmail.com" className="text-yellow-600 hover:text-yellow-700 underline">
+                  info.codemasti@gmail.com
+                </a>
+                {' '}(hereinafter referred to as &apos;Platform Owner&apos;, &apos;we&apos;, &apos;us&apos;, &apos;our&apos;).
               </p>
 
               <p className="text-gray-800 mb-6 font-semibold text-center bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded">
-                THIS BUSINESS IS OWNED BY MR MONU KUMAR
+                <strong>Business Owner:</strong> Mr. Monu Kumar (Sole Proprietor)<br />
+                <strong>Registered Address:</strong> Purahara, Haspura, Aurangabad, Bihar - 824120, India<br />
+                <strong>Contact:</strong> +91 8228907407 | info.codemasti@gmail.com
               </p>
 
               <p className="text-gray-700 mb-6">
