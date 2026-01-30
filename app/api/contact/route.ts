@@ -91,15 +91,6 @@ export async function POST(request: NextRequest) {
               We've received your message and truly appreciate you taking the time to contact us. Our team will review your inquiry and get back to you as soon as possible, typically within 24-48 hours.
             </p>
             
-            <div style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); padding: 20px; border-radius: 8px; border-left: 4px solid #FCD34D; margin: 30px 0;">
-              <p style="margin: 0; color: #92400e; font-size: 15px; font-weight: 600;">
-                🚀 Launching Soon: May 2, 2026
-              </p>
-              <p style="margin: 10px 0 0 0; color: #78350f; font-size: 14px;">
-                Stay tuned for our launch! We're building something amazing for students across India.
-              </p>
-            </div>
-            
             <div style="margin: 30px 0;">
               <p style="color: #1f2937; font-size: 16px; font-weight: 600; margin-bottom: 15px;">What to expect:</p>
               <ul style="color: #4b5563; font-size: 15px; line-height: 1.8; padding-left: 20px;">

@@ -243,23 +243,6 @@ export default function Home() {
             <div className="w-32 h-1.5 bg-yellow-400 mx-auto rounded-full animate-expand-width"></div>
           </div>
 
-          {/* Launching Soon Badge - Yellow CTA */}
-          <div 
-            id="badge"
-            data-animate
-            className={`transition-all duration-1000 delay-200 ${mounted && isVisible.badge ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-10 scale-95"}`}
-          >
-            <div className="inline-flex items-center gap-2 px-8 py-3 bg-yellow-400 rounded-full shadow-lg border-2 border-yellow-500 animate-bounce-gentle hover:scale-110 transition-transform duration-300 cursor-pointer overflow-visible">
-              <span className="relative flex h-3 w-3 flex-shrink-0">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-500 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-black animate-pulse"></span>
-              </span>
-              <span className="text-lg font-bold text-black animate-text-glow whitespace-nowrap">
-                Launching Soon
-              </span>
-            </div>
-          </div>
-
           {/* Countdown Timer */}
           <div 
             id="countdown"
@@ -267,9 +250,6 @@ export default function Home() {
             className={`transition-all duration-1000 delay-300 ${mounted && isVisible.countdown ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
           >
             <div className="mt-8 px-2 sm:px-0">
-              <p className="text-lg md:text-xl text-gray-700 font-semibold mb-4 text-center">
-                Launching on <span className="text-yellow-600 font-bold">May 2, 2026</span>
-              </p>
               <div className="flex items-center justify-center gap-1.5 sm:gap-2 md:gap-4 px-2">
                 {/* Days */}
                 <div className="flex flex-col items-center">

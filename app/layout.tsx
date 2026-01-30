@@ -12,7 +12,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://codemasti.com";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "CodeMasti - Launching Soon | Coding Education for School Students",
+    default: "CodeMasti | Coding Education for School Students",
     template: "%s | CodeMasti",
   },
   description: "A cost-efficient, future-ready coding education platform for school students from Class 5 to Class 10. Learn to think like a creator, not just consume technology.",
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: siteUrl,
     siteName: "CodeMasti",
-    title: "CodeMasti - Launching Soon | Coding Education for School Students",
+    title: "CodeMasti | Coding Education for School Students",
     description: "A cost-efficient, future-ready coding education platform for school students from Class 5 to Class 10. Learn to think like a creator, not just consume technology.",
     images: [
       {
@@ -77,7 +77,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "CodeMasti - Launching Soon | Coding Education for School Students",
+    title: "CodeMasti | Coding Education for School Students",
     description: "A cost-efficient, future-ready coding education platform for school students from Class 5 to Class 10.",
     images: [`${siteUrl}/logotext.png`],
     creator: "@codemasti",
