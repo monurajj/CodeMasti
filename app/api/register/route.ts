@@ -15,7 +15,7 @@ const batchInfo = {
     goal: 'Ignite curiosity & remove fear of coding',
     description: 'The foundation stage where we introduce students to the world of coding through fun, interactive activities that build confidence and logical thinking.',
     features: [
-      'Logical thinking games',
+      'Logical thinking activities',
       'Visual programming & flowcharts',
       'Creative problem solving',
       'Introduction to how computers think'
@@ -25,7 +25,7 @@ const batchInfo = {
       'We will contact you within 24-48 hours to confirm your registration',
       'You will receive your course schedule and learning materials via email',
       'Join our welcome session where we\'ll introduce you to the SPARK program',
-      'Get ready to start with fun coding activities and logical thinking games',
+      'Get ready to start with fun coding activities and logical thinking activities',
       'Access to our online learning platform will be provided before classes begin'
     ],
     startDate: 'Classes begin in May 2026',

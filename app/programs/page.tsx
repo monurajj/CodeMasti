@@ -56,7 +56,7 @@ function ProgramsContent() {
       goal: "Ignite curiosity & remove fear of coding",
       description: "The foundation stage where we introduce students to the world of coding through fun, interactive activities that build confidence and logical thinking.",
       features: [
-        "Logical thinking games",
+        "Logical thinking activities",
         "Visual programming & flowcharts",
         "Creative problem solving",
         "Introduction to how computers think"

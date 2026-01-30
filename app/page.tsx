@@ -13,21 +13,12 @@ export default function Home() {
   const [mounted, setMounted] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState<{ [key: string]: boolean }>({});
-  const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  });
   const [email, setEmail] = useState("");
   const [isSubmittingEmail, setIsSubmittingEmail] = useState(false);
   const [emailStatus, setEmailStatus] = useState<"idle" | "success" | "error">("idle");
   const [emailError, setEmailError] = useState<{ title: string; message: string; suggestion?: string } | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-
-  // Launch date: May 2, 2026
-  const launchDate = new Date('2026-05-02T00:00:00').getTime();
 
   useEffect(() => {
     setMounted(true);
@@ -81,30 +72,6 @@ export default function Home() {
     }, 3000);
     return () => clearInterval(interval);
   }, [taglines.length]);
-
-  // Countdown timer
-  useEffect(() => {
-    const calculateTimeLeft = () => {
-      const now = new Date().getTime();
-      const difference = launchDate - now;
-
-      if (difference > 0) {
-        setTimeLeft({
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-          minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
-          seconds: Math.floor((difference % (1000 * 60)) / 1000),
-        });
-      } else {
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-      }
-    };
-
-    calculateTimeLeft();
-    const timer = setInterval(calculateTimeLeft, 1000);
-
-    return () => clearInterval(timer);
-  }, [launchDate]);
 
   return (
     <div className="min-h-screen bg-white relative overflow-x-hidden overflow-y-auto" ref={containerRef}>
@@ -241,66 +208,6 @@ export default function Home() {
               />
             </div>
             <div className="w-32 h-1.5 bg-yellow-400 mx-auto rounded-full animate-expand-width"></div>
-          </div>
-
-          {/* Countdown Timer */}
-          <div 
-            id="countdown"
-            data-animate
-            className={`transition-all duration-1000 delay-300 ${mounted && isVisible.countdown ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
-          >
-            <div className="mt-8 px-2 sm:px-0">
-              <div className="flex items-center justify-center gap-1.5 sm:gap-2 md:gap-4 px-2">
-                {/* Days */}
-                <div className="flex flex-col items-center">
-                  <div className="bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-xl p-3 sm:p-4 md:p-6 w-16 sm:w-20 md:w-24 shadow-lg border-2 border-yellow-600 flex items-center justify-center">
-                    <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-black font-mono tabular-nums text-center">
-                      {String(timeLeft.days).padStart(2, '0')}
-                    </div>
-                  </div>
-                  <p className="text-xs md:text-sm text-gray-600 font-semibold mt-2 uppercase tracking-wide">Days</p>
-                </div>
-
-                <span className="text-xl sm:text-2xl md:text-3xl font-bold text-yellow-500 animate-pulse-slow">:</span>
-
-                {/* Hours */}
-                <div className="flex flex-col items-center">
-                  <div className="bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-xl p-3 sm:p-4 md:p-6 w-16 sm:w-20 md:w-24 shadow-lg border-2 border-yellow-600 flex items-center justify-center">
-                    <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-black font-mono tabular-nums text-center">
-                      {String(timeLeft.hours).padStart(2, '0')}
-                    </div>
-                  </div>
-                  <p className="text-xs md:text-sm text-gray-600 font-semibold mt-2 uppercase tracking-wide">Hours</p>
-                </div>
-
-                <span className="text-xl sm:text-2xl md:text-3xl font-bold text-yellow-500 animate-pulse-slow">:</span>
-
-                {/* Minutes */}
-                <div className="flex flex-col items-center">
-                  <div className="bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-xl p-3 sm:p-4 md:p-6 w-16 sm:w-20 md:w-24 shadow-lg border-2 border-yellow-600 flex items-center justify-center">
-                    <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-black font-mono tabular-nums text-center">
-                      {String(timeLeft.minutes).padStart(2, '0')}
-                    </div>
-                  </div>
-                  <p className="text-xs md:text-sm text-gray-600 font-semibold mt-2 uppercase tracking-wide">Minutes</p>
-                </div>
-
-                <span className="text-xl sm:text-2xl md:text-3xl font-bold text-yellow-500 animate-pulse-slow">:</span>
-
-                {/* Seconds */}
-                <div className="flex flex-col items-center">
-                  <div className="bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-xl p-3 sm:p-4 md:p-6 w-16 sm:w-20 md:w-24 shadow-lg border-2 border-yellow-600 flex items-center justify-center animate-pulse-slow">
-                    <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-black font-mono tabular-nums text-center">
-                      {String(timeLeft.seconds).padStart(2, '0')}
-                    </div>
-                  </div>
-                  <p className="text-xs md:text-sm text-gray-600 font-semibold mt-2 uppercase tracking-wide">Seconds</p>
-                </div>
-              </div>
-              <p className="text-sm text-gray-600 mt-6 text-center font-medium">
-                Get ready to <span className="text-yellow-600 font-bold">Code. Create. Masti!</span> 🚀
-              </p>
-            </div>
           </div>
 
           {/* Key Milestones & Timeline */}

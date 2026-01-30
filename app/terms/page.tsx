@@ -213,7 +213,7 @@ export default function Terms() {
                 CodeMasti provides online coding education programs for students in Classes 5 through 10. Our services include:
               </p>
               <ul className="list-disc list-inside space-y-2 text-gray-700 mb-6 ml-4">
-                <li><strong>SPARK Program:</strong> Designed for students in Class 5-6, focusing on igniting curiosity and removing fear of coding through logical thinking games, visual programming, and creative problem-solving.</li>
+                <li><strong>SPARK Program:</strong> Designed for students in Class 5-6, focusing on igniting curiosity and removing fear of coding through logical thinking activities, visual programming, and creative problem-solving.</li>
                 <li><strong>BUILDERS Program:</strong> Designed for students in Class 7-8, focusing on building strong coding foundations with Python fundamentals, conditions, loops, functions, and mini projects.</li>
                 <li><strong>INNOVATORS Program:</strong> Designed for students in Class 9-10, focusing on applying coding skills to real-world problems, exploring AI tools, and career awareness.</li>
               </ul>
