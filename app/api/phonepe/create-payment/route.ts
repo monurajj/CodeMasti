@@ -3,15 +3,25 @@ import { createPhonePePayment } from "@/lib/phonepe";
 
 /**
  * POST /api/phonepe/create-payment
- * Body: { amountInPaisa?: number, redirectPath?: string }
+ * Body: { amountInPaisa?: number, redirectPath?: string, origin?: string }
  * Creates a test payment and returns redirectUrl for PhonePe.
- * Default: 100 paisa (₹1), redirect to /pay-test/result
+ * Pass origin (e.g. https://codemasti.in) so redirect after payment goes to your deployed URL, not localhost.
  */
+function isAllowedRedirectBase(url: string): boolean {
+  try {
+    const u = new URL(url);
+    return u.protocol === "https:" || (u.protocol === "http:" && u.hostname === "localhost");
+  } catch {
+    return false;
+  }
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json().catch(() => ({}));
     const amountInPaisa = Number(body.amountInPaisa) || 100;
     const redirectPath = body.redirectPath ?? "/pay-test/result";
+    const origin = typeof body.origin === "string" ? body.origin.trim() : "";
 
     if (amountInPaisa < 100) {
       return NextResponse.json(
@@ -21,12 +31,16 @@ export async function POST(request: NextRequest) {
     }
 
     const merchantOrderId = `TEST_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`;
+    const pathWithQuery = redirectPath.includes("?") ? redirectPath : `${redirectPath}?merchantOrderId=${encodeURIComponent(merchantOrderId)}`;
+
+    const redirectBaseUrl = origin && isAllowedRedirectBase(origin) ? origin : undefined;
 
     const result = await createPhonePePayment({
       merchantOrderId,
       amountInPaisa,
-      redirectPath: redirectPath.includes("?") ? redirectPath : `${redirectPath}?merchantOrderId=${encodeURIComponent(merchantOrderId)}`,
+      redirectPath: pathWithQuery,
       expireAfterSeconds: 600,
+      redirectBaseUrl,
     });
 
     return NextResponse.json({

@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "reset:sheet": "npx tsx scripts/reset-google-sheet.ts"
   },
   "dependencies": {
     "googleapis": "^170.1.0",

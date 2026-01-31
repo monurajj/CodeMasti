@@ -104,11 +104,14 @@ export function getErrorMessage(
       };
     }
 
-    // Generic client error
+    // Generic client error (e.g. duplicate email)
+    const isAlreadyRegistered = message?.toLowerCase().includes('already registered');
     return {
-      title: 'Invalid Request',
+      title: isAlreadyRegistered ? 'Email Already Registered' : 'Invalid Request',
       message: message || 'There was a problem with your request.',
-      suggestion: 'Please check your input and try again.',
+      suggestion: isAlreadyRegistered
+        ? 'You can reach us at info.codemasti@gmail.com for assistance.'
+        : 'Please check your input and try again.',
     };
   }
 

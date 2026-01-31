@@ -91,6 +91,8 @@ export type CreatePaymentParams = {
   amountInPaisa: number;
   redirectPath: string;
   expireAfterSeconds?: number;
+  /** If set, used as base for redirect URL (e.g. https://codemasti.in). Otherwise from env. */
+  redirectBaseUrl?: string;
 };
 
 export type CreatePaymentResult = {
@@ -108,7 +110,9 @@ export async function createPhonePePayment(
   const { urls, baseUrl } = getConfig();
   const token = await getPhonePeToken();
 
-  const redirectUrl = `${baseUrl.replace(/\/$/, "")}${params.redirectPath.startsWith("/") ? params.redirectPath : `/${params.redirectPath}`}`;
+  const base = (params.redirectBaseUrl || baseUrl).replace(/\/$/, "");
+  const path = params.redirectPath.startsWith("/") ? params.redirectPath : `/${params.redirectPath}`;
+  const redirectUrl = `${base}${path}`;
 
   const payload = {
     merchantOrderId: params.merchantOrderId,

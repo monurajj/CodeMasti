@@ -267,8 +267,11 @@ export default function Contact() {
                   <div className="flex items-start gap-4">
                     <div className="text-3xl">📧</div>
                     <div>
-                      <h3 className="font-bold text-black mb-1">Email</h3>
-                      <p className="text-gray-700">info.codemasti@gmail.com</p>
+                      <h3 className="font-bold text-black mb-1">Official Email</h3>
+                      <p className="text-gray-700 mb-1">Reach us for any queries or help:</p>
+                      <a href="mailto:info.codemasti@gmail.com" className="text-yellow-600 hover:text-yellow-500 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-yellow-400 rounded">
+                        info.codemasti@gmail.com
+                      </a>
                     </div>
                   </div>
 

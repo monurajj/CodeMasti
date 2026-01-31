@@ -108,8 +108,12 @@ function createApiError(error: unknown, statusCode?: number): ApiError {
       };
     }
     if (statusCode >= 400 && statusCode < 500) {
+      const clientMessage =
+        error instanceof Error && error.message
+          ? error.message
+          : 'Invalid request. Please check your input and try again.';
       return {
-        message: 'Invalid request. Please check your input and try again.',
+        message: clientMessage,
         type: 'client',
         statusCode,
         retryable: false,

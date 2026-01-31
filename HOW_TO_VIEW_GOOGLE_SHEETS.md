@@ -37,12 +37,14 @@ The first row contains these columns:
 | **Phone** | Contact's phone number (if provided) |
 | **Student Class** | Student's class (if provided) |
 | **Message** | The message content (for contact forms) |
-| **Type** | Either "Contact" or "Newsletter" |
+| **Type** | "Contact", "Newsletter", or "Registration" |
 | **Resolved** | Empty - You can mark as "Yes", "No", or add status |
 | **Section** | Empty - You can add section/category (e.g., "SPARK", "BUILDERS", "INNOVATORS") |
 | **Admission Done** | Empty - You can mark as "Yes", "No", or add status |
 | **Message by Founder** | Empty - You can add notes/messages from founder |
 | **Notes** | Empty - You can add any additional notes |
+| **Payment Ref** | PhonePe merchant order ID (for paid registrations) |
+| **Payment Status** | "Paid", "Pay Later", or empty |
 
 ### Data Rows
 
@@ -74,6 +76,15 @@ Each new submission (contact form or newsletter signup) will appear as a new row
 - **Newsletter Signups Only:** Filter the "Type" column to show only "Newsletter"
 
 ## ✏️ Managing Your Data
+
+### If Your Sheet Was Created Before Payment Columns Were Added
+
+If your header row does not have **Payment Ref** and **Payment Status** columns, add them manually so new registration rows align correctly:
+
+1. In **row 1**, click the cell in **column M** (the 13th column) and type **Payment Ref**.
+2. In **row 1**, click the cell in **column N** (the 14th column) and type **Payment Status**.
+
+New registration rows will then show payment info in these columns.
 
 ### Updating Columns Manually
 
