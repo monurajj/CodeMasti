@@ -117,7 +117,8 @@ export default function Register() {
       classes: "Class 5-6",
       color: "orange",
       description: "Ignite curiosity & remove fear of coding",
-      registrationFee: "₹2,499",
+      registrationFeeOriginal: "₹2,499",
+      registrationFee: "₹625",
       monthlyFee: "₹1,499",
       timetable: "2 live classes/week (Saturday + Sunday)",
     },
@@ -128,7 +129,8 @@ export default function Register() {
       classes: "Class 7-8",
       color: "blue",
       description: "Build strong coding foundations",
-      registrationFee: "₹2,999",
+      registrationFeeOriginal: "₹2,999",
+      registrationFee: "₹750",
       monthlyFee: "₹1,999",
       timetable: "2 live classes/week (Saturday + Sunday)",
     },
@@ -139,7 +141,8 @@ export default function Register() {
       classes: "Class 9-10",
       color: "green",
       description: "Apply skills to real-world problems",
-      registrationFee: "₹3,499",
+      registrationFeeOriginal: "₹3,499",
+      registrationFee: "₹875",
       monthlyFee: "₹2,499",
       timetable: "2 live classes/week (Saturday + Sunday)",
     },
@@ -642,14 +645,17 @@ export default function Register() {
                           }`}>
                             <div className="text-xs font-semibold text-gray-700 mb-2">Fee Structure:</div>
                             <div className="space-y-1 text-xs">
-                              <div className="flex justify-between">
+                              <div className="flex justify-between items-center gap-2">
                                 <span className="text-gray-600">Registration:</span>
-                                <span className={`font-bold ${
-                                  batch.color === "orange" ? "text-orange-600" :
-                                  batch.color === "blue" ? "text-blue-600" :
-                                  "text-green-600"
-                                }`}>
-                                  {batch.registrationFee}
+                                <span className="flex items-center gap-1.5 flex-wrap justify-end">
+                                  <span className="line-through text-gray-500">{batch.registrationFeeOriginal}</span>
+                                  <span className={`font-bold ${
+                                    batch.color === "orange" ? "text-orange-600" :
+                                    batch.color === "blue" ? "text-blue-600" :
+                                    "text-green-600"
+                                  }`}>
+                                    {batch.registrationFee}
+                                  </span>
                                 </span>
                               </div>
                               <div className="flex justify-between">
@@ -662,6 +668,7 @@ export default function Register() {
                                   {batch.monthlyFee}
                                 </span>
                               </div>
+                              <p className="text-xs text-gray-600 mt-1.5 italic">1 month fee included in registration</p>
                             </div>
                             <div className="mt-2 pt-2 border-t border-gray-200">
                               <div className="text-xs text-gray-600">{batch.timetable}</div>

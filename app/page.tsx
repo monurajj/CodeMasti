@@ -20,6 +20,36 @@ export default function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
+  const [timeLeftPlatform, setTimeLeftPlatform] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [timeLeftCourses, setTimeLeftCourses] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+
+  const platformLaunchDate = new Date("2026-02-05T00:00:00").getTime();
+  const coursesStartDate = new Date("2026-05-02T00:00:00").getTime();
+
+  useEffect(() => {
+    const tick = () => {
+      const now = Date.now();
+      const updateCountdown = (target: number, setter: React.Dispatch<React.SetStateAction<{ days: number; hours: number; minutes: number; seconds: number }>>) => {
+        const diff = target - now;
+        if (diff > 0) {
+          setter({
+            days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+            hours: Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+            minutes: Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
+            seconds: Math.floor((diff % (1000 * 60)) / 1000),
+          });
+        } else {
+          setter({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        }
+      };
+      updateCountdown(platformLaunchDate, setTimeLeftPlatform);
+      updateCountdown(coursesStartDate, setTimeLeftCourses);
+    };
+    tick();
+    const timer = setInterval(tick, 1000);
+    return () => clearInterval(timer);
+  }, [platformLaunchDate, coursesStartDate]);
+
   useEffect(() => {
     setMounted(true);
     
@@ -189,7 +219,7 @@ export default function Home() {
       {/* Animated Yellow Accent Line */}
       <div className="h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent animate-expand-width"></div>
 
-      <main id="main-content" className="relative z-10 flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] px-4 py-16 bg-white" role="main">
+      <main id="main-content" className="relative z-10 flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] px-4 py-16 bg-gradient-to-b from-amber-50/40 via-white to-white" role="main">
         <div className="max-w-4xl w-full text-center space-y-8">
           {/* Logo/Brand Name - Black for Authority */}
           <div 
@@ -210,6 +240,93 @@ export default function Home() {
             <div className="w-32 h-1.5 bg-yellow-400 mx-auto rounded-full animate-expand-width"></div>
           </div>
 
+          {/* Hero - Image Left, Text Right */}
+          <div 
+            id="hero-banner"
+            data-animate
+            className={`transition-all duration-1000 delay-150 ${mounted && isVisible["hero-banner"] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+          >
+            <div className="mt-8 md:mt-12 max-w-5xl mx-auto px-4">
+              <div className="flex flex-col md:flex-row items-center gap-8 md:gap-10 lg:gap-12">
+                {/* Left: 75% Off Image */}
+                <div className="flex-shrink-0 w-full md:w-[45%] lg:w-[42%] max-w-md">
+                  <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-amber-200/30 ring-4 ring-amber-100/80 hover:shadow-amber-300/40 transition-shadow duration-500">
+                    <Image
+                      src="/hero-75-off-scholarship.png"
+                      alt="Enjoy an exclusive 75% off on the registration fee - CodeMasti Early Bird Scholarship. Think. Solve. Create."
+                      width={500}
+                      height={500}
+                      className="w-full h-auto object-contain"
+                      priority
+                      sizes="(max-width: 768px) 100vw, 42vw"
+                    />
+                  </div>
+                  <p className="text-center text-sm text-gray-600 mt-2 font-medium md:text-left">
+                    75% Early Bird Scholarship · Limited period
+                  </p>
+                </div>
+
+                {/* Right: Text Content */}
+                <div className="flex-1 text-center md:text-left min-w-0">
+                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-2">
+                    Save the dates
+                  </h2>
+                  <p className="text-base text-gray-600 mb-6">
+                    Platform goes live soon. Courses start in May. Register now and secure your spot.
+                  </p>
+                  <div className="flex flex-col sm:flex-row sm:flex-nowrap gap-4 items-stretch">
+                    <div className="p-4 rounded-xl bg-gradient-to-br from-amber-50 to-yellow-50 border-2 border-amber-200/80 text-left min-w-0 flex-1 flex flex-col sm:min-h-[180px]">
+                      <p className="text-xs font-semibold text-amber-800 uppercase tracking-wide mb-0.5">🚀 Platform launches</p>
+                      <p className="text-xl md:text-2xl font-bold text-amber-700">5 February 2026</p>
+                      <p className="text-sm text-gray-600">Wednesday</p>
+                      <div className="mt-auto pt-3 border-t border-amber-200/60">
+                        <p className="text-[10px] uppercase tracking-wider text-amber-800/70 font-semibold mb-1.5">Countdown</p>
+                        <div className="flex items-center gap-1 font-mono text-sm flex-nowrap">
+                          <span className="bg-amber-200/80 text-amber-900 px-1.5 py-0.5 rounded font-bold tabular-nums">{String(timeLeftPlatform.days).padStart(2, "0")}</span>
+                          <span className="text-amber-600">d</span>
+                          <span className="bg-amber-200/80 text-amber-900 px-1.5 py-0.5 rounded font-bold tabular-nums">{String(timeLeftPlatform.hours).padStart(2, "0")}</span>
+                          <span className="text-amber-600">h</span>
+                          <span className="bg-amber-200/80 text-amber-900 px-1.5 py-0.5 rounded font-bold tabular-nums">{String(timeLeftPlatform.minutes).padStart(2, "0")}</span>
+                          <span className="text-amber-600">m</span>
+                          <span className="bg-amber-200/80 text-amber-900 px-1.5 py-0.5 rounded font-bold tabular-nums">{String(timeLeftPlatform.seconds).padStart(2, "0")}</span>
+                          <span className="text-amber-600">s</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="p-4 rounded-xl bg-gradient-to-br from-yellow-50 to-amber-50 border-2 border-yellow-300/80 text-left min-w-0 flex-1 flex flex-col sm:min-h-[180px]">
+                      <p className="text-xs font-semibold text-amber-800 uppercase tracking-wide mb-0.5">📚 Courses begin</p>
+                      <p className="text-xl md:text-2xl font-bold text-amber-700">2 May 2026</p>
+                      <p className="text-sm text-gray-600">Saturday</p>
+                      <div className="mt-auto pt-3 border-t border-yellow-300/60">
+                        <p className="text-[10px] uppercase tracking-wider text-amber-800/70 font-semibold mb-1.5">Countdown</p>
+                        <div className="flex items-center gap-1 font-mono text-sm flex-nowrap">
+                          <span className="bg-yellow-300/80 text-amber-900 px-1.5 py-0.5 rounded font-bold tabular-nums">{String(timeLeftCourses.days).padStart(2, "0")}</span>
+                          <span className="text-amber-600">d</span>
+                          <span className="bg-yellow-300/80 text-amber-900 px-1.5 py-0.5 rounded font-bold tabular-nums">{String(timeLeftCourses.hours).padStart(2, "0")}</span>
+                          <span className="text-amber-600">h</span>
+                          <span className="bg-yellow-300/80 text-amber-900 px-1.5 py-0.5 rounded font-bold tabular-nums">{String(timeLeftCourses.minutes).padStart(2, "0")}</span>
+                          <span className="text-amber-600">m</span>
+                          <span className="bg-yellow-300/80 text-amber-900 px-1.5 py-0.5 rounded font-bold tabular-nums">{String(timeLeftCourses.seconds).padStart(2, "0")}</span>
+                          <span className="text-amber-600">s</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <p className="text-sm text-gray-600 mt-6 font-medium">
+                    Register early for maximum scholarship on the registration fee.
+                  </p>
+                  <Link
+                    href="/register"
+                    className="inline-block mt-4 px-6 py-3 bg-amber-500 hover:bg-amber-600 text-black font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2"
+                    aria-label="Register for CodeMasti"
+                  >
+                    Register Now
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Key Milestones & Timeline */}
           <div 
             id="timeline"
@@ -217,14 +334,14 @@ export default function Home() {
             className={`transition-all duration-1000 delay-400 ${mounted && isVisible.timeline ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
           >
             <div className="mt-12 max-w-4xl mx-auto">
-              <div className="bg-gradient-to-br from-yellow-50 via-white to-yellow-50 rounded-2xl p-6 md:p-8 shadow-lg border-2 border-yellow-300">
+              <div className="bg-gradient-to-br from-yellow-50 via-white to-yellow-50 rounded-2xl p-6 md:p-8 shadow-xl shadow-gray-200/30 border-2 border-yellow-200/80">
                 <h2 className="text-2xl md:text-3xl font-bold text-black mb-6 text-center">
                   <span className="text-yellow-600">Key Milestones & Timeline</span>
                 </h2>
                 
                 <div className="space-y-6">
                   {/* Launch Timeline */}
-                  <div className="bg-white rounded-xl p-5 md:p-6 border-2 border-gray-200">
+                  <div className="bg-white/90 rounded-xl p-5 md:p-6 border-2 border-yellow-200/60 shadow-md">
                     <h3 className="text-xl font-bold text-black mb-4">Launch Timeline</h3>
                     <ul className="space-y-3 text-gray-700">
                       <li className="flex items-start gap-3">
@@ -233,17 +350,17 @@ export default function Home() {
                       </li>
                       <li className="flex items-start gap-3">
                         <span className="text-yellow-500 font-bold mt-1">•</span>
-                        <span><strong>Platform Launch Date:</strong> <span className="text-yellow-600 font-bold">2 May 2026 (Saturday)</span></span>
+                        <span><strong>Platform Launch:</strong> <span className="text-yellow-600 font-bold">5 February 2026 (Wednesday)</span></span>
                       </li>
                       <li className="flex items-start gap-3">
                         <span className="text-yellow-500 font-bold mt-1">•</span>
-                        <span><strong>First Batch Commencement:</strong> <span className="text-yellow-600 font-bold">3 May 2026 (Sunday)</span></span>
+                        <span><strong>Courses Begin (First Batch):</strong> <span className="text-yellow-600 font-bold">2 May 2026 (Saturday)</span></span>
                       </li>
                     </ul>
                   </div>
 
                   {/* Scholarship Timeline */}
-                  <div className="bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-xl p-5 md:p-6 border-2 border-yellow-600">
+                  <div className="bg-gradient-to-r from-yellow-400 to-amber-500 rounded-xl p-5 md:p-6 border-2 border-yellow-600 shadow-lg shadow-amber-200/40">
                     <h3 className="text-xl font-bold text-black mb-4">🎓 Early Bird Scholarship (on Registration Fee)</h3>
                     <div className="grid md:grid-cols-3 gap-4">
                       <div className="bg-white rounded-lg p-4 text-center">
@@ -313,7 +430,7 @@ export default function Home() {
             data-animate
             className={`transition-all duration-1000 delay-400 ${mounted && isVisible.mission ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-10 scale-95"}`}
           >
-            <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg border-2 border-gray-200 hover:shadow-2xl hover:border-yellow-300 transition-all duration-500 animate-card-float">
+            <div className="bg-white rounded-2xl p-6 md:p-8 shadow-xl shadow-gray-200/40 border-2 border-yellow-100 hover:shadow-2xl hover:border-yellow-300 hover:shadow-amber-100/30 transition-all duration-500 animate-card-float">
               <p className="text-base md:text-xl lg:text-2xl text-black font-medium leading-relaxed animate-fade-in-up">
                 We are building a <span className="font-bold text-yellow-600 animate-pulse-slow">cost-efficient, future-ready</span> coding education platform for school students from Class 5 to Class 10.
               </p>
@@ -332,7 +449,7 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mt-12">
               {/* SPARK - Orange Theme (Energy, Optimism) */}
               <div 
-                className="bg-white rounded-xl p-5 md:p-6 border-2 border-orange-400 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:scale-105 relative overflow-hidden group animate-card-float"
+                className="bg-white rounded-xl p-5 md:p-6 border-2 border-orange-400 shadow-xl shadow-orange-100/40 hover:shadow-2xl hover:shadow-orange-200/50 transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] relative overflow-hidden group animate-card-float"
                 style={{ animationDelay: '0s' }}
               >
                 <div className="absolute top-0 right-0 w-16 h-16 bg-orange-100 rounded-full -mr-8 -mt-8 opacity-50 animate-pulse-slow"></div>
@@ -344,13 +461,13 @@ export default function Home() {
                 <p className="text-sm md:text-base text-gray-600 font-semibold relative z-10">Class 5-6</p>
                 <p className="text-sm md:text-base text-black mt-2 relative z-10">Ignite curiosity & remove fear of coding</p>
                 <Link href="/programs?batch=spark" className="mt-4 inline-block px-4 py-2 bg-orange-400 text-white font-semibold rounded-lg hover:bg-orange-500 hover:scale-110 transition-all duration-300 text-sm md:text-base relative z-10 animate-button-pulse focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2" aria-label="Learn more about SPARK program for Class 5-6">
-                  Learn More
+                  Explore Now
                 </Link>
               </div>
 
               {/* BUILDERS - Blue Theme */}
               <div 
-                className="bg-white rounded-xl p-5 md:p-6 border-2 border-blue-400 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:scale-105 relative overflow-hidden group animate-card-float"
+                className="bg-white rounded-xl p-5 md:p-6 border-2 border-blue-400 shadow-xl shadow-blue-100/40 hover:shadow-2xl hover:shadow-blue-200/50 transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] relative overflow-hidden group animate-card-float"
                 style={{ animationDelay: '0.2s' }}
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
@@ -361,13 +478,13 @@ export default function Home() {
                 <p className="text-sm md:text-base text-gray-600 font-semibold relative z-10">Class 7-8</p>
                 <p className="text-sm md:text-base text-black mt-2 relative z-10">Build strong coding foundations</p>
                 <Link href="/programs?batch=builders" className="mt-4 inline-block px-4 py-2 bg-blue-400 text-white font-semibold rounded-lg hover:bg-blue-500 hover:scale-110 transition-all duration-300 text-sm md:text-base relative z-10 animate-button-pulse focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2" aria-label="Learn more about BUILDERS program for Class 7-8">
-                  Learn More
+                  Explore Now
                 </Link>
               </div>
 
               {/* INNOVATORS - Green Theme */}
               <div 
-                className="bg-white rounded-xl p-5 md:p-6 border-2 border-green-400 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:scale-105 relative overflow-hidden group animate-card-float"
+                className="bg-white rounded-xl p-5 md:p-6 border-2 border-green-400 shadow-xl shadow-green-100/40 hover:shadow-2xl hover:shadow-green-200/50 transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] relative overflow-hidden group animate-card-float"
                 style={{ animationDelay: '0.4s' }}
               >
                 <div className="absolute top-0 right-0 w-20 h-20 bg-green-100 rounded-full -mr-10 -mt-10 opacity-50 animate-pulse-slow"></div>
@@ -380,92 +497,8 @@ export default function Home() {
                 <p className="text-sm md:text-base text-black mt-2 relative z-10">Apply skills to real-world problems</p>
                 
                 <Link href="/programs?batch=innovators" className="mt-4 inline-block px-4 py-2 bg-green-400 text-white font-semibold rounded-lg hover:bg-green-500 hover:scale-110 transition-all duration-300 text-sm md:text-base relative z-10 animate-button-pulse focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2" aria-label="Learn more about INNOVATORS program for Class 9-10">
-                  Learn More
+                  Explore Now
                 </Link>
-              </div>
-            </div>
-          </div>
-
-          {/* Founders - Enhanced Design */}
-          <div 
-            id="founders"
-            data-animate
-            className={`transition-all duration-1000 delay-600 ${mounted && isVisible.founders ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
-          >
-            <div className="mt-16 max-w-4xl mx-auto">
-              <div className="bg-gradient-to-br from-yellow-50 via-white to-yellow-50 rounded-3xl p-8 md:p-12 shadow-2xl border-2 border-yellow-200 hover:border-yellow-400 transition-all duration-500">
-                {/* Section Header */}
-                <div className="text-center mb-8">
-                  <h3 className="text-3xl md:text-4xl font-bold text-black mb-2">
-                    <span className="text-yellow-600">Founded by</span>
-                  </h3>
-                  <div className="w-24 h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent mx-auto rounded-full"></div>
-                </div>
-
-                {/* Founders Photo and Info */}
-                <div className="flex flex-col md:flex-row items-center gap-8">
-                  {/* Founders Photo */}
-                  <div className="flex-shrink-0">
-                    <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-lg overflow-hidden border-4 border-yellow-400 shadow-xl ring-4 ring-yellow-100">
-                      <Image
-                        src="/founderimage.png"
-                        alt="Aditya Raj and Monu Raj - Founders of CodeMasti"
-                        width={384}
-                        height={384}
-                        className="w-full h-full object-cover"
-                        loading="lazy"
-                        placeholder="blur"
-                        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
-                        onError={(e) => {
-                          // Fallback if image doesn't exist yet
-                          const target = e.target as HTMLImageElement;
-                          target.style.display = 'none';
-                          if (target.parentElement) {
-                            target.parentElement.innerHTML = `
-                              <div class="w-full h-full bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center">
-                                <div class="text-white text-6xl font-bold">AR + MR</div>
-                              </div>
-                            `;
-                          }
-                        }}
-                      />
-                    </div>
-                  </div>
-
-                  {/* Founders Names and Titles */}
-                  <div className="flex-1 text-center md:text-left space-y-6">
-                    <div className="space-y-4">
-                      <div className="group">
-                        <h4 className="text-2xl md:text-3xl font-bold text-black mb-1 group-hover:text-yellow-600 transition-colors duration-300">
-                          Aditya Raj
-                        </h4>
-                        <p className="text-lg font-semibold text-yellow-600">Founder</p>
-                        <p className="text-gray-600 text-sm mt-2">Visionary leader transforming coding education</p>
-                      </div>
-                      
-                      <div className="flex items-center justify-center md:justify-start gap-2">
-                        <div className="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent flex-1 max-w-16"></div>
-                        <span className="text-yellow-500 text-xl">+</span>
-                        <div className="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent flex-1 max-w-16"></div>
-                      </div>
-
-                      <div className="group">
-                        <h4 className="text-2xl md:text-3xl font-bold text-black mb-1 group-hover:text-yellow-600 transition-colors duration-300">
-                          Monu Raj
-                        </h4>
-                        <p className="text-lg font-semibold text-yellow-600">Co-Founder</p>
-                        <p className="text-gray-600 text-sm mt-2">Tech enthusiast making coding accessible</p>
-                      </div>
-                    </div>
-
-                    {/* Mission Statement */}
-                    <div className="pt-4 border-t border-yellow-200">
-                      <p className="text-gray-700 italic text-sm md:text-base">
-                        &quot;Building India&apos;s most trusted, affordable, and impact-driven coding education platform&quot;
-                      </p>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -476,10 +509,11 @@ export default function Home() {
             data-animate
             className={`transition-all duration-1000 delay-700 ${mounted && isVisible.cta ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
           >
-            <div className="mt-12">
-              <p className="text-lg text-black font-medium mb-6 animate-fade-in-up">
+            <div className="mt-14 p-6 md:p-8 rounded-2xl bg-gradient-to-br from-yellow-50/80 to-amber-50/50 border-2 border-yellow-200/60 shadow-lg">
+              <p className="text-lg md:text-xl text-black font-semibold mb-2 animate-fade-in-up">
                 Be the first to know when we launch!
               </p>
+              <p className="text-sm text-gray-600 mb-6">Platform goes live 5 Feb · Courses start 2 May</p>
               <form 
                 onSubmit={async (e) => {
                   e.preventDefault();
