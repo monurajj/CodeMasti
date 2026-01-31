@@ -27,6 +27,7 @@ export default function PayTestPage() {
         body: JSON.stringify({
           amountInPaisa: 100,
           redirectPath: "/pay-test/result",
+          origin: typeof window !== "undefined" ? window.location.origin : undefined,
         }),
       });
       let data: { error?: string; redirectUrl?: string } = {};

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { sendEmail } from '@/lib/email';
-import { appendRegistrationToSheet } from '@/lib/google-sheets';
+import { appendRegistrationToSheet, registrationEmailExists } from '@/lib/google-sheets';
 
 // Batch-specific information for emails
 const batchInfo = {
@@ -90,11 +90,17 @@ const batchInfo = {
   }
 };
 
-function generateRegistrationEmail(batchId: string, studentName: string, studentClass: string) {
+function generateRegistrationEmail(batchId: string, studentName: string, studentClass: string, paymentStatus: string) {
   const batch = batchInfo[batchId as keyof typeof batchInfo];
   if (!batch) {
     throw new Error(`Invalid batch ID: ${batchId}`);
   }
+
+  const paymentStatusHtml = paymentStatus === 'Paid'
+    ? '<div style="background-color: #f0fdf4; padding: 16px; border-radius: 8px; border-left: 4px solid #22c55e; margin: 20px 0;"><p style="color: #166534; font-size: 15px; margin: 0;"><strong>Payment status:</strong> Paid – Your registration fee has been received. Your seat is confirmed.</p></div>'
+    : paymentStatus === 'Pay Later'
+      ? '<div style="background-color: #fffbeb; padding: 16px; border-radius: 8px; border-left: 4px solid #f59e0b; margin: 20px 0;"><p style="color: #92400e; font-size: 15px; margin: 0;"><strong>Payment status:</strong> Pay Later – We will follow up with payment details. Complete payment to confirm your seat.</p></div>'
+      : '';
 
   return `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #ffffff;">
@@ -113,6 +119,7 @@ function generateRegistrationEmail(batchId: string, studentName: string, student
         <p style="color: #4b5563; font-size: 16px; line-height: 1.6;">
           We're thrilled that you've chosen to join CodeMasti! Your registration for the <strong>${batch.name}</strong> batch has been successfully received.
         </p>
+        ${paymentStatusHtml}
         
         <!-- Selected Batch Highlight -->
         <div style="background: linear-gradient(135deg, ${batch.bgColor} 0%, ${batch.bgColor} 100%); padding: 30px; border-radius: 8px; border-left: 4px solid ${batch.borderColor}; margin: 30px 0;">
@@ -223,7 +230,10 @@ function generateRegistrationEmail(batchId: string, studentName: string, student
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { name, email, phone, studentClass, batch } = body;
+    const { name, email, phone, studentClass, batch, paymentMerchantOrderId, paymentStatus } = body;
+
+    const paymentStatusForSheet =
+      paymentMerchantOrderId ? "Paid" : paymentStatus === "pay_later" ? "Pay Later" : "";
 
     // Validate required fields
     if (!name || !email || !phone || !studentClass || !batch) {
@@ -249,6 +259,17 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Check for duplicate email (unique registration per email)
+    if (process.env.GOOGLE_SHEET_ID) {
+      const alreadyRegistered = await registrationEmailExists(process.env.GOOGLE_SHEET_ID, email);
+      if (alreadyRegistered) {
+        return NextResponse.json(
+          { error: 'This email is already registered. Use a different email or contact us at info.codemasti@gmail.com if you need help.' },
+          { status: 409 }
+        );
+      }
+    }
+
     console.log('📝 Processing registration:', { name, email, batch });
 
     // Save to Google Sheets
@@ -259,6 +280,8 @@ export async function POST(request: NextRequest) {
         phone,
         studentClass,
         batch,
+        paymentMerchantOrderId: typeof paymentMerchantOrderId === 'string' ? paymentMerchantOrderId : undefined,
+        paymentStatus: paymentStatusForSheet,
       });
       if (sheetResult.success) {
         console.log('✅ Registration saved to Google Sheet');
@@ -273,7 +296,7 @@ export async function POST(request: NextRequest) {
     const userEmailResult = await sendEmail({
       to: email,
       subject: `Welcome to CodeMasti ${batchInfo[batch as keyof typeof batchInfo].name} Batch! 🚀`,
-      html: generateRegistrationEmail(batch, name, studentClass),
+      html: generateRegistrationEmail(batch, name, studentClass, paymentStatusForSheet),
     });
 
     if (userEmailResult.success) {
@@ -286,7 +309,7 @@ export async function POST(request: NextRequest) {
     // Notify admin about new registration
     const adminEmailResult = await sendEmail({
       to: 'info.codemasti@gmail.com',
-      subject: `New Registration: ${batchInfo[batch as keyof typeof batchInfo].name} Batch`,
+      subject: `New Registration: ${batchInfo[batch as keyof typeof batchInfo].name} Batch${paymentStatusForSheet ? ` [${paymentStatusForSheet}]` : ''}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h3 style="color: #FCD34D;">New Registration Received</h3>
@@ -296,6 +319,7 @@ export async function POST(request: NextRequest) {
             <p><strong>Phone:</strong> ${phone}</p>
             <p><strong>Student Class:</strong> ${studentClass}</p>
             <p><strong>Selected Batch:</strong> ${batchInfo[batch as keyof typeof batchInfo].name} (${batchInfo[batch as keyof typeof batchInfo].classes})</p>
+            <p><strong>Payment Status:</strong> ${paymentStatusForSheet || '—'}</p>
             <p><strong>Date:</strong> ${new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' })}</p>
           </div>
         </div>

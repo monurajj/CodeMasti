@@ -24,10 +24,12 @@ export default function Register() {
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [touched, setTouched] = useState<{ [key: string]: boolean }>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submittingMode, setSubmittingMode] = useState<"pay" | "pay_later" | null>(null);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
   const [apiError, setApiError] = useState<{ title: string; message: string; suggestion?: string } | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const [showPayLaterDialog, setShowPayLaterDialog] = useState(false);
   const [pendingSubmit, setPendingSubmit] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   
@@ -119,6 +121,7 @@ export default function Register() {
       description: "Ignite curiosity & remove fear of coding",
       registrationFeeOriginal: "₹2,499",
       registrationFee: "₹625",
+      registrationFeePaisa: 62500,
       monthlyFee: "₹1,499",
       timetable: "2 live classes/week (Saturday + Sunday)",
     },
@@ -131,6 +134,7 @@ export default function Register() {
       description: "Build strong coding foundations",
       registrationFeeOriginal: "₹2,999",
       registrationFee: "₹750",
+      registrationFeePaisa: 75000,
       monthlyFee: "₹1,999",
       timetable: "2 live classes/week (Saturday + Sunday)",
     },
@@ -143,6 +147,7 @@ export default function Register() {
       description: "Apply skills to real-world problems",
       registrationFeeOriginal: "₹3,499",
       registrationFee: "₹875",
+      registrationFeePaisa: 87500,
       monthlyFee: "₹2,499",
       timetable: "2 live classes/week (Saturday + Sunday)",
     },
@@ -314,52 +319,143 @@ export default function Register() {
 
   const handleConfirmSubmit = async () => {
     setShowConfirmation(false);
+    setSubmittingMode("pay");
     setIsSubmitting(true);
     setSubmitStatus("idle");
     setApiError(null);
     setPendingSubmit(false);
 
-    // Make API request with retry logic
-    const result = await postRequest('/api/register', formData, {
-      maxRetries: 3,
-      retryDelay: 1000,
-    });
-
-    if (result.success) {
-      setSubmitStatus("success");
-      // Clear localStorage on successful submission
-      if (typeof window !== 'undefined') {
-        try {
-          localStorage.removeItem(STORAGE_KEY);
-        } catch (error) {
-          console.error("Error clearing localStorage:", error);
-        }
-      }
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        studentClass: "",
-        batch: "",
-      });
-      setErrors({});
-      setTouched({});
-      setApiError(null);
-    } else {
+    const selectedBatch = batches.find((b) => b.id === formData.batch);
+    if (!selectedBatch) {
       setSubmitStatus("error");
-      // Get user-friendly error message
-      const errorMsg = result.error
-        ? getErrorMessage(result.error, "register")
-        : getApiErrorMessage(result.data || {}, "register");
-      setApiError(errorMsg);
+      setApiError({ title: "Error", message: "Please select a batch.", suggestion: undefined });
+      setSubmittingMode(null);
+      setIsSubmitting(false);
+      return;
     }
-    
+
+    try {
+      const res = await fetch("/api/phonepe/create-payment", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          amountInPaisa: selectedBatch.registrationFeePaisa,
+          redirectPath: "/register/result",
+          origin: typeof window !== "undefined" ? window.location.origin : undefined,
+        }),
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        setSubmitStatus("error");
+        setApiError({
+          title: "Payment initiation failed",
+          message: data.error || "Could not start payment. Please try again.",
+          suggestion: "Check your connection and try again.",
+        });
+        setSubmittingMode(null);
+        setIsSubmitting(false);
+        return;
+      }
+
+      if (data.redirectUrl && data.merchantOrderId) {
+        try {
+          sessionStorage.setItem(
+            `pending_register_${data.merchantOrderId}`,
+            JSON.stringify(formData)
+          );
+        } catch (e) {
+          console.error("Failed to store form data:", e);
+        }
+        window.location.href = data.redirectUrl;
+        return;
+      }
+
+      setSubmitStatus("error");
+      setApiError({
+        title: "Payment error",
+        message: "No redirect URL received. Please try again.",
+        suggestion: undefined,
+      });
+    } catch (e) {
+      setSubmitStatus("error");
+      setApiError({
+        title: "Something went wrong",
+        message: e instanceof Error ? e.message : "Could not start payment. Please try again.",
+        suggestion: undefined,
+      });
+    }
+
+    setSubmittingMode(null);
     setIsSubmitting(false);
   };
 
   const handleCancelSubmit = () => {
     setShowConfirmation(false);
     setPendingSubmit(false);
+  };
+
+  const handlePayLaterClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const allFields = ["name", "email", "phone", "studentClass", "batch"];
+    const newTouched: { [key: string]: boolean } = {};
+    allFields.forEach((f) => { newTouched[f] = true; });
+    setTouched(newTouched);
+    const newErrors: { [key: string]: string } = {};
+    allFields.forEach((field) => {
+      const value = formData[field as keyof typeof formData];
+      let error = "";
+      switch (field) {
+        case "email": error = validateEmail(value); break;
+        case "phone": error = validatePhone(value); break;
+        case "name": error = validateName(value); break;
+        case "studentClass": error = validateStudentClass(value); break;
+        case "batch": error = validateBatch(value); break;
+      }
+      if (error) newErrors[field] = error;
+    });
+    setErrors(newErrors);
+    if (Object.keys(newErrors).length > 0) {
+      setSubmitStatus("error");
+      setApiError({
+        title: "Validation Error",
+        message: "Please fix the errors above and try again.",
+        suggestion: "Check all fields and ensure they are filled correctly.",
+      });
+      return;
+    }
+    setShowPayLaterDialog(true);
+  };
+
+  const handlePayLaterContinue = async () => {
+    setShowPayLaterDialog(false);
+    setSubmittingMode("pay_later");
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+    setApiError(null);
+    const result = await postRequest("/api/register", { ...formData, paymentStatus: "pay_later" }, { maxRetries: 3, retryDelay: 1000 });
+    if (result.success) {
+      setSubmitStatus("success");
+      try {
+        localStorage.removeItem(STORAGE_KEY);
+      } catch {}
+      setFormData({ name: "", email: "", phone: "", studentClass: "", batch: "" });
+      setErrors({});
+      setTouched({});
+      setApiError(null);
+    } else {
+      setSubmitStatus("error");
+      const errorMsg = result.error ? getErrorMessage(result.error, "register") : getApiErrorMessage(result.data || {}, "register");
+      setApiError(errorMsg);
+    }
+    setSubmittingMode(null);
+    setIsSubmitting(false);
+  };
+
+  const handlePayLaterMakePayment = () => {
+    setShowPayLaterDialog(false);
+    setShowConfirmation(true);
+    setPendingSubmit(true);
   };
 
   return (
@@ -493,7 +589,7 @@ export default function Register() {
                       aria-required="true"
                       aria-invalid={touched.name && errors.name ? "true" : "false"}
                       aria-describedby={touched.name && errors.name ? "name-error" : undefined}
-                      className={`w-full px-4 py-3 text-base md:text-lg rounded-lg border-2 transition-all ${
+                      className={`w-full px-4 py-3 text-base md:text-lg rounded-lg border-2 transition-all text-black placeholder:text-gray-500 ${
                         touched.name && errors.name
                           ? "border-red-500 focus:ring-red-500 focus:border-red-500"
                           : "border-gray-300 focus:ring-yellow-500 focus:border-yellow-500"
@@ -522,7 +618,7 @@ export default function Register() {
                       aria-required="true"
                       aria-invalid={touched.email && errors.email ? "true" : "false"}
                       aria-describedby={touched.email && errors.email ? "email-error" : undefined}
-                      className={`w-full px-4 py-3 text-base md:text-lg rounded-lg border-2 transition-all ${
+                      className={`w-full px-4 py-3 text-base md:text-lg rounded-lg border-2 transition-all text-black placeholder:text-gray-500 ${
                         touched.email && errors.email
                           ? "border-red-500 focus:ring-red-500 focus:border-red-500"
                           : "border-gray-300 focus:ring-yellow-500 focus:border-yellow-500"
@@ -552,7 +648,7 @@ export default function Register() {
                       aria-required="true"
                       aria-invalid={touched.phone && errors.phone ? "true" : "false"}
                       aria-describedby={touched.phone && errors.phone ? "phone-error" : undefined}
-                      className={`w-full px-4 py-3 text-base md:text-lg rounded-lg border-2 transition-all ${
+                      className={`w-full px-4 py-3 text-base md:text-lg rounded-lg border-2 transition-all text-black placeholder:text-gray-500 ${
                         touched.phone && errors.phone
                           ? "border-red-500 focus:ring-red-500 focus:border-red-500"
                           : "border-gray-300 focus:ring-yellow-500 focus:border-yellow-500"
@@ -684,28 +780,39 @@ export default function Register() {
                 )}
               </div>
 
-              {/* Submit Button */}
               <div className="flex flex-col items-center gap-4">
-                <button
-                  type="submit"
-                  disabled={isSubmitting || !formData.batch || pendingSubmit}
-                  aria-label={isSubmitting ? "Submitting registration form" : "Submit registration form"}
-                  aria-disabled={isSubmitting || !formData.batch || pendingSubmit}
-                  className={`w-full md:w-auto px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 shadow-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 flex items-center justify-center gap-2 ${
-                    isSubmitting || !formData.batch || pendingSubmit
-                      ? "bg-gray-400 cursor-not-allowed"
-                      : "bg-yellow-400 text-black hover:bg-yellow-500 hover:shadow-2xl transform hover:-translate-y-1 hover:scale-105"
-                  }`}
-                >
-                  {isSubmitting ? (
-                    <>
-                      <LoadingSpinner size="sm" />
-                      <span>Submitting...</span>
-                    </>
-                  ) : (
-                    "Register Now"
-                  )}
-                </button>
+                {/* Submit Buttons */}
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                  <button
+                    type="submit"
+                    disabled={isSubmitting || !formData.batch || pendingSubmit}
+                    aria-label={isSubmitting ? "Redirecting to payment" : "Pay and book your seat"}
+                    aria-disabled={isSubmitting || !formData.batch || pendingSubmit}
+                    className={`w-full md:w-auto px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 shadow-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 flex items-center justify-center gap-2 ${
+                      isSubmitting || !formData.batch || pendingSubmit
+                        ? "bg-gray-400 cursor-not-allowed"
+                        : "bg-yellow-400 text-black hover:bg-yellow-500 hover:shadow-2xl transform hover:-translate-y-1 hover:scale-105"
+                    }`}
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <LoadingSpinner size="sm" />
+                        <span>{submittingMode === "pay_later" ? "Submitting…" : "Redirecting to payment…"}</span>
+                      </>
+                    ) : (
+                      "Pay & Book Your Seat"
+                    )}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handlePayLaterClick}
+                    disabled={isSubmitting || !formData.batch || pendingSubmit}
+                    aria-label="Pay later"
+                    className="w-full md:w-auto px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 shadow-lg border-2 border-gray-300 text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                  >
+                    Pay Later
+                  </button>
+                </div>
 
                 {/* Status Messages */}
                 {submitStatus === "success" && (
@@ -806,12 +913,26 @@ export default function Register() {
       {/* Confirmation Dialog */}
       <ConfirmationDialog
         isOpen={showConfirmation}
-        title="Confirm Registration"
-        message="Are you sure you want to submit your registration? Please review your information before confirming."
-        confirmText="Yes, Submit"
+        title="Pay & Book Your Slot"
+        message={
+          formData.batch
+            ? `You will be redirected to PhonePe to pay ${batches.find((b) => b.id === formData.batch)?.registrationFee ?? "the registration fee"}. Your slot will be confirmed after successful payment.`
+            : "You will be redirected to PhonePe to complete payment. Your slot will be confirmed after successful payment."
+        }
+        confirmText="Proceed to Pay"
         cancelText="Cancel"
         onConfirm={handleConfirmSubmit}
         onCancel={handleCancelSubmit}
+      />
+
+      <ConfirmationDialog
+        isOpen={showPayLaterDialog}
+        title="Pay Later?"
+        message="There is a high chance you could miss the scholarship and the current discounted rate. Paying now secures your seat at the offer price. You can still continue with Pay Later if you prefer."
+        confirmText="Continue with Pay Later"
+        cancelText="Make Payment"
+        onConfirm={handlePayLaterContinue}
+        onCancel={handlePayLaterMakePayment}
       />
 
     </div>

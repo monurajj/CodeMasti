@@ -39,7 +39,7 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 
 - **Production credentials** (Developer Settings → API Keys → Production Credentials): set **`PHONEPE_SANDBOX=false`**. Real payments will be processed.
 - **Sandbox/UAT** (only if PhonePe gave you separate test keys): set **`PHONEPE_SANDBOX=true`**.
-- **NEXT_PUBLIC_APP_URL**: Must be a URL PhonePe can redirect the user to (e.g. `https://your-ngrok-url.ngrok.io` when testing locally).
+- **NEXT_PUBLIC_APP_URL**: Set to your **production URL** (e.g. `https://codemasti.in`) in your host’s env. The pay-test page also sends the browser’s origin so redirect uses your deployed domain; set this so server fallback is correct.
 
 ---
 

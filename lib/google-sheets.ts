@@ -38,7 +38,7 @@ export async function initializeSheet(spreadsheetId: string) {
       range: 'Sheet1!A1:Z1',
     });
 
-    // If no data exists, add headers
+    // If no data exists, add headers (14 columns – must match row length in append functions)
     if (!response.data.values || response.data.values.length === 0) {
       const headers = [
         'Timestamp',
@@ -47,12 +47,14 @@ export async function initializeSheet(spreadsheetId: string) {
         'Phone',
         'Student Class',
         'Message',
-        'Type', // 'Contact' or 'Newsletter'
+        'Type', // 'Contact', 'Newsletter', or 'Registration'
         'Resolved',
         'Section',
         'Admission Done',
         'Message by Founder',
-        'Notes'
+        'Notes',
+        'Payment Ref',
+        'Payment Status',
       ];
 
       await sheets.spreadsheets.values.append({
@@ -147,11 +149,13 @@ export async function appendContactToSheet(
       '', // Admission Done
       '', // Message by Founder
       '', // Notes
+      '', // Payment Ref
+      '', // Payment Status
     ];
 
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: 'Sheet1!A:Z',
+      range: 'Sheet1!A:N',
       valueInputOption: 'USER_ENTERED',
       requestBody: {
         values: [row],
@@ -225,11 +229,13 @@ export async function appendNewsletterToSheet(
       '', // Admission Done
       '', // Message by Founder
       '', // Notes
+      '', // Payment Ref
+      '', // Payment Status
     ];
 
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: 'Sheet1!A:Z',
+      range: 'Sheet1!A:N',
       valueInputOption: 'USER_ENTERED',
       requestBody: {
         values: [row],
@@ -261,6 +267,36 @@ export async function appendNewsletterToSheet(
 }
 
 /**
+ * Check if an email is already registered (exists in sheet with Type = "Registration").
+ * Email comparison is case-insensitive.
+ */
+export async function registrationEmailExists(
+  spreadsheetId: string,
+  email: string
+): Promise<boolean> {
+  try {
+    if (!spreadsheetId || !email?.trim()) return false;
+    const sheets = await getSheetsClient();
+    const normalizedEmail = email.trim().toLowerCase();
+    const response = await sheets.spreadsheets.values.get({
+      spreadsheetId,
+      range: 'Sheet1!A2:G1000',
+    });
+    const rows = (response.data.values as string[][] | undefined) || [];
+    for (const row of rows) {
+      const rowEmail = (row[2] ?? '').trim().toLowerCase();
+      const type = (row[6] ?? '').trim();
+      if (rowEmail === normalizedEmail && type === 'Registration') {
+        return true;
+      }
+    }
+    return false;
+  } catch {
+    return false;
+  }
+}
+
+/**
  * Append a registration submission to Google Sheets
  */
 export async function appendRegistrationToSheet(
@@ -271,6 +307,8 @@ export async function appendRegistrationToSheet(
     phone: string;
     studentClass: string;
     batch: string;
+    paymentMerchantOrderId?: string;
+    paymentStatus?: string;
   }
 ) {
   try {
@@ -314,11 +352,13 @@ export async function appendRegistrationToSheet(
       '', // Admission Done
       '', // Message by Founder
       '', // Notes
+      data.paymentMerchantOrderId || '', // Payment Ref (PhonePe merchant order ID)
+      data.paymentStatus || '', // Payment Status: Paid | Pay Later | (empty)
     ];
 
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: 'Sheet1!A:Z',
+      range: 'Sheet1!A:N',
       valueInputOption: 'USER_ENTERED',
       requestBody: {
         values: [row],
