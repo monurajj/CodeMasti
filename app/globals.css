@@ -87,3 +87,110 @@ textarea:focus-visible {
 .animate-bounce-gentle {
   animation: bounce-gentle 2s ease-in-out infinite;
 }
+
+/* Launch celebration confetti */
+@keyframes confetti-fall {
+  0% {
+    transform: translate(0, -50%) scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--confetti-x, 0), 100vh) scale(0.5) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+.launch-confetti-piece {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  pointer-events: none;
+  animation: confetti-fall 2.5s ease-out forwards;
+  z-index: 101;
+}
+
+/* Corner pop cracker / streamer burst */
+@keyframes popper-burst-left {
+  0% {
+    transform: scale(0.05) rotate(var(--popper-rotate, 0deg));
+    opacity: 1;
+  }
+  12% {
+    transform: scale(1.15) translate(var(--popper-x), var(--popper-y)) rotate(var(--popper-rotate, 0deg));
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) translate(calc(var(--popper-x) * 1.5), calc(var(--popper-y) * 1.5)) rotate(var(--popper-rotate, 0deg));
+    opacity: 0.75;
+  }
+}
+
+@keyframes popper-burst-right {
+  0% {
+    transform: scale(0.05) rotate(var(--popper-rotate, 0deg));
+    opacity: 1;
+  }
+  12% {
+    transform: scale(1.15) translate(var(--popper-x), var(--popper-y)) rotate(var(--popper-rotate, 0deg));
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) translate(calc(var(--popper-x) * 1.5), calc(var(--popper-y) * 1.5)) rotate(var(--popper-rotate, 0deg));
+    opacity: 0.75;
+  }
+}
+
+@keyframes popper-flash {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  30% {
+    transform: scale(2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+.popper-streamer-left {
+  position: fixed;
+  left: 0;
+  bottom: 18%;
+  width: 5px;
+  height: 50px;
+  border-radius: 3px;
+  pointer-events: none;
+  transform-origin: left center;
+  animation: popper-burst-left 1.6s ease-out forwards;
+  z-index: 101;
+  box-shadow: 0 0 8px rgba(251, 191, 36, 0.6);
+}
+
+.popper-streamer-right {
+  position: fixed;
+  right: 0;
+  bottom: 18%;
+  width: 5px;
+  height: 50px;
+  border-radius: 3px;
+  pointer-events: none;
+  transform-origin: right center;
+  animation: popper-burst-right 1.6s ease-out forwards;
+  z-index: 101;
+  box-shadow: 0 0 8px rgba(251, 191, 36, 0.6);
+}
+
+.popper-flash {
+  position: fixed;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(251,191,36,0.9) 0%, rgba(251,191,36,0.3) 70%, transparent 100%);
+  pointer-events: none;
+  animation: popper-flash 0.4s ease-out forwards;
+  z-index: 102;
+}

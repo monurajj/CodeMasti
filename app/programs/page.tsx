@@ -46,6 +46,23 @@ function ProgramsContent() {
     };
   }, [searchParams]);
 
+  const scholarshipTiers = [
+    { percent: 75, startDate: new Date("2026-02-01"), endDate: new Date("2026-02-28"), label: "1 Feb – 28 Feb 2026" },
+    { percent: 50, startDate: new Date("2026-03-01"), endDate: new Date("2026-03-30"), label: "1 Mar – 30 Mar 2026" },
+    { percent: 25, startDate: new Date("2026-04-01"), endDate: new Date("2026-04-30"), label: "1 Apr – 30 Apr 2026" },
+  ];
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const currentScholarship = scholarshipTiers.find(
+    (tier) => today >= tier.startDate && today <= tier.endDate
+  );
+
+  const formatDiscountPrice = (baseAmount: number, percentOff: number) => {
+    const discounted = Math.round((baseAmount * (100 - percentOff)) / 100);
+    return `₹${discounted.toLocaleString("en-IN")}`;
+  };
+
   const programs = [
     {
       id: "spark",
@@ -62,6 +79,7 @@ function ProgramsContent() {
         "Introduction to how computers think"
       ],
       outcome: "Students enjoy coding and feel confident exploring technology.",
+      registrationFeeBase: 2499,
       registrationFee: "₹2,499",
       monthlyFee: "₹1,499",
       timetable: "2 live classes/week (Saturday + Sunday)",
@@ -82,6 +100,7 @@ function ProgramsContent() {
         "Introduction to AI concepts (conceptual)"
       ],
       outcome: "Students can write code and build simple applications independently.",
+      registrationFeeBase: 2999,
       registrationFee: "₹2,999",
       monthlyFee: "₹1,999",
       timetable: "2 live classes/week (Saturday + Sunday)",
@@ -102,6 +121,7 @@ function ProgramsContent() {
         "Career awareness & tech exposure"
       ],
       outcome: "Students think like engineers and innovators.",
+      registrationFeeBase: 3499,
       registrationFee: "₹3,499",
       monthlyFee: "₹2,499",
       timetable: "2 live classes/week (Saturday + Sunday)",
@@ -407,17 +427,40 @@ function ProgramsContent() {
                         </h4>
                         <div className="space-y-3">
                           <div className="bg-white rounded-lg p-4 border-2 border-gray-200">
-                            <div className="flex justify-between items-center">
+                            <div className="flex justify-between items-center flex-wrap gap-1">
                               <span className="text-gray-700 font-semibold">Registration Fee:</span>
-                              <span className={`text-xl font-bold ${
-                                program.color === "orange" ? "text-orange-600" :
-                                program.color === "blue" ? "text-blue-600" :
-                                program.color === "green" ? "text-green-600" : "text-yellow-600"
-                              }`}>
-                                {program.registrationFee}
+                              <span className="text-right">
+                                {currentScholarship ? (
+                                  <>
+                                    <span className="text-gray-500 line-through text-base mr-2">{program.registrationFee}</span>
+                                    <span className={`text-xl font-bold ${
+                                      program.color === "orange" ? "text-orange-600" :
+                                      program.color === "blue" ? "text-blue-600" :
+                                      program.color === "green" ? "text-green-600" : "text-yellow-600"
+                                    }`}>
+                                      {formatDiscountPrice(program.registrationFeeBase, currentScholarship.percent)}
+                                    </span>
+                                  </>
+                                ) : (
+                                  <span className={`text-xl font-bold ${
+                                    program.color === "orange" ? "text-orange-600" :
+                                    program.color === "blue" ? "text-blue-600" :
+                                    program.color === "green" ? "text-green-600" : "text-yellow-600"
+                                  }`}>
+                                    {program.registrationFee}
+                                  </span>
+                                )}
                               </span>
                             </div>
                             <p className="text-xs text-gray-600 mt-1">(includes first month)</p>
+                            {currentScholarship && (
+                              <div className="mt-3 py-2 px-3 rounded-md bg-amber-50 border border-amber-200">
+                                <p className="text-sm text-gray-700">
+                                  <span className="font-semibold">{currentScholarship.percent}% Scholarship</span>
+                                  <span className="text-gray-600"> — Valid {currentScholarship.label}</span>
+                                </p>
+                              </div>
+                            )}
                           </div>
                           <div className="bg-white rounded-lg p-4 border-2 border-gray-200">
                             <div className="flex justify-between items-center">
