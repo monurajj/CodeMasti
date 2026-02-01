@@ -21,34 +21,86 @@ export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const [timeLeftPlatform, setTimeLeftPlatform] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-  const [timeLeftCourses, setTimeLeftCourses] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [registrationStarted, setRegistrationStarted] = useState(false);
+  const [heroPreview, setHeroPreview] = useState<"actual" | "pre-launch" | "registration-open">("actual");
+  const [launchSequence, setLaunchSequence] = useState<null | "3" | "2" | "1" | "party" | "done">(null);
+  const [heroSlideIndex, setHeroSlideIndex] = useState(0);
+
+  const heroSlides = [
+    { src: "/hero-75-off-scholarship.png", alt: "Enjoy an exclusive 75% off on the registration fee - CodeMasti Early Bird Scholarship. Think. Solve. Create." },
+    { src: "/hero-slide-2.png", alt: "CodeMasti - 75% Early Bird Scholarship. Think. Solve. Create." },
+  ];
 
   const platformLaunchDate = new Date("2026-02-05T00:00:00").getTime();
-  const coursesStartDate = new Date("2026-05-02T00:00:00").getTime();
+  const showRegistrationOpenHero = heroPreview === "actual" ? registrationStarted : heroPreview === "registration-open";
+  const prevDiffPositiveRef = useRef(true);
+
+  const totalSecondsRemaining =
+    timeLeftPlatform.days * 86400 +
+    timeLeftPlatform.hours * 3600 +
+    timeLeftPlatform.minutes * 60 +
+    timeLeftPlatform.seconds;
+  const isFinal10Seconds = totalSecondsRemaining <= 10 && totalSecondsRemaining > 0 && !launchSequence;
 
   useEffect(() => {
+    if (Date.now() >= platformLaunchDate) prevDiffPositiveRef.current = false;
     const tick = () => {
       const now = Date.now();
-      const updateCountdown = (target: number, setter: React.Dispatch<React.SetStateAction<{ days: number; hours: number; minutes: number; seconds: number }>>) => {
-        const diff = target - now;
-        if (diff > 0) {
-          setter({
-            days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-            hours: Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-            minutes: Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
-            seconds: Math.floor((diff % (1000 * 60)) / 1000),
-          });
-        } else {
-          setter({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+      const diff = platformLaunchDate - now;
+      if (diff > 0) {
+        prevDiffPositiveRef.current = true;
+        setTimeLeftPlatform({
+          days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+          minutes: Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
+          seconds: Math.floor((diff % (1000 * 60)) / 1000),
+        });
+      } else {
+        setTimeLeftPlatform({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        if (prevDiffPositiveRef.current && launchSequence === null) {
+          prevDiffPositiveRef.current = false;
+          setLaunchSequence("3");
         }
-      };
-      updateCountdown(platformLaunchDate, setTimeLeftPlatform);
-      updateCountdown(coursesStartDate, setTimeLeftCourses);
+      }
     };
     tick();
+    if (Date.now() >= platformLaunchDate) setRegistrationStarted(true);
     const timer = setInterval(tick, 1000);
     return () => clearInterval(timer);
-  }, [platformLaunchDate, coursesStartDate]);
+  }, [platformLaunchDate, launchSequence]);
+
+  useEffect(() => {
+    if (launchSequence === "3") {
+      const t = setTimeout(() => setLaunchSequence("2"), 1000);
+      return () => clearTimeout(t);
+    }
+    if (launchSequence === "2") {
+      const t = setTimeout(() => setLaunchSequence("1"), 1000);
+      return () => clearTimeout(t);
+    }
+    if (launchSequence === "1") {
+      const t = setTimeout(() => setLaunchSequence("party"), 1000);
+      return () => clearTimeout(t);
+    }
+    if (launchSequence === "party") {
+      const t = setTimeout(() => {
+        setLaunchSequence("done");
+        setRegistrationStarted(true);
+      }, 3500);
+      return () => clearTimeout(t);
+    }
+    if (launchSequence === "done") {
+      setLaunchSequence(null);
+    }
+    return undefined;
+  }, [launchSequence]);
+
+  useEffect(() => {
+    const slideshow = setInterval(() => {
+      setHeroSlideIndex((prev) => (prev + 1) % heroSlides.length);
+    }, 5000);
+    return () => clearInterval(slideshow);
+  }, [heroSlides.length]);
 
   useEffect(() => {
     setMounted(true);
@@ -121,9 +173,96 @@ export default function Home() {
         }}
       />
 
+      {/* Launch sequence overlay: 3, 2, 1 then party + Go live */}
+      {(launchSequence === "3" || launchSequence === "2" || launchSequence === "1") && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 backdrop-blur-sm animate-in fade-in duration-300" aria-live="polite" aria-label={`Launch in ${launchSequence}`}>
+          <span className="text-[min(40vw,280px)] font-black text-amber-400 drop-shadow-2xl tabular-nums animate-pulse" style={{ animationDuration: "0.5s", textShadow: "0 0 40px rgba(251,191,36,0.8)" }}>
+            {launchSequence}
+          </span>
+        </div>
+      )}
+      {launchSequence === "party" && (
+        <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black/60 backdrop-blur-sm overflow-hidden" aria-live="polite" aria-label="We are live">
+          {/* Pop flash at both corners */}
+          <div className="popper-flash" style={{ left: "2%", bottom: "18%", marginLeft: -12, marginBottom: -12 }} aria-hidden />
+          <div className="popper-flash" style={{ right: "2%", bottom: "18%", marginRight: -12, marginBottom: -12 }} aria-hidden />
+          {/* Pop crackers from both corners */}
+          {[
+            ...Array.from({ length: 28 }, (_, i) => ({
+              x: 40 + (i % 7) * 35,
+              y: -30 - (i % 5) * 45,
+              rotate: -55 + (i % 7) * 18,
+              delay: (i % 5) * 0.04,
+              color: ["#fbbf24", "#f59e0b", "#fcd34d", "#eab308", "#f97316", "#ef4444", "#22c55e"][i % 7],
+            })),
+          ].map((p, i) => (
+            <div
+              key={`left-${i}`}
+              className="popper-streamer-left"
+              style={{
+                backgroundColor: p.color,
+                animationDelay: `${p.delay}s`,
+                ["--popper-x" as string]: `${p.x}px`,
+                ["--popper-y" as string]: `${p.y}px`,
+                ["--popper-rotate" as string]: `${p.rotate}deg`,
+              }}
+            />
+          ))}
+          {[
+            ...Array.from({ length: 28 }, (_, i) => ({
+              x: -40 - (i % 7) * 35,
+              y: -30 - (i % 5) * 45,
+              rotate: 55 - (i % 7) * 18,
+              delay: (i % 5) * 0.04,
+              color: ["#fbbf24", "#f59e0b", "#fcd34d", "#eab308", "#f97316", "#a855f7", "#22c55e"][i % 7],
+            })),
+          ].map((p, i) => (
+            <div
+              key={`right-${i}`}
+              className="popper-streamer-right"
+              style={{
+                backgroundColor: p.color,
+                animationDelay: `${p.delay}s`,
+                ["--popper-x" as string]: `${p.x}px`,
+                ["--popper-y" as string]: `${p.y}px`,
+                ["--popper-rotate" as string]: `${p.rotate}deg`,
+              }}
+            />
+          ))}
+          {/* Confetti burst - fixed positions to avoid hydration mismatch */}
+          {[
+            ...Array.from({ length: 60 }, (_, i) => ({
+              delay: (i % 10) * 0.06,
+              color: ["#fbbf24", "#f59e0b", "#fcd34d", "#22c55e", "#eab308", "#f97316", "#ef4444", "#a855f7"][i % 8],
+              x: (i % 2 === 0 ? 1 : -1) * (50 + (i % 5) * 40),
+            })),
+          ].map((p, i) => (
+            <div
+              key={i}
+              className="launch-confetti-piece"
+              style={{
+                left: "50%",
+                top: "50%",
+                marginLeft: -5,
+                marginTop: -5,
+                backgroundColor: p.color,
+                animationDelay: `${p.delay}s`,
+                ["--confetti-x" as string]: `${p.x}px`,
+              }}
+            />
+          ))}
+          <p className="text-4xl md:text-6xl font-black text-amber-400 mt-8 z-[102] relative animate-pulse drop-shadow-2xl" style={{ textShadow: "0 0 30px rgba(251,191,36,0.9)" }}>
+            We&apos;re live! 🚀
+          </p>
+          <p className="text-xl md:text-2xl text-white/90 mt-4 z-[102] relative font-semibold">
+            CodeMasti is now open for registration
+          </p>
+        </div>
+      )}
+
       {/* Black Navigation/Header Bar - Structural Element (10%) */}
       <nav className="bg-black text-white py-4 px-6 md:px-12 sticky top-0 z-50 shadow-lg backdrop-blur-sm bg-opacity-95 animate-slide-down overflow-visible" role="navigation" aria-label="Main navigation">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
+        <div className="w-full flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 animate-bounce-in whitespace-nowrap overflow-visible" aria-label="CodeMasti home page">
             <Image 
               src="/logoblackbg.png" 
@@ -219,109 +358,152 @@ export default function Home() {
       {/* Animated Yellow Accent Line */}
       <div className="h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent animate-expand-width"></div>
 
-      <main id="main-content" className="relative z-10 flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] px-4 py-16 bg-gradient-to-b from-amber-50/40 via-white to-white" role="main">
-        <div className="max-w-4xl w-full text-center space-y-8">
-          {/* Logo/Brand Name - Black for Authority */}
-          <div 
-            id="logo"
-            data-animate
-            className={`transition-all duration-1000 ${mounted && isVisible.logo ? "opacity-100 translate-y-0 scale-100" : "opacity-0 -translate-y-10 scale-95"}`}
-          >
-            <div className="flex flex-col items-center mb-4">
-              <Image 
-                src="/logotext.png" 
-                alt="CodeMasti - Think. Solve. Create." 
-                width={400} 
-                height={200} 
-                className="w-auto h-32 md:h-48 object-contain animate-fade-in-up"
-                priority
-              />
-            </div>
-            <div className="w-32 h-1.5 bg-yellow-400 mx-auto rounded-full animate-expand-width"></div>
-          </div>
-
+      <main id="main-content" className="relative z-10 flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] px-4 md:px-8 lg:px-12 py-16 bg-gradient-to-b from-amber-50/40 via-white to-white" role="main">
+        <div className="w-full max-w-[1600px] text-center space-y-8">
           {/* Hero - Image Left, Text Right */}
           <div 
             id="hero-banner"
             data-animate
             className={`transition-all duration-1000 delay-150 ${mounted && isVisible["hero-banner"] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
           >
-            <div className="mt-8 md:mt-12 max-w-5xl mx-auto px-4">
+            <div className="w-full max-w-[1600px] mx-auto">
               <div className="flex flex-col md:flex-row items-center gap-8 md:gap-10 lg:gap-12">
-                {/* Left: 75% Off Image */}
+                {/* Left: Hero image slideshow */}
                 <div className="flex-shrink-0 w-full md:w-[45%] lg:w-[42%] max-w-md">
-                  <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-amber-200/30 ring-4 ring-amber-100/80 hover:shadow-amber-300/40 transition-shadow duration-500">
-                    <Image
-                      src="/hero-75-off-scholarship.png"
-                      alt="Enjoy an exclusive 75% off on the registration fee - CodeMasti Early Bird Scholarship. Think. Solve. Create."
-                      width={500}
-                      height={500}
-                      className="w-full h-auto object-contain"
-                      priority
-                      sizes="(max-width: 768px) 100vw, 42vw"
-                    />
+                  <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-amber-200/30 ring-4 ring-amber-100/80 hover:shadow-amber-300/40 transition-shadow duration-500 aspect-square max-h-[520px]">
+                    {heroSlides.map((slide, i) => (
+                      <div
+                        key={slide.src}
+                        className={`absolute inset-0 transition-opacity duration-[1200ms] ease-[cubic-bezier(0.25,0.1,0.25,1)] ${i === heroSlideIndex ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"}`}
+                        aria-hidden={i !== heroSlideIndex}
+                        style={{ willChange: "opacity" }}
+                      >
+                        <Image
+                          src={slide.src}
+                          alt={slide.alt}
+                          width={500}
+                          height={500}
+                          className="w-full h-full max-h-[520px] object-contain object-top"
+                          priority={i === 0}
+                          sizes="(max-width: 768px) 100vw, 42vw"
+                        />
+                      </div>
+                    ))}
+                    {/* Slide indicators */}
+                    <div className="absolute bottom-3 left-0 right-0 z-20 flex justify-center gap-2">
+                      {heroSlides.map((_, i) => (
+                        <button
+                          key={i}
+                          type="button"
+                          onClick={() => setHeroSlideIndex(i)}
+                          className={`h-2 rounded-full transition-all duration-500 ease-out ${i === heroSlideIndex ? "w-6 bg-amber-500" : "w-2 bg-white/60 hover:bg-white/80"}`}
+                          aria-label={`Go to slide ${i + 1}`}
+                        />
+                      ))}
+                    </div>
                   </div>
                   <p className="text-center text-sm text-gray-600 mt-2 font-medium md:text-left">
                     75% Early Bird Scholarship · Limited period
                   </p>
                 </div>
 
-                {/* Right: Text Content */}
-                <div className="flex-1 text-center md:text-left min-w-0">
-                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-2">
-                    Save the dates
-                  </h2>
-                  <p className="text-base text-gray-600 mb-6">
-                    Platform goes live soon. Courses start in May. Register now and secure your spot.
-                  </p>
-                  <div className="flex flex-col sm:flex-row sm:flex-nowrap gap-4 items-stretch">
-                    <div className="p-4 rounded-xl bg-gradient-to-br from-amber-50 to-yellow-50 border-2 border-amber-200/80 text-left min-w-0 flex-1 flex flex-col sm:min-h-[180px]">
-                      <p className="text-xs font-semibold text-amber-800 uppercase tracking-wide mb-0.5">🚀 Platform launches</p>
-                      <p className="text-xl md:text-2xl font-bold text-amber-700">5 February 2026</p>
-                      <p className="text-sm text-gray-600">Wednesday</p>
-                      <div className="mt-auto pt-3 border-t border-amber-200/60">
-                        <p className="text-[10px] uppercase tracking-wider text-amber-800/70 font-semibold mb-1.5">Countdown</p>
-                        <div className="flex items-center gap-1 font-mono text-sm flex-nowrap">
-                          <span className="bg-amber-200/80 text-amber-900 px-1.5 py-0.5 rounded font-bold tabular-nums">{String(timeLeftPlatform.days).padStart(2, "0")}</span>
-                          <span className="text-amber-600">d</span>
-                          <span className="bg-amber-200/80 text-amber-900 px-1.5 py-0.5 rounded font-bold tabular-nums">{String(timeLeftPlatform.hours).padStart(2, "0")}</span>
-                          <span className="text-amber-600">h</span>
-                          <span className="bg-amber-200/80 text-amber-900 px-1.5 py-0.5 rounded font-bold tabular-nums">{String(timeLeftPlatform.minutes).padStart(2, "0")}</span>
-                          <span className="text-amber-600">m</span>
-                          <span className="bg-amber-200/80 text-amber-900 px-1.5 py-0.5 rounded font-bold tabular-nums">{String(timeLeftPlatform.seconds).padStart(2, "0")}</span>
-                          <span className="text-amber-600">s</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="p-4 rounded-xl bg-gradient-to-br from-yellow-50 to-amber-50 border-2 border-yellow-300/80 text-left min-w-0 flex-1 flex flex-col sm:min-h-[180px]">
-                      <p className="text-xs font-semibold text-amber-800 uppercase tracking-wide mb-0.5">📚 Courses begin</p>
-                      <p className="text-xl md:text-2xl font-bold text-amber-700">2 May 2026</p>
-                      <p className="text-sm text-gray-600">Saturday</p>
-                      <div className="mt-auto pt-3 border-t border-yellow-300/60">
-                        <p className="text-[10px] uppercase tracking-wider text-amber-800/70 font-semibold mb-1.5">Countdown</p>
-                        <div className="flex items-center gap-1 font-mono text-sm flex-nowrap">
-                          <span className="bg-yellow-300/80 text-amber-900 px-1.5 py-0.5 rounded font-bold tabular-nums">{String(timeLeftCourses.days).padStart(2, "0")}</span>
-                          <span className="text-amber-600">d</span>
-                          <span className="bg-yellow-300/80 text-amber-900 px-1.5 py-0.5 rounded font-bold tabular-nums">{String(timeLeftCourses.hours).padStart(2, "0")}</span>
-                          <span className="text-amber-600">h</span>
-                          <span className="bg-yellow-300/80 text-amber-900 px-1.5 py-0.5 rounded font-bold tabular-nums">{String(timeLeftCourses.minutes).padStart(2, "0")}</span>
-                          <span className="text-amber-600">m</span>
-                          <span className="bg-yellow-300/80 text-amber-900 px-1.5 py-0.5 rounded font-bold tabular-nums">{String(timeLeftCourses.seconds).padStart(2, "0")}</span>
-                          <span className="text-amber-600">s</span>
-                        </div>
-                      </div>
-                    </div>
+                {/* Right: Logo image on first row, then text content */}
+                <div className="flex-1 flex flex-col gap-6 text-center md:text-left min-w-0">
+                  {/* First row: Logo text image */}
+                  <div className="flex justify-center md:justify-start">
+                    <Image
+                      src="/logotext.png"
+                      alt="CodeMasti - Think. Solve. Create."
+                      width={640}
+                      height={270}
+                      className="w-full max-w-[480px] md:max-w-[640px] lg:max-w-[720px] h-auto object-contain"
+                      priority
+                      sizes="(max-width: 768px) 95vw, (max-width: 1024px) 55vw, 45vw"
+                    />
                   </div>
-                  <p className="text-sm text-gray-600 mt-6 font-medium">
-                    Register early for maximum scholarship on the registration fee.
-                  </p>
-                  <Link
-                    href="/register"
-                    className="inline-block mt-4 px-6 py-3 bg-amber-500 hover:bg-amber-600 text-black font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2"
-                    aria-label="Register for CodeMasti"
-                  >
-                    Register Now
-                  </Link>
+                  {/* Second row onwards: Text content - changes when registration has started */}
+                  {showRegistrationOpenHero ? (
+                    <>
+                      <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-2">
+                        Registration is open
+                      </h2>
+                      <p className="text-base text-gray-600 mb-4">
+                        Choose your program — SPARK, BUILDERS, or INNOVATORS — and start your coding journey. Limited scholarship still available on registration.
+                      </p>
+                      <div className="p-4 rounded-xl bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200/80 text-left max-w-md inline-block">
+                        <p className="text-sm font-semibold text-green-800 flex items-center gap-2">
+                          <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" aria-hidden />
+                          We&apos;re live — join CodeMasti today
+                        </p>
+                      </div>
+                      <p className="text-sm text-gray-600 mt-4 font-medium">
+                        Pick your batch and register to secure your spot.
+                      </p>
+                      <Link
+                        href="/register"
+                        className="inline-flex items-center justify-center gap-2 w-fit mt-4 px-8 py-3.5 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-black font-bold rounded-full shadow-lg shadow-amber-300/40 hover:shadow-xl hover:shadow-amber-400/50 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 focus:ring-offset-white border border-amber-400/30"
+                        aria-label="Register for CodeMasti"
+                      >
+                        Register Now
+                        <span className="text-lg" aria-hidden>→</span>
+                      </Link>
+                    </>
+                  ) : (
+                    <>
+                      <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-2">
+                        Save the dates
+                      </h2>
+                      <p className="text-base text-gray-600 mb-4">
+                        Platform goes live soon. Courses start in May. Register now and secure your spot.
+                      </p>
+                      <div className="flex flex-col sm:flex-row sm:flex-nowrap gap-4 items-stretch">
+                        <div className="p-4 rounded-xl bg-gradient-to-br from-amber-50 to-yellow-50 border-2 border-amber-200/80 text-left min-w-0 flex-1 flex flex-col sm:min-h-[180px] max-w-md">
+                          <p className="text-xs font-semibold text-amber-800 uppercase tracking-wide mb-0.5">🚀 Platform launches</p>
+                          <p className="text-xl md:text-2xl font-bold text-amber-700">5 February 2026</p>
+                          <p className="text-sm text-gray-600">Wednesday</p>
+                          <div className="mt-auto pt-3 border-t border-amber-200/60">
+                            {isFinal10Seconds ? (
+                              <>
+                                <p className="text-[10px] uppercase tracking-wider text-amber-800/70 font-semibold mb-2">Launch in</p>
+                                <div className="flex items-center justify-center gap-1">
+                                  <span className="text-4xl md:text-5xl font-black text-amber-600 tabular-nums animate-pulse drop-shadow-sm" style={{ animationDuration: "1s" }}>
+                                    {String(totalSecondsRemaining).padStart(2, "0")}
+                                  </span>
+                                  <span className="text-xl font-bold text-amber-600">sec</span>
+                                </div>
+                                <p className="text-xs text-amber-700/80 mt-1 font-medium">Get ready!</p>
+                              </>
+                            ) : (
+                              <>
+                                <p className="text-[10px] uppercase tracking-wider text-amber-800/70 font-semibold mb-1.5">Countdown</p>
+                                <div className="flex items-center gap-1 font-mono text-sm flex-nowrap">
+                                  <span className="bg-amber-200/80 text-amber-900 px-1.5 py-0.5 rounded font-bold tabular-nums">{String(timeLeftPlatform.days).padStart(2, "0")}</span>
+                                  <span className="text-amber-600">d</span>
+                                  <span className="bg-amber-200/80 text-amber-900 px-1.5 py-0.5 rounded font-bold tabular-nums">{String(timeLeftPlatform.hours).padStart(2, "0")}</span>
+                                  <span className="text-amber-600">h</span>
+                                  <span className="bg-amber-200/80 text-amber-900 px-1.5 py-0.5 rounded font-bold tabular-nums">{String(timeLeftPlatform.minutes).padStart(2, "0")}</span>
+                                  <span className="text-amber-600">m</span>
+                                  <span className="bg-amber-200/80 text-amber-900 px-1.5 py-0.5 rounded font-bold tabular-nums">{String(timeLeftPlatform.seconds).padStart(2, "0")}</span>
+                                  <span className="text-amber-600">s</span>
+                                </div>
+                              </>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                      <p className="text-sm text-gray-600 mt-4 font-medium">
+                        Register early for maximum scholarship on the registration fee.
+                      </p>
+                      <Link
+                        href="/register"
+                        className="inline-flex items-center justify-center gap-2 w-fit mt-4 px-8 py-3.5 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-black font-bold rounded-full shadow-lg shadow-amber-300/40 hover:shadow-xl hover:shadow-amber-400/50 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 focus:ring-offset-white border border-amber-400/30"
+                        aria-label="Register for CodeMasti"
+                      >
+                        Register Now
+                        <span className="text-lg" aria-hidden>→</span>
+                      </Link>
+                    </>
+                  )}
                 </div>
               </div>
             </div>
@@ -333,7 +515,7 @@ export default function Home() {
             data-animate
             className={`transition-all duration-1000 delay-400 ${mounted && isVisible.timeline ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
           >
-            <div className="mt-12 max-w-4xl mx-auto">
+            <div className="mt-12 w-full max-w-[1600px] mx-auto">
               <div className="bg-gradient-to-br from-yellow-50 via-white to-yellow-50 rounded-2xl p-6 md:p-8 shadow-xl shadow-gray-200/30 border-2 border-yellow-200/80">
                 <h2 className="text-2xl md:text-3xl font-bold text-black mb-6 text-center">
                   <span className="text-yellow-600">Key Milestones & Timeline</span>
@@ -608,7 +790,7 @@ export default function Home() {
 
       {/* Black Footer - Structural Element (10%) */}
       <footer className="bg-black text-white py-8 px-6 md:px-12 mt-16 animate-fade-in-up">
-        <div className="max-w-7xl mx-auto">
+        <div className="w-full">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="text-center md:text-left">
               <p className="text-sm text-gray-400 animate-fade-in">
