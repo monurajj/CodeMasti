@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Particles from "@/components/Particles";
 import { useSearchParams } from "next/navigation";
+import { BROCHURE_URL } from "@/lib/constants";
 
 function ProgramsContent() {
   const [mounted, setMounted] = useState(false);
@@ -230,6 +231,16 @@ function ProgramsContent() {
             <p className="text-base md:text-xl text-gray-700 mb-6 max-w-3xl mx-auto">
               Three batches, one path—from first steps in logic to building real projects. Class 5 to 10.
             </p>
+            <a
+              href={BROCHURE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-amber-500 hover:bg-amber-600 text-black font-semibold rounded-full shadow-md transition-all focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 mb-6"
+              aria-label="View or download CodeMasti brochure (opens in new tab)"
+            >
+              📄 Download Brochure
+              <span aria-hidden>→</span>
+            </a>
             <div className="w-32 h-1.5 bg-yellow-400 mx-auto rounded-full"></div>
           </div>
 

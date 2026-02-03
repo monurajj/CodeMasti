@@ -8,6 +8,7 @@ import ImageSkeleton from "@/components/ImageSkeleton";
 import { postRequest } from "@/lib/api-client";
 import { getErrorMessage, getApiErrorMessage } from "@/lib/error-messages";
 import ErrorMessage from "@/components/ErrorMessage";
+import { BROCHURE_URL } from "@/lib/constants";
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
@@ -29,6 +30,7 @@ export default function Home() {
   const heroSlides = [
     { src: "/hero-75-off-scholarship.png", alt: "Enjoy an exclusive 75% off on the registration fee - CodeMasti Early Bird Scholarship. Think. Solve. Create." },
     { src: "/hero-slide-2.png", alt: "CodeMasti - 75% Early Bird Scholarship. Think. Solve. Create." },
+    { src: "/codemastiheropage.png", alt: "CodeMasti - Think. Solve. Create. Coding for Class 5 to 10." },
   ];
 
   // Midnight IST (5 Feb 2026) — same moment for all users globally
@@ -565,6 +567,26 @@ export default function Home() {
                     <p className="text-sm text-black mt-4 text-center font-medium">
                       Register early to save more! 🎉
                     </p>
+                  </div>
+
+                  {/* Brochure Download */}
+                  <div className="bg-white/90 rounded-xl p-5 md:p-6 border-2 border-yellow-200/60 shadow-md flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                    <div>
+                      <h3 className="text-xl font-bold text-black mb-2">📄 Download Our Brochure</h3>
+                      <p className="text-gray-700 text-sm md:text-base">
+                        Read about CodeMasti programs, batches, and offerings in one place.
+                      </p>
+                    </div>
+                    <a
+                      href={BROCHURE_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-2 shrink-0 px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-black font-bold rounded-full shadow-lg shadow-amber-300/40 hover:shadow-xl transition-all focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2"
+                      aria-label="View or download CodeMasti brochure (opens in new tab)"
+                    >
+                      View / Download Brochure
+                      <span className="text-lg" aria-hidden>→</span>
+                    </a>
                   </div>
                 </div>
               </div>
