@@ -40,7 +40,7 @@ export default function About() {
   return (
     <div className="min-h-screen bg-white relative overflow-hidden" ref={containerRef}>
       {/* Animated Background Particles */}
-      <Particles count={20} />
+      <Particles count={10} />
 
       {/* Navigation */}
       <nav className="bg-black text-white py-4 px-6 md:px-12 sticky top-0 z-50 shadow-lg backdrop-blur-sm bg-opacity-95 overflow-visible" role="navigation" aria-label="Main navigation">
@@ -138,7 +138,7 @@ export default function About() {
             <div className="w-32 h-1.5 bg-yellow-400 mx-auto rounded-full"></div>
           </div>
 
-          {/* Platform Overview */}
+          {/* What we do */}
           <section 
             id="overview"
             data-animate
@@ -146,23 +146,23 @@ export default function About() {
           >
             <div className="bg-white rounded-2xl p-6 md:p-8 lg:p-12 shadow-lg border-2 border-gray-200">
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-6">
-                Platform Overview
+                What we do
               </h2>
               <div className="space-y-4 text-base md:text-lg text-gray-700 leading-relaxed">
                 <p>
-                  <strong className="text-black">CodeMasti</strong> is a cost-efficient, future-ready coding education platform for school students from Class 5 to Class 10, focused on building problem-solving ability, logical thinking, and AI readiness — not just teaching syntax.
+                  <strong className="text-black">CodeMasti</strong> is coding classes for kids in Class 5 to 10. We keep fees low, batches small, and focus on logic and problem-solving—not just typing code. No hype, no rush into AI before basics.
                 </p>
                 <p className="text-xl font-semibold text-black italic mt-6">
-                  Our belief is simple:
+                  We believe:
                 </p>
                 <p className="text-2xl font-bold text-yellow-600 text-center py-4">
-                  Every student should learn how to think like a creator, not just consume technology.
+                  Kids should learn to make things, not just use them.
                 </p>
               </div>
             </div>
           </section>
 
-          {/* The Problem We Are Solving */}
+          {/* Why we started */}
           <section 
             id="problem"
             data-animate
@@ -170,22 +170,22 @@ export default function About() {
           >
             <div className="bg-white rounded-2xl p-8 md:p-12 shadow-lg border-2 border-red-200">
               <h2 className="text-3xl md:text-4xl font-bold text-black mb-6">
-                The Problem We Are Solving
+                Why we started
               </h2>
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
                     <span className="text-2xl">📚</span>
                     <div>
-                      <h3 className="font-bold text-black mb-2">Huge Skill Gap</h3>
-                      <p className="text-gray-700">Schools focus on theory, while the world demands practical tech skills.</p>
+                      <h3 className="font-bold text-black mb-2">School teaches theory, not build</h3>
+                      <p className="text-gray-700">Kids rarely get to actually code and build things in school.</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <span className="text-2xl">💰</span>
                     <div>
-                      <h3 className="font-bold text-black mb-2">High Cost of Existing Platforms</h3>
-                      <p className="text-gray-700">Most edtech platforms are expensive and inaccessible to a large portion of Indian families.</p>
+                      <h3 className="font-bold text-black mb-2">Good classes cost a lot</h3>
+                      <p className="text-gray-700">Most coding courses are too expensive for many families.</p>
                     </div>
                   </div>
                 </div>
@@ -193,15 +193,15 @@ export default function About() {
                   <div className="flex items-start gap-3">
                     <span className="text-2xl">🤖</span>
                     <div>
-                      <h3 className="font-bold text-black mb-2">Overhyped & Age-Inappropriate AI Education</h3>
-                      <p className="text-gray-700">Students are pushed into advanced topics without strong foundations.</p>
+                      <h3 className="font-bold text-black mb-2">AI buzz before basics</h3>
+                      <p className="text-gray-700">Kids get pushed into &quot;AI&quot; without learning logic and code first.</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <span className="text-2xl">😰</span>
                     <div>
-                      <h3 className="font-bold text-black mb-2">Fear of Coding</h3>
-                      <p className="text-gray-700">Many students believe coding is difficult or only for &quot;smart&quot; kids.</p>
+                      <h3 className="font-bold text-black mb-2">Coding feels scary</h3>
+                      <p className="text-gray-700">A lot of kids (and parents) think coding is only for &quot;geniuses.&quot; It&apos;s not.</p>
                     </div>
                   </div>
                 </div>
@@ -209,7 +209,7 @@ export default function About() {
             </div>
           </section>
 
-          {/* Our Solution */}
+          {/* How we do it */}
           <section 
             id="solution"
             data-animate
@@ -217,10 +217,10 @@ export default function About() {
           >
             <div className="bg-white rounded-2xl p-8 md:p-12 shadow-lg border-2 border-yellow-300">
               <h2 className="text-3xl md:text-4xl font-bold text-black mb-6">
-                Our Solution
+                How we do it
               </h2>
               <p className="text-xl text-gray-700 mb-8 leading-relaxed">
-                A structured, age-appropriate, and affordable coding journey designed specifically for Indian students.
+                Simple: affordable fees, small batches, and a path that fits each age. We start with logic and fun, then add real code and projects.
               </p>
               <div className="grid md:grid-cols-3 gap-6 mb-8">
                 <div className="text-center p-6 bg-yellow-50 rounded-xl border-2 border-yellow-200">
@@ -239,7 +239,7 @@ export default function About() {
             </div>
           </section>
 
-          {/* Why We Are Different */}
+          {/* What you get */}
           <section 
             id="different"
             data-animate
@@ -247,34 +247,34 @@ export default function About() {
           >
             <div className="bg-white rounded-2xl p-8 md:p-12 shadow-lg border-2 border-green-200">
               <h2 className="text-3xl md:text-4xl font-bold text-black mb-6">
-                Why We Are Different
+                What you get
               </h2>
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="flex items-start gap-3">
                   <span className="text-yellow-500 text-xl">✅</span>
-                  <p className="text-gray-700"><strong className="text-black">Cost-efficient pricing</strong> for Indian families</p>
+                  <p className="text-gray-700"><strong className="text-black">Pricing that doesn&apos;t break the bank</strong></p>
                 </div>
                 <div className="flex items-start gap-3">
                   <span className="text-yellow-500 text-xl">✅</span>
-                  <p className="text-gray-700"><strong className="text-black">No hype, no shortcuts</strong> — strong fundamentals first</p>
+                  <p className="text-gray-700"><strong className="text-black">No hype</strong>—we build fundamentals first</p>
                 </div>
                 <div className="flex items-start gap-3">
                   <span className="text-yellow-500 text-xl">✅</span>
-                  <p className="text-gray-700"><strong className="text-black">Age-appropriate curriculum</strong></p>
+                  <p className="text-gray-700"><strong className="text-black">Content that fits the age</strong> (Class 5–10)</p>
                 </div>
                 <div className="flex items-start gap-3">
                   <span className="text-yellow-500 text-xl">✅</span>
-                  <p className="text-gray-700"><strong className="text-black">Hands-on projects</strong> & challenges</p>
+                  <p className="text-gray-700"><strong className="text-black">Real projects</strong>, not just slides</p>
                 </div>
                 <div className="flex items-start gap-3">
                   <span className="text-yellow-500 text-xl">✅</span>
-                  <p className="text-gray-700"><strong className="text-black">Clear learning progression</strong> (Spark → Build → Innovate)</p>
+                  <p className="text-gray-700"><strong className="text-black">Clear path</strong>: Spark → Builders → Innovators</p>
                 </div>
               </div>
             </div>
           </section>
 
-          {/* Target Audience */}
+          {/* Who it&apos;s for */}
           <section 
             id="audience"
             data-animate
@@ -282,26 +282,26 @@ export default function About() {
           >
             <div className="bg-white rounded-2xl p-8 md:p-12 shadow-lg border-2 border-blue-200">
               <h2 className="text-3xl md:text-4xl font-bold text-black mb-6">
-                Target Audience
+                Who it&apos;s for
               </h2>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <h3 className="font-bold text-black text-xl mb-4">Students</h3>
-                  <p className="text-gray-700 mb-4">Class 5 to Class 10</p>
+                  <p className="text-gray-700 mb-4">Class 5 to 10—any kid curious about how games and apps are made.</p>
                   <h3 className="font-bold text-black text-xl mb-4 mt-6">Parents</h3>
-                  <p className="text-gray-700">Looking for future-proof skills</p>
+                  <p className="text-gray-700">Who want their child to learn real skills without spending a fortune.</p>
                 </div>
                 <div>
                   <h3 className="font-bold text-black text-xl mb-4">Schools</h3>
-                  <p className="text-gray-700 mb-4">Seeking practical coding exposure</p>
-                  <h3 className="font-bold text-black text-xl mb-4 mt-6">Geographic Reach</h3>
-                  <p className="text-gray-700">Tier-1, Tier-2, and Tier-3 cities</p>
+                  <p className="text-gray-700 mb-4">Looking for practical coding sessions, not just theory.</p>
+                  <h3 className="font-bold text-black text-xl mb-4 mt-6">Where we reach</h3>
+                  <p className="text-gray-700">Online—so anywhere in India works.</p>
                 </div>
               </div>
             </div>
           </section>
 
-          {/* Teaching Approach */}
+          {/* How we teach */}
           <section 
             id="approach"
             data-animate
@@ -309,23 +309,23 @@ export default function About() {
           >
             <div className="bg-white rounded-2xl p-8 md:p-12 shadow-lg border-2 border-purple-200">
               <h2 className="text-3xl md:text-4xl font-bold text-black mb-6">
-                Teaching Approach
+                How we teach
               </h2>
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-3">
-                  <p className="text-gray-700">• Live interactive sessions</p>
-                  <p className="text-gray-700">• Weekly challenges</p>
-                  <p className="text-gray-700">• Project-based assessments</p>
+                  <p className="text-gray-700">• Live classes (not pre-recorded)</p>
+                  <p className="text-gray-700">• Weekly challenges so they keep practising</p>
+                  <p className="text-gray-700">• Projects to show what they&apos;ve built</p>
                 </div>
                 <div className="space-y-3">
-                  <p className="text-gray-700">• Gamified learning & recognition</p>
-                  <p className="text-gray-700">• Certificates & level progression</p>
+                  <p className="text-gray-700">• Fun, game-like progress so they stay hooked</p>
+                  <p className="text-gray-700">• Certificates and a clear path to level up</p>
                 </div>
               </div>
             </div>
           </section>
 
-          {/* Vision */}
+          {/* Where we want to go */}
           <section 
             id="vision"
             data-animate
@@ -333,10 +333,10 @@ export default function About() {
           >
             <div className="bg-black text-white rounded-2xl p-8 md:p-12 shadow-lg border-2 border-yellow-400">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Our Vision
+                Where we want to go
               </h2>
               <p className="text-xl text-gray-200 mb-6 leading-relaxed">
-                To build India&apos;s most trusted, affordable, and impact-driven coding education platform, creating a generation of students who:
+                We want CodeMasti to be the place Indian parents think of when they want affordable, no-nonsense coding for their kids. So that more students:
               </p>
               <div className="space-y-4 text-lg">
                 <p className="flex items-center gap-3">
@@ -345,11 +345,11 @@ export default function About() {
                 </p>
                 <p className="flex items-center gap-3">
                   <span className="text-yellow-400">💪</span>
-                  <span>Build confidently</span>
+                  <span>Build stuff confidently</span>
                 </p>
                 <p className="flex items-center gap-3">
                   <span className="text-yellow-400">🚀</span>
-                  <span>Innovate responsibly</span>
+                  <span>Use tech to create, not just consume</span>
                 </p>
               </div>
             </div>
@@ -401,7 +401,7 @@ export default function About() {
                     <p className="text-xl font-semibold text-yellow-600">Founder</p>
                   </div>
                   <p className="text-gray-700 leading-relaxed text-base">
-                    A driven founder with a strong vision for transforming school-level education through practical, future-ready coding. Focused on building an affordable, scalable, and impact-driven learning ecosystem that empowers young minds across India.
+                    I wanted to fix how kids learn tech—less theory, more building. We started CodeMasti so that good coding education doesn&apos;t have to cost a fortune. I handle the big picture and making sure we stay focused on what actually helps students.
                   </p>
                 </div>
                 <div className="text-center p-8 bg-white rounded-2xl border-2 border-yellow-200 shadow-lg hover:shadow-xl hover:border-yellow-400 transition-all duration-300 group">
@@ -412,7 +412,7 @@ export default function About() {
                     <p className="text-xl font-semibold text-yellow-600">Co-Founder</p>
                   </div>
                   <p className="text-gray-700 leading-relaxed text-base">
-                    A technology enthusiast with hands-on experience in coding, electronics, and project-based learning. Passionate about making complex technology simple, practical, and accessible for students through real-world projects and innovation-led teaching.
+                    I&apos;ve been into coding and electronics for years—and I love breaking hard stuff into simple steps. At CodeMasti I focus on the courses and projects so that kids actually get their hands dirty and build things, not just watch.
                   </p>
                 </div>
               </div>
@@ -420,10 +420,10 @@ export default function About() {
               {/* Mission Quote */}
               <div className="mt-10 pt-8 border-t-2 border-yellow-200 text-center">
                 <p className="text-xl md:text-2xl font-semibold text-black italic mb-2">
-                  &quot;We are not just teaching coding.&quot;
+                  &quot;We&apos;re not just teaching coding.&quot;
                 </p>
                 <p className="text-lg md:text-xl text-gray-700">
-                  &quot;We are shaping how students think, solve, and create in an AI-driven world.&quot;
+                  &quot;We want kids to think, solve, and create—especially when everyone&apos;s talking about AI.&quot;
                 </p>
               </div>
             </div>
@@ -437,15 +437,15 @@ export default function About() {
           >
             <div className="bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-2xl p-8 md:p-12 shadow-lg text-center">
               <p className="text-2xl md:text-3xl font-bold text-black mb-4">
-                We are not just teaching coding.
+                We&apos;re not just teaching coding.
               </p>
               <p className="text-xl md:text-2xl text-black font-semibold mb-6">
-                We are shaping how students think, solve, and create in an AI-driven world.
+                We want kids to think, solve, and create—for real.
               </p>
               <div className="flex flex-wrap justify-center gap-4 text-lg font-bold text-black">
                 <span>Spark curiosity.</span>
                 <span>Build skills.</span>
-                <span>Innovate the future.</span>
+                <span>Then go build something.</span>
               </div>
             </div>
           </section>

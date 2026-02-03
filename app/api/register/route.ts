@@ -272,26 +272,6 @@ export async function POST(request: NextRequest) {
 
     console.log('📝 Processing registration:', { name, email, batch });
 
-    // Save to Google Sheets
-    if (process.env.GOOGLE_SHEET_ID) {
-      const sheetResult = await appendRegistrationToSheet(process.env.GOOGLE_SHEET_ID, {
-        name,
-        email,
-        phone,
-        studentClass,
-        batch,
-        paymentMerchantOrderId: typeof paymentMerchantOrderId === 'string' ? paymentMerchantOrderId : undefined,
-        paymentStatus: paymentStatusForSheet,
-      });
-      if (sheetResult.success) {
-        console.log('✅ Registration saved to Google Sheet');
-      } else {
-        console.error('❌ Failed to save to Google Sheet:', sheetResult.error);
-      }
-    } else {
-      console.warn('⚠️ GOOGLE_SHEET_ID not configured, skipping Google Sheets save');
-    }
-
     // Send thank-you email to user with batch-specific details
     const userEmailResult = await sendEmail({
       to: email,
@@ -330,6 +310,27 @@ export async function POST(request: NextRequest) {
       console.log('✅ Admin notification email sent successfully');
     } else {
       console.error('❌ Failed to send admin notification email:', adminEmailResult.error);
+    }
+
+    // Save to Google Sheets (including email notification status)
+    if (process.env.GOOGLE_SHEET_ID) {
+      const sheetResult = await appendRegistrationToSheet(process.env.GOOGLE_SHEET_ID, {
+        name,
+        email,
+        phone,
+        studentClass,
+        batch,
+        paymentMerchantOrderId: typeof paymentMerchantOrderId === 'string' ? paymentMerchantOrderId : undefined,
+        paymentStatus: paymentStatusForSheet,
+        emailNotificationSent: userEmailResult.success ? 'Yes' : 'No',
+      });
+      if (sheetResult.success) {
+        console.log('✅ Registration saved to Google Sheet');
+      } else {
+        console.error('❌ Failed to save to Google Sheet:', sheetResult.error);
+      }
+    } else {
+      console.warn('⚠️ GOOGLE_SHEET_ID not configured, skipping Google Sheets save');
     }
 
     // Return success response

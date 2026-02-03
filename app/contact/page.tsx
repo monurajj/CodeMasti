@@ -150,7 +150,7 @@ export default function Contact() {
   return (
     <div className="min-h-screen bg-white relative overflow-hidden" ref={containerRef}>
       {/* Animated Background Particles */}
-      <Particles count={20} />
+      <Particles count={10} />
 
       {/* Navigation */}
       <nav className="bg-black text-white py-4 px-6 md:px-12 sticky top-0 z-50 shadow-lg backdrop-blur-sm bg-opacity-95 overflow-visible" role="navigation" aria-label="Main navigation">
@@ -246,7 +246,7 @@ export default function Contact() {
               Get in <span className="text-yellow-500">Touch</span>
             </h1>
             <p className="text-base md:text-xl text-gray-700 mb-6 max-w-3xl mx-auto">
-              Have questions? Want to join the waitlist? We&apos;d love to hear from you!
+              Questions, waitlist, or just want to say hi—drop us a line. We read everything.
             </p>
             <div className="w-32 h-1.5 bg-yellow-400 mx-auto rounded-full"></div>
           </div>
@@ -267,8 +267,8 @@ export default function Contact() {
                   <div className="flex items-start gap-4">
                     <div className="text-3xl">📧</div>
                     <div>
-                      <h3 className="font-bold text-black mb-1">Official Email</h3>
-                      <p className="text-gray-700 mb-1">Reach us for any queries or help:</p>
+                      <h3 className="font-bold text-black mb-1">Email</h3>
+                      <p className="text-gray-700 mb-1">For anything—questions, help, or just to chat:</p>
                       <a href="mailto:info.codemasti@gmail.com" className="text-yellow-600 hover:text-yellow-500 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-yellow-400 rounded">
                         info.codemasti@gmail.com
                       </a>
@@ -303,8 +303,8 @@ export default function Contact() {
                     <div className="text-3xl">📍</div>
                     <div>
                       <h3 className="font-bold text-black mb-1">Location</h3>
-                      <p className="text-gray-700">Purahara, Haspura, Aurangabad</p>
-                      <p className="text-gray-700">Bihar - 824120, India</p>
+                      <p className="text-gray-700">403, Amrapali Dream Valley, Greater Noida</p>
+                      <p className="text-gray-700">Techzone IV, Gautam Buddha Nagar, 201318, India</p>
                     </div>
                   </div>
                 </div>
@@ -312,38 +312,39 @@ export default function Contact() {
 
               <div className="bg-black text-white rounded-2xl p-8 shadow-lg border-2 border-yellow-400">
                 <h2 className="text-2xl font-bold mb-4">
-                  Why Contact Us?
+                  What you can do here
                 </h2>
                 <ul className="space-y-3 text-gray-200">
                   <li className="flex items-start gap-2">
                     <span className="text-yellow-400">✓</span>
-                    <span>Join our waitlist for early access</span>
+                    <span>Join the waitlist</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-yellow-400">✓</span>
-                    <span>Learn about our programs and curriculum</span>
+                    <span>Ask about programs and fees</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-yellow-400">✓</span>
-                    <span>Get pricing and enrollment information</span>
+                    <span>Enquire about enrollment</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-yellow-400">✓</span>
-                    <span>Partner with us for school programs</span>
+                    <span>Talk to us about school partnerships</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-yellow-400">✓</span>
-                    <span>Ask questions about coding education</span>
+                    <span>Any question about coding for kids</span>
                   </li>
                 </ul>
+                <p className="text-sm text-gray-400 mt-4">We&apos;re a small team—Aditya and Monu read every message. We&apos;ll get back within a day or two.</p>
               </div>
 
               <div className="bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-2xl p-8 shadow-lg text-center">
                 <h3 className="text-2xl font-bold text-black mb-3">
-                  Follow Our Journey
+                  Follow along
                 </h3>
                 <p className="text-black mb-4">
-                  Stay updated with our latest news and launch updates
+                  We post updates and launch news on Instagram
                 </p>
                 <div className="flex justify-center gap-4">
                   <a 
@@ -462,14 +463,14 @@ export default function Contact() {
                       aria-label="Enter your message or inquiry about CodeMasti"
                       aria-required="true"
                       className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 bg-white text-black focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 transition-all resize-none"
-                      placeholder="Tell us how we can help you..."
+                      placeholder="What's on your mind?"
                     />
                   </div>
 
                   {submitStatus === "success" && (
                     <SuccessMessage
-                      title="Thank you! Your message has been sent."
-                      message="We'll get back to you soon."
+                      title="Got it—thanks!"
+                      message="One of us will reply within a day or two."
                       onDismiss={() => {
                         setSubmitStatus("idle");
                       }}
@@ -521,24 +522,24 @@ export default function Contact() {
           >
             <div className="bg-white rounded-2xl p-8 md:p-12 shadow-lg border-2 border-gray-200">
               <h2 className="text-3xl font-bold text-black mb-6 text-center">
-                Frequently Asked Questions
+                Common questions
               </h2>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h3 className="font-bold text-black mb-2">When will CodeMasti launch?</h3>
-                  <p className="text-gray-700 text-sm">We&apos;re currently in development and will launch soon. Join our waitlist to be notified!</p>
+                  <h3 className="font-bold text-black mb-2">When do you launch?</h3>
+                  <p className="text-gray-700 text-sm">We go live soon—join the waitlist and we&apos;ll email you.</p>
                 </div>
                 <div>
-                  <h3 className="font-bold text-black mb-2">What age groups do you serve?</h3>
-                  <p className="text-gray-700 text-sm">We offer programs for students from Class 5 to Class 10 (ages 10-16).</p>
+                  <h3 className="font-bold text-black mb-2">Which classes?</h3>
+                  <p className="text-gray-700 text-sm">Class 5 to 10. Three batches: SPARK (5–6), BUILDERS (7–8), INNOVATORS (9–10).</p>
                 </div>
                 <div>
-                  <h3 className="font-bold text-black mb-2">How much will it cost?</h3>
-                  <p className="text-gray-700 text-sm">We&apos;re committed to cost-efficient pricing for Indian families. Details will be announced at launch.</p>
+                  <h3 className="font-bold text-black mb-2">How much does it cost?</h3>
+                  <p className="text-gray-700 text-sm">We keep fees low. Check the Programs page for registration and monthly fees—and early-bird scholarship.</p>
                 </div>
                 <div>
-                  <h3 className="font-bold text-black mb-2">Do you offer school partnerships?</h3>
-                  <p className="text-gray-700 text-sm">Yes! Contact us to discuss partnership opportunities for your school.</p>
+                  <h3 className="font-bold text-black mb-2">School partnerships?</h3>
+                  <p className="text-gray-700 text-sm">Yes. Drop us a message and we&apos;ll figure something out.</p>
                 </div>
               </div>
             </div>

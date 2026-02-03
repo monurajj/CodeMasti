@@ -159,7 +159,7 @@ export default function Refund() {
                   <strong>Platform:</strong> CodeMasti (www.codemasti.com)
                 </p>
                 <p className="text-gray-700 text-sm">
-                  <strong>Registered Address:</strong> Purahara, Haspura, Aurangabad, Bihar - 824120, India
+                  <strong>Registered Address:</strong> 403, Amrapali Dream Valley, Greater Noida, Techzone IV, Gautam Buddha Nagar, 201318, India
                 </p>
               </div>
 
@@ -355,7 +355,7 @@ export default function Refund() {
                   <strong>Phone:</strong> +91 8228907407, +91 9523042613, +91 7541062514
                 </p>
                 <p className="text-gray-700 mb-2">
-                  <strong>Registered Address:</strong> Purahara, Haspura, Aurangabad, Bihar - 824120, India
+                  <strong>Registered Address:</strong> 403, Amrapali Dream Valley, Greater Noida, Techzone IV, Gautam Buddha Nagar, 201318, India
                 </p>
                 <p className="text-gray-700 text-sm mt-3">
                   <strong>Response Time:</strong> We aim to respond to all inquiries within 24-48 hours during business days

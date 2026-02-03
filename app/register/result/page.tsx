@@ -176,9 +176,13 @@ function ResultContent() {
                         )}
                       </div>
                     ) : (
-                      <div className="p-4 rounded-xl bg-green-50 border-2 border-green-200">
-                        <p className="font-semibold text-black">Slot booked successfully</p>
-                        <p className="text-sm text-gray-600 mt-1">Check your email for confirmation and next steps. We will be in touch soon.</p>
+                      <div className="p-6 rounded-xl bg-green-50 border-2 border-green-200">
+                        <p className="font-bold text-lg text-black">You&apos;re in! Welcome to CodeMasti 🎉</p>
+                        <p className="font-semibold text-black mt-2">Your slot is confirmed.</p>
+                        <p className="text-sm text-gray-700 mt-2">
+                          We&apos;ve sent a confirmation email with next steps. Our team will reach out soon with batch details and how to get started.
+                        </p>
+                        <p className="text-sm text-gray-600 mt-2 italic">Think. Solve. Create. — See you in class!</p>
                       </div>
                     )}
                   </div>

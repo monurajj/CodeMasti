@@ -175,7 +175,7 @@ export default function Terms() {
 
               <p className="text-gray-800 mb-6 font-semibold text-center bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded">
                 <strong>Business Owner:</strong> Mr. Monu Kumar (Sole Proprietor)<br />
-                <strong>Registered Address:</strong> Purahara, Haspura, Aurangabad, Bihar - 824120, India<br />
+                <strong>Registered Address:</strong> 403, Amrapali Dream Valley, Greater Noida, Techzone IV, Gautam Buddha Nagar, 201318, India<br />
                 <strong>Contact:</strong> +91 8228907407 | info.codemasti@gmail.com
               </p>
 

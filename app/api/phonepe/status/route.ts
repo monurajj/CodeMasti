@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { checkPhonePeOrderStatus } from "@/lib/phonepe";
 
+/** This route uses searchParams — must be dynamic. */
+export const dynamic = "force-dynamic";
+
 /**
  * GET /api/phonepe/status?merchantOrderId=xxx
  * Returns order status from PhonePe (COMPLETED, FAILED, PENDING, etc.).

@@ -1,5 +1,5 @@
 /**
- * Reset Google Sheet: clear all data and write the correct 14-column headers.
+ * Reset Google Sheet: clear all data and write the correct 15-column headers.
  * Run from project root: npx tsx scripts/reset-google-sheet.ts
  * Loads .env.local from project root so GOOGLE_SHEET_ID and service account vars are set.
  */
@@ -53,6 +53,7 @@ const HEADERS = [
   "Notes",
   "Payment Ref",
   "Payment Status",
+  "Email Notification Sent",
 ];
 
 async function main() {
@@ -78,10 +79,10 @@ async function main() {
     range: "Sheet1!A:Z",
   });
 
-  console.log("📝 Writing 14-column headers...");
+  console.log("📝 Writing 15-column headers...");
   await sheets.spreadsheets.values.update({
     spreadsheetId,
-    range: "Sheet1!A1:N1",
+    range: "Sheet1!A1:O1",
     valueInputOption: "USER_ENTERED",
     requestBody: {
       values: [HEADERS],

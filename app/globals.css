@@ -5,6 +5,13 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  /* CodeMasti brand: black + amber/yellow */
+  --brand-black: #000000;
+  --brand-amber: #f59e0b;
+  --brand-amber-light: #fbbf24;
+  --brand-amber-dark: #d97706;
+  --brand-yellow: #fcd34d;
+  --brand-yellow-muted: #fef3c7;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,7 +24,6 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 @layer utilities {

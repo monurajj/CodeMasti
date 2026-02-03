@@ -17,18 +17,17 @@ interface ParticlesProps {
   count?: number;
 }
 
-export default function Particles({ count = 20 }: ParticlesProps) {
-  // Memoize particle positions to prevent recalculation on every render
+export default function Particles({ count = 10 }: ParticlesProps) {
   const particles = useMemo<Particle[]>(() => {
     return Array.from({ length: count }, (_, i) => ({
       left: Math.random() * 100,
       top: Math.random() * 100,
-      width: Math.random() * 4 + 2,
-      height: Math.random() * 4 + 2,
+      width: Math.random() * 3 + 1.5,
+      height: Math.random() * 3 + 1.5,
       backgroundColor: i % 3 === 0 ? '#FCD34D' : i % 3 === 1 ? '#F59E0B' : '#EAB308',
-      opacity: Math.random() * 0.5 + 0.2,
+      opacity: Math.random() * 0.2 + 0.08,
       animationDelay: Math.random() * 5,
-      animationDuration: Math.random() * 3 + 3,
+      animationDuration: Math.random() * 4 + 4,
     }));
   }, [count]);
 
