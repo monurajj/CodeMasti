@@ -158,6 +158,10 @@ export function generateLocalBusinessSchema() {
     email: "info.codemasti@gmail.com",
     address: {
       "@type": "PostalAddress",
+      streetAddress: "403, Amrapali Dream Valley, Techzone IV",
+      addressLocality: "Greater Noida",
+      addressRegion: "Gautam Buddha Nagar",
+      postalCode: "201318",
       addressCountry: "IN",
     },
     geo: {

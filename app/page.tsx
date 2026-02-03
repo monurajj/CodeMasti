@@ -31,7 +31,8 @@ export default function Home() {
     { src: "/hero-slide-2.png", alt: "CodeMasti - 75% Early Bird Scholarship. Think. Solve. Create." },
   ];
 
-  const platformLaunchDate = new Date("2026-02-05T00:00:00").getTime();
+  // Midnight IST (5 Feb 2026) — same moment for all users globally
+  const platformLaunchDate = new Date("2026-02-05T00:00:00+05:30").getTime();
   const showRegistrationOpenHero = heroPreview === "actual" ? registrationStarted : heroPreview === "registration-open";
   const prevDiffPositiveRef = useRef(true);
 
@@ -137,13 +138,13 @@ export default function Home() {
 
   const taglines = [
     "Think. Solve. Create.",
-    "Don't just play the game. Build it.",
-    "From Screen-Time to Code-Time.",
-    "Stop Scrolling. Start Creating.",
-    "Become the Boss of your Computer.",
-    "Your Ideas, Your Code, Your World.",
+    "Don't just play the game—build it.",
+    "Less scrolling, more making.",
+    "Your kid can build that game they're glued to.",
+    "We teach logic first, code second.",
     "Code. Create. Masti.",
     "Coding seekhega India, tabhi toh badhega India.",
+    "Small batches. Real projects. No fluff.",
   ];
 
   const [currentTagline, setCurrentTagline] = useState(0);
@@ -158,7 +159,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white relative overflow-x-hidden overflow-y-auto" ref={containerRef}>
       {/* Animated Background Particles */}
-      <Particles count={20} />
+      <Particles count={10} />
 
       {/* Animated Grid Background */}
       <div 
@@ -291,7 +292,7 @@ export default function Home() {
             </Link>
             <Link 
               href="/register"
-              className="text-yellow-400 font-semibold hover:text-yellow-300 cursor-pointer transition-all duration-300 hover:scale-110 whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-black rounded"
+              className="text-gray-300 hover:text-yellow-400 cursor-pointer transition-all duration-300 hover:scale-110 whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-black rounded"
               aria-label="Register for CodeMasti programs"
             >
               Register
@@ -337,7 +338,7 @@ export default function Home() {
             </Link>
             <Link 
               href="/register"
-              className="block py-3.5 px-4 text-base text-yellow-400 font-semibold hover:text-yellow-300 hover:bg-gray-800 transition-all focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-inset rounded"
+              className="block py-3.5 px-4 text-base text-gray-300 hover:text-yellow-400 hover:bg-gray-800 transition-all focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-inset rounded"
               aria-label="Register for CodeMasti programs"
               onClick={() => setIsMobileMenuOpen(false)}
             >
@@ -428,16 +429,16 @@ export default function Home() {
                         Registration is open
                       </h2>
                       <p className="text-base text-gray-600 mb-4">
-                        Choose your program — SPARK, BUILDERS, or INNOVATORS — and start your coding journey. Limited scholarship still available on registration.
+                        Pick SPARK, BUILDERS, or INNOVATORS—whichever fits your child&apos;s class. We still have scholarship slots open.
                       </p>
-                      <div className="p-4 rounded-xl bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200/80 text-left max-w-md inline-block">
-                        <p className="text-sm font-semibold text-green-800 flex items-center gap-2">
-                          <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" aria-hidden />
-                          We&apos;re live — join CodeMasti today
+                      <div className="p-4 rounded-xl bg-gradient-to-br from-amber-50 to-yellow-50 border-2 border-amber-200/80 text-left max-w-md inline-block">
+                        <p className="text-sm font-semibold text-amber-800 flex items-center gap-2">
+                          <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" aria-hidden />
+                          We&apos;re live. Come join us.
                         </p>
                       </div>
                       <p className="text-sm text-gray-600 mt-4 font-medium">
-                        Pick your batch and register to secure your spot.
+                        Choose a batch and register—we&apos;ll save a seat.
                       </p>
                       <Link
                         href="/register"
@@ -454,7 +455,7 @@ export default function Home() {
                         Save the dates
                       </h2>
                       <p className="text-base text-gray-600 mb-4">
-                        Platform goes live soon. Courses start in May. Register now and secure your spot.
+                        We go live soon. Classes start in May. Register now and we&apos;ll hold a spot for you.
                       </p>
                       <div className="flex flex-col sm:flex-row sm:flex-nowrap gap-4 items-stretch">
                         <div className="p-4 rounded-xl bg-gradient-to-br from-amber-50 to-yellow-50 border-2 border-amber-200/80 text-left min-w-0 flex-1 flex flex-col sm:min-h-[180px] max-w-md">
@@ -492,7 +493,7 @@ export default function Home() {
                         </div>
                       </div>
                       <p className="text-sm text-gray-600 mt-4 font-medium">
-                        Register early for maximum scholarship on the registration fee.
+                        Earlier you register, more you save on the fee.
                       </p>
                       <Link
                         href="/register"
@@ -606,18 +607,18 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Mission Statement - White Background (60%) */}
+          {/* Mission Statement */}
           <div 
             id="mission"
             data-animate
             className={`transition-all duration-1000 delay-400 ${mounted && isVisible.mission ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-10 scale-95"}`}
           >
-            <div className="bg-white rounded-2xl p-6 md:p-8 shadow-xl shadow-gray-200/40 border-2 border-yellow-100 hover:shadow-2xl hover:border-yellow-300 hover:shadow-amber-100/30 transition-all duration-500 animate-card-float">
-              <p className="text-base md:text-xl lg:text-2xl text-black font-medium leading-relaxed animate-fade-in-up">
-                We are building a <span className="font-bold text-yellow-600 animate-pulse-slow">cost-efficient, future-ready</span> coding education platform for school students from Class 5 to Class 10.
+            <div className="bg-white rounded-2xl p-6 md:p-8 shadow-xl shadow-gray-200/40 border-2 border-yellow-100 hover:shadow-2xl hover:border-yellow-300 hover:shadow-amber-100/30 transition-all duration-500">
+              <p className="text-base md:text-xl lg:text-2xl text-black font-medium leading-relaxed">
+                We&apos;re building coding classes that don&apos;t cost a fortune—for kids in Class 5 to 10. Logic first, then code. Small batches, real projects.
               </p>
-              <p className="text-sm md:text-lg lg:text-xl text-gray-700 mt-4 italic animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-                Every student should learn how to think like a creator, not just consume technology.
+              <p className="text-sm md:text-lg lg:text-xl text-gray-700 mt-4 italic">
+                Kids should learn to make things, not just use them.
               </p>
             </div>
           </div>
@@ -629,58 +630,173 @@ export default function Home() {
             className={`transition-all duration-1000 delay-500 ${mounted && isVisible.paths ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
           >
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mt-12">
-              {/* SPARK - Orange Theme (Energy, Optimism) */}
+              {/* SPARK - Amber theme */}
               <div 
-                className="bg-white rounded-xl p-5 md:p-6 border-2 border-orange-400 shadow-xl shadow-orange-100/40 hover:shadow-2xl hover:shadow-orange-200/50 transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] relative overflow-hidden group animate-card-float"
-                style={{ animationDelay: '0s' }}
+                className="bg-white rounded-xl p-5 md:p-6 border-2 border-amber-400 shadow-lg shadow-amber-100/30 hover:shadow-xl hover:shadow-amber-200/40 transition-all duration-300 hover:-translate-y-1 relative overflow-hidden group"
               >
-                <div className="absolute top-0 right-0 w-16 h-16 bg-orange-100 rounded-full -mr-8 -mt-8 opacity-50 animate-pulse-slow"></div>
-                <div className="absolute inset-0 bg-gradient-to-br from-orange-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="text-3xl md:text-4xl mb-3 relative z-10 animate-bounce-gentle">✨</div>
+                <div className="absolute top-0 right-0 w-16 h-16 bg-amber-100 rounded-full -mr-8 -mt-8 opacity-40"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-amber-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="text-3xl md:text-4xl mb-3 relative z-10">✨</div>
                 <h3 className="text-lg md:text-xl font-bold text-black mb-2 relative z-10">
-                  <span className="text-orange-500 animate-pulse-slow">SPARK</span>
+                  <span className="text-amber-600">SPARK</span>
                 </h3>
                 <p className="text-sm md:text-base text-gray-600 font-semibold relative z-10">Class 5-6</p>
-                <p className="text-sm md:text-base text-black mt-2 relative z-10">Ignite curiosity & remove fear of coding</p>
-                <Link href="/programs?batch=spark" className="mt-4 inline-block px-4 py-2 bg-orange-400 text-white font-semibold rounded-lg hover:bg-orange-500 hover:scale-110 transition-all duration-300 text-sm md:text-base relative z-10 animate-button-pulse focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2" aria-label="Learn more about SPARK program for Class 5-6">
-                  Explore Now
+                <p className="text-sm md:text-base text-black mt-2 relative z-10">Get curious, lose the fear—coding&apos;s fun</p>
+                <Link href="/programs?batch=spark" className="mt-4 inline-block px-4 py-2 bg-amber-500 text-black font-semibold rounded-lg hover:bg-amber-600 transition-all duration-300 text-sm md:text-base relative z-10 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2" aria-label="Learn more about SPARK program for Class 5-6">
+                  See SPARK
                 </Link>
               </div>
 
-              {/* BUILDERS - Blue Theme */}
+              {/* BUILDERS - Amber theme */}
               <div 
-                className="bg-white rounded-xl p-5 md:p-6 border-2 border-blue-400 shadow-xl shadow-blue-100/40 hover:shadow-2xl hover:shadow-blue-200/50 transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] relative overflow-hidden group animate-card-float"
-                style={{ animationDelay: '0.2s' }}
+                className="bg-white rounded-xl p-5 md:p-6 border-2 border-amber-400 shadow-lg shadow-amber-100/30 hover:shadow-xl hover:shadow-amber-200/40 transition-all duration-300 hover:-translate-y-1 relative overflow-hidden group"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                <div className="text-3xl md:text-4xl mb-3 relative z-10 animate-bounce-gentle" style={{ animationDelay: '0.1s' }}>🧱</div>
+                <div className="absolute inset-0 bg-gradient-to-br from-amber-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                <div className="text-3xl md:text-4xl mb-3 relative z-10">🧱</div>
                 <h3 className="text-lg md:text-xl font-bold text-black mb-2 relative z-10">
-                  <span className="text-blue-500">BUILDERS</span>
+                  <span className="text-amber-600">BUILDERS</span>
                 </h3>
                 <p className="text-sm md:text-base text-gray-600 font-semibold relative z-10">Class 7-8</p>
-                <p className="text-sm md:text-base text-black mt-2 relative z-10">Build strong coding foundations</p>
-                <Link href="/programs?batch=builders" className="mt-4 inline-block px-4 py-2 bg-blue-400 text-white font-semibold rounded-lg hover:bg-blue-500 hover:scale-110 transition-all duration-300 text-sm md:text-base relative z-10 animate-button-pulse focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2" aria-label="Learn more about BUILDERS program for Class 7-8">
-                  Explore Now
+                <p className="text-sm md:text-base text-black mt-2 relative z-10">Python, logic, and your first real projects</p>
+                <Link href="/programs?batch=builders" className="mt-4 inline-block px-4 py-2 bg-amber-500 text-black font-semibold rounded-lg hover:bg-amber-600 transition-all duration-300 text-sm md:text-base relative z-10 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2" aria-label="Learn more about BUILDERS program for Class 7-8">
+                  See BUILDERS
                 </Link>
               </div>
 
-              {/* INNOVATORS - Green Theme */}
+              {/* INNOVATORS - Amber theme */}
               <div 
-                className="bg-white rounded-xl p-5 md:p-6 border-2 border-green-400 shadow-xl shadow-green-100/40 hover:shadow-2xl hover:shadow-green-200/50 transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] relative overflow-hidden group animate-card-float"
-                style={{ animationDelay: '0.4s' }}
+                className="bg-white rounded-xl p-5 md:p-6 border-2 border-amber-400 shadow-lg shadow-amber-100/30 hover:shadow-xl hover:shadow-amber-200/40 transition-all duration-300 hover:-translate-y-1 relative overflow-hidden group"
               >
-                <div className="absolute top-0 right-0 w-20 h-20 bg-green-100 rounded-full -mr-10 -mt-10 opacity-50 animate-pulse-slow"></div>
-                <div className="absolute inset-0 bg-gradient-to-br from-green-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="text-3xl md:text-4xl mb-3 relative z-10 animate-bounce-gentle" style={{ animationDelay: '0.2s' }}>🚀</div>
+                <div className="absolute top-0 right-0 w-20 h-20 bg-amber-100 rounded-full -mr-10 -mt-10 opacity-40"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-amber-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="text-3xl md:text-4xl mb-3 relative z-10">🚀</div>
                 <h3 className="text-lg md:text-xl font-bold text-black mb-2 relative z-10">
-                  <span className="text-green-500 animate-pulse-slow">INNOVATORS</span>
+                  <span className="text-amber-600">INNOVATORS</span>
                 </h3>
                 <p className="text-sm md:text-base text-gray-600 font-semibold relative z-10">Class 9-10</p>
-                <p className="text-sm md:text-base text-black mt-2 relative z-10">Apply skills to real-world problems</p>
-                
-                <Link href="/programs?batch=innovators" className="mt-4 inline-block px-4 py-2 bg-green-400 text-white font-semibold rounded-lg hover:bg-green-500 hover:scale-110 transition-all duration-300 text-sm md:text-base relative z-10 animate-button-pulse focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2" aria-label="Learn more about INNOVATORS program for Class 9-10">
-                  Explore Now
+                <p className="text-sm md:text-base text-black mt-2 relative z-10">Real problems, real code—and a peek at what&apos;s next</p>
+                <Link href="/programs?batch=innovators" className="mt-4 inline-block px-4 py-2 bg-amber-500 text-black font-semibold rounded-lg hover:bg-amber-600 transition-all duration-300 text-sm md:text-base relative z-10 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2" aria-label="Learn more about INNOVATORS program for Class 9-10">
+                  See INNOVATORS
                 </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Instructors Section - Who teaches at CodeMasti */}
+          <div 
+            id="instructors"
+            data-animate
+            className={`transition-all duration-1000 delay-600 ${mounted && isVisible.instructors ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+          >
+            <div className="mt-12 w-full max-w-[1600px] mx-auto">
+              <div className="bg-gradient-to-br from-amber-50/80 via-white to-yellow-50/50 rounded-2xl p-6 md:p-10 shadow-xl shadow-gray-200/30 border-2 border-amber-200/80 overflow-hidden relative">
+                {/* Decorative accent */}
+                <div className="absolute top-0 right-0 w-64 h-64 bg-amber-100/50 rounded-full -mr-32 -mt-32" aria-hidden />
+                <div className="absolute bottom-0 left-0 w-48 h-48 bg-yellow-100/50 rounded-full -ml-24 -mb-24" aria-hidden />
+                <div className="relative z-10">
+                  <div className="text-center mb-10">
+                    <span className="inline-block px-4 py-1.5 rounded-full bg-amber-100 text-amber-800 text-sm font-semibold uppercase tracking-wide mb-4">
+                      Who teaches at CodeMasti
+                    </span>
+                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-4">
+                      <span className="text-amber-700">Our Amazing Instructors</span>
+                    </h2>
+                    <p className="text-base md:text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
+                      Our instructors are practising engineers and founders with real industry experience—from top institutes and companies. They bring hands-on coding, problem-solving, and mentorship into every class so your child learns from people who build products for a living.
+                    </p>
+                  </div>
+                  {/* Instructor profile cards */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                    {[
+                      { name: "Aditya Raj", tag: "10+ Global Scale | AI pre-sales investors | Finance Expert", bio: "Instructor at CodeMasti", image: "/instructors/aditya.jpeg" },
+                      { name: "Monu Raj", tag: "Ex-SDE Intern @IIT Roorkee, @Psytech | 4X-Founder", bio: "Instructor at CodeMasti", image: "/instructors/monu.jpeg" },
+                      { name: "Dibya Jyoti", tag: "Specialist @codeforces |  3 star @codechef", bio: "Instructor at CodeMasti", image: "/instructors/dibya.jpeg" },
+                      { name: "Anant", tag: "Winner @Hacked 3.0 | Superteam solana grant 1000$", bio: "Instructor at CodeMasti", image: "/instructors/anant.jpeg" },
+                    ].map((instructor) => (
+                      <div
+                        key={instructor.name}
+                        className="bg-white rounded-xl p-5 md:p-6 border-2 border-amber-200/60 shadow-md hover:shadow-lg hover:border-amber-300/80 transition-all duration-300 flex flex-col items-center text-center"
+                      >
+                        <div className="relative w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden border-2 border-gray-200 bg-gray-100 mt-3 mb-4 flex-shrink-0">
+                          <Image
+                            src={instructor.image}
+                            alt={`${instructor.name}, ${instructor.tag}`}
+                            fill
+                            className="object-cover object-[center_18%]"
+                            sizes="(max-width: 768px) 112px, 128px"
+                          />
+                        </div>
+                        <h3 className="text-lg font-bold text-black mb-2">{instructor.name}</h3>
+                        <span className="inline-block px-3 py-1.5 rounded-lg bg-amber-600 text-white text-sm font-bold mb-3">
+                          {instructor.tag}
+                        </span>
+                        <p className="text-sm text-gray-600">{instructor.bio}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Mentor Section - Monthly sessions with top engineers */}
+          <div 
+            id="mentor"
+            data-animate
+            className={`transition-all duration-1000 delay-600 ${mounted && isVisible.mentor ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+          >
+            <div className="mt-12 w-full max-w-[1600px] mx-auto">
+              <div className="bg-gradient-to-br from-amber-50/80 via-white to-yellow-50/50 rounded-2xl p-6 md:p-10 shadow-xl shadow-gray-200/30 border-2 border-amber-200/80 overflow-hidden relative">
+                {/* Decorative accent */}
+                <div className="absolute top-0 right-0 w-64 h-64 bg-amber-100/50 rounded-full -mr-32 -mt-32" aria-hidden />
+                <div className="absolute bottom-0 left-0 w-48 h-48 bg-yellow-100/50 rounded-full -ml-24 -mb-24" aria-hidden />
+                <div className="relative z-10">
+                  <div className="text-center mb-8">
+                    <span className="inline-block px-4 py-1.5 rounded-full bg-amber-100 text-amber-800 text-sm font-semibold uppercase tracking-wide mb-4">
+                      Included for every student
+                    </span>
+                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-3">
+                      <span className="text-amber-700">Monthly Mentor Sessions</span>
+                    </h2>
+                    <p className="text-base md:text-lg text-gray-700 max-w-2xl mx-auto">
+                      Every student gets a dedicated monthly 1:1 session with industry experts—our top engineers from leading tech companies.
+                    </p>
+                  </div>
+                  {/* Mentor profile cards */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-8">
+                    {[
+                      { name: "Amod Ranjan", tag: "3x ICPC Regionalist", bio: "Mentor at CodeMasti", image: "/mentors/amod.jpeg" },
+                      { name: "Ritik Raj", tag: "Ex-SDE Intern @Physics Wallah · Founder @seedite", bio: "Mentor at CodeMasti", image: "/mentors/ritik.jpeg" },
+                      { name: "Prince Sahoo", tag: "Ex-SDE Intern @Makeflow", bio: "Mentor at CodeMasti", image: "/mentors/prince.jpeg" },
+                      { name: "Aryan Jangde", tag: "Ex-SDE Intern @Allen Institute", bio: "Mentor at CodeMasti", image: "/mentors/aryanJ.jpeg" },
+                    ].map((mentor) => (
+                      <div
+                        key={mentor.name}
+                        className="bg-white rounded-xl p-5 md:p-6 border-2 border-amber-200/60 shadow-md hover:shadow-lg hover:border-amber-300/80 transition-all duration-300 flex flex-col items-center text-center"
+                      >
+                        <div className="relative w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden border-2 border-gray-200 bg-gray-100 mb-4 flex-shrink-0">
+                          <Image
+                            src={mentor.image}
+                            alt={`${mentor.name}, ${mentor.tag}`}
+                            fill
+                            className="object-cover object-[center_18%]"
+                            sizes="(max-width: 768px) 112px, 128px"
+                          />
+                        </div>
+                        <h3 className="text-lg font-bold text-black mb-2">{mentor.name}</h3>
+                        <span className="inline-block px-3 py-1.5 rounded-lg bg-amber-600 text-white text-sm font-bold mb-3">
+                          {mentor.tag}
+                        </span>
+                        <p className="text-sm text-gray-600">{mentor.bio}</p>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="p-4 md:p-5 rounded-xl bg-gradient-to-r from-amber-500/10 to-yellow-500/10 border-2 border-amber-200/60 text-center">
+                    <p className="text-sm md:text-base font-semibold text-black">
+                      <span className="text-amber-600">✓</span> Monthly mentor session is included in your program—no extra cost. Think. Solve. Create—with expert guidance.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -692,10 +808,10 @@ export default function Home() {
             className={`transition-all duration-1000 delay-700 ${mounted && isVisible.cta ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
           >
             <div className="mt-14 p-6 md:p-8 rounded-2xl bg-gradient-to-br from-yellow-50/80 to-amber-50/50 border-2 border-yellow-200/60 shadow-lg">
-              <p className="text-lg md:text-xl text-black font-semibold mb-2 animate-fade-in-up">
-                Be the first to know when we launch!
+              <p className="text-lg md:text-xl text-black font-semibold mb-2">
+                Want a heads-up when we go live?
               </p>
-              <p className="text-sm text-gray-600 mb-6">Platform goes live 5 Feb · Courses start 2 May</p>
+              <p className="text-sm text-gray-600 mb-6">We launch 5 Feb · First classes 2 May</p>
               <form 
                 onSubmit={async (e) => {
                   e.preventDefault();
@@ -746,24 +862,24 @@ export default function Home() {
                   disabled={isSubmittingEmail}
                   aria-label="Enter your email address to join the waitlist"
                   aria-required="true"
-                  className="px-6 py-3 rounded-full border-2 border-gray-300 bg-white text-black focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 w-full sm:w-auto min-w-[280px] transition-all hover:border-yellow-400 animate-input-glow disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="px-6 py-3 rounded-full border-2 border-gray-300 bg-white text-black focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 w-full sm:w-auto min-w-[280px] transition-all hover:border-yellow-400 disabled:opacity-50 disabled:cursor-not-allowed"
                 />
                 <button 
                   type="submit"
                   disabled={isSubmittingEmail}
                   aria-label={isSubmittingEmail ? "Submitting your email address" : "Subscribe to newsletter and join waitlist"}
-                  className="px-8 py-3 bg-yellow-400 text-black rounded-full font-bold hover:bg-yellow-500 transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:-translate-y-2 hover:scale-110 relative overflow-hidden group animate-button-pulse disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2"
+                  className="px-8 py-3 bg-yellow-400 text-black rounded-full font-bold hover:bg-yellow-500 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 relative overflow-hidden group disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2"
                 >
                   <span className="absolute inset-0 bg-yellow-300 rounded-full scale-0 group-hover:scale-100 transition-transform duration-500 opacity-50"></span>
                   <span className="relative z-10 flex items-center gap-2">
-                    {isSubmittingEmail ? "Adding..." : "Notify Me"}
-                    <span className="text-sm animate-bounce-gentle">🚀</span>
+                    {isSubmittingEmail ? "Adding you..." : "Yes, notify me"}
+                    <span className="text-sm">🚀</span>
                   </span>
                 </button>
               </form>
               {emailStatus === "success" && (
-                <p className="text-sm text-green-600 mt-2 text-center font-medium" role="alert">
-                  ✓ Successfully added to waitlist!
+                <p className="text-sm text-amber-700 mt-2 text-center font-medium" role="alert">
+                  Done. We&apos;ll email you when we&apos;re live.
                 </p>
               )}
               {emailStatus === "error" && emailError && (
@@ -780,8 +896,8 @@ export default function Home() {
                   />
                 </div>
               )}
-              <p className="text-sm text-gray-600 mt-4 font-medium flex items-center justify-center gap-2 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-                <span className="text-yellow-500 animate-pulse-slow">✨</span> Join the waitlist and get early access!
+              <p className="text-sm text-gray-600 mt-4 font-medium flex items-center justify-center gap-2">
+                <span className="text-yellow-500">✨</span> No spam—just one email when we open up.
               </p>
             </div>
           </div>

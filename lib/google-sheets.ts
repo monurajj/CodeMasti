@@ -38,7 +38,7 @@ export async function initializeSheet(spreadsheetId: string) {
       range: 'Sheet1!A1:Z1',
     });
 
-    // If no data exists, add headers (14 columns – must match row length in append functions)
+    // If no data exists, add headers (15 columns – must match row length in append functions)
     if (!response.data.values || response.data.values.length === 0) {
       const headers = [
         'Timestamp',
@@ -55,6 +55,7 @@ export async function initializeSheet(spreadsheetId: string) {
         'Notes',
         'Payment Ref',
         'Payment Status',
+        'Email Notification Sent',
       ];
 
       await sheets.spreadsheets.values.append({
@@ -151,11 +152,12 @@ export async function appendContactToSheet(
       '', // Notes
       '', // Payment Ref
       '', // Payment Status
+      '', // Email Notification Sent
     ];
 
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: 'Sheet1!A:N',
+      range: 'Sheet1!A:O',
       valueInputOption: 'USER_ENTERED',
       requestBody: {
         values: [row],
@@ -231,11 +233,12 @@ export async function appendNewsletterToSheet(
       '', // Notes
       '', // Payment Ref
       '', // Payment Status
+      '', // Email Notification Sent
     ];
 
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: 'Sheet1!A:N',
+      range: 'Sheet1!A:O',
       valueInputOption: 'USER_ENTERED',
       requestBody: {
         values: [row],
@@ -309,6 +312,7 @@ export async function appendRegistrationToSheet(
     batch: string;
     paymentMerchantOrderId?: string;
     paymentStatus?: string;
+    emailNotificationSent?: 'Yes' | 'No';
   }
 ) {
   try {
@@ -354,11 +358,12 @@ export async function appendRegistrationToSheet(
       '', // Notes
       data.paymentMerchantOrderId || '', // Payment Ref (PhonePe merchant order ID)
       data.paymentStatus || '', // Payment Status: Paid | Pay Later | (empty)
+      data.emailNotificationSent ?? '', // Email Notification Sent: Yes | No
     ];
 
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: 'Sheet1!A:N',
+      range: 'Sheet1!A:O',
       valueInputOption: 'USER_ENTERED',
       requestBody: {
         values: [row],

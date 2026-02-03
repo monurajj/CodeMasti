@@ -342,6 +342,7 @@ export default function Register() {
           amountInPaisa: selectedBatch.registrationFeePaisa,
           redirectPath: "/register/result",
           origin: typeof window !== "undefined" ? window.location.origin : undefined,
+          orderIdPrefix: "CODEMASTI",
         }),
       });
       const data = await res.json();

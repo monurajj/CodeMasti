@@ -70,20 +70,20 @@ function ProgramsContent() {
       name: "SPARK",
       classes: "Class 5-6",
       color: "orange",
-      goal: "Ignite curiosity & remove fear of coding",
-      description: "The foundation stage where we introduce students to the world of coding through fun, interactive activities that build confidence and logical thinking.",
+      goal: "Get curious, lose the fear—coding's fun",
+      description: "We start here: fun, interactive stuff that builds confidence and logical thinking. No scary syntax—just how computers think and how kids can tell them what to do.",
       features: [
         "Logical thinking activities",
         "Visual programming & flowcharts",
         "Creative problem solving",
         "Introduction to how computers think"
       ],
-      outcome: "Students enjoy coding and feel confident exploring technology.",
+      outcome: "Kids enjoy coding and aren't scared to try more.",
       registrationFeeBase: 2499,
       registrationFee: "₹2,499",
       monthlyFee: "₹1,499",
       timetable: "2 live classes/week (Saturday + Sunday)",
-      additionalInfo: "Weekly practice challenges + Project work (guided + independent)"
+      additionalInfo: "Weekly practice challenges + Project work (guided + independent) + Monthly mentor session + Monthly update directly to parents"
     },
     {
       id: "builders",
@@ -91,20 +91,20 @@ function ProgramsContent() {
       name: "BUILDERS",
       classes: "Class 7-8",
       color: "blue",
-      goal: "Build strong coding foundations",
-      description: "Students dive into real programming with Python, learning core concepts through hands-on projects and challenges that make coding tangible and exciting.",
+      goal: "Python, logic, and your first real projects",
+      description: "Real programming starts here—Python, conditions, loops, functions. We learn by building small projects and solving challenges, so code feels real, not abstract.",
       features: [
         "Python fundamentals",
         "Conditions, loops, functions",
         "Mini projects & challenges",
         "Introduction to AI concepts (conceptual)"
       ],
-      outcome: "Students can write code and build simple applications independently.",
+      outcome: "Kids can write code and build simple stuff on their own.",
       registrationFeeBase: 2999,
       registrationFee: "₹2,999",
       monthlyFee: "₹1,999",
       timetable: "2 live classes/week (Saturday + Sunday)",
-      additionalInfo: "Weekly practice challenges + Project work (guided + independent)"
+      additionalInfo: "Weekly practice challenges + Project work (guided + independent) + Monthly mentor session + Monthly update directly to parents"
     },
     {
       id: "innovators",
@@ -112,27 +112,27 @@ function ProgramsContent() {
       name: "INNOVATORS",
       classes: "Class 9-10",
       color: "green",
-      goal: "Apply skills to real-world problems",
-      description: "Advanced level where students apply their coding skills to solve real-world problems, explore AI tools, and prepare for future tech careers.",
+      goal: "Real problems, real code—and a peek at what's next",
+      description: "Here we use everything they've learned: real problems, real projects. We also introduce AI concepts in a sensible way—after they've got the basics—and talk about what a tech career can look like.",
       features: [
         "Advanced Python & logic",
         "Project-based learning",
         "AI tools & automation concepts",
         "Career awareness & tech exposure"
       ],
-      outcome: "Students think like engineers and innovators.",
+      outcome: "Kids start thinking like builders and problem-solvers.",
       registrationFeeBase: 3499,
       registrationFee: "₹3,499",
       monthlyFee: "₹2,499",
       timetable: "2 live classes/week (Saturday + Sunday)",
-      additionalInfo: "Weekly practice challenges + Project work (guided + independent)"
+      additionalInfo: "Weekly practice challenges + Project work (guided + independent) + Monthly mentor session + Monthly update directly to parents"
     }
   ];
 
   return (
     <div className="min-h-screen bg-white relative overflow-hidden" ref={containerRef}>
       {/* Animated Background Particles */}
-      <Particles count={20} />
+      <Particles count={10} />
 
       {/* Navigation */}
       <nav className="bg-black text-white py-4 px-6 md:px-12 sticky top-0 z-50 shadow-lg backdrop-blur-sm bg-opacity-95 overflow-visible" role="navigation" aria-label="Main navigation">
@@ -228,7 +228,7 @@ function ProgramsContent() {
               Our <span className="text-yellow-500">Programs</span>
             </h1>
             <p className="text-base md:text-xl text-gray-700 mb-6 max-w-3xl mx-auto">
-              A structured learning journey designed specifically for Indian students from Class 5 to Class 10
+              Three batches, one path—from first steps in logic to building real projects. Class 5 to 10.
             </p>
             <div className="w-32 h-1.5 bg-yellow-400 mx-auto rounded-full"></div>
           </div>
@@ -241,10 +241,10 @@ function ProgramsContent() {
           >
             <div className="bg-white rounded-2xl p-6 md:p-8 lg:p-12 shadow-lg border-2 border-yellow-300 text-center">
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-4">
-                Learning Structure
+                How we structure learning
               </h2>
               <p className="text-base md:text-lg text-gray-700 mb-6 leading-relaxed">
-                Our curriculum follows a clear progression: <strong className="text-black">Logic before language</strong>, <strong className="text-black">Projects before theory</strong>, and <strong className="text-black">Confidence before complexity</strong>.
+                We go in order: <strong className="text-black">logic first</strong>, then <strong className="text-black">projects</strong>, then <strong className="text-black">confidence</strong>. No rushing into hard stuff before basics.
               </p>
             </div>
           </section>
@@ -305,7 +305,7 @@ function ProgramsContent() {
                   <div className="flex flex-col md:flex-row gap-8 items-start">
                     {/* Left Side - Emoji and Basic Info */}
                     <div className="flex-shrink-0 text-center md:text-left">
-                      <div className="text-7xl mb-4 animate-bounce-gentle">
+                      <div className="text-7xl mb-4">
                         {program.emoji}
                       </div>
                       <h3 className="text-4xl font-bold mb-2 text-black">
@@ -606,10 +606,10 @@ function ProgramsContent() {
           >
             <div className="bg-black text-white rounded-2xl p-8 md:p-12 shadow-lg border-2 border-yellow-400 text-center">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Ready to Start Your Coding Journey?
+                Ready to get started?
               </h2>
               <p className="text-xl text-gray-200 mb-8">
-                Register now and secure your spot in your preferred batch!
+                Pick a batch and register—we&apos;ll save a seat for you.
               </p>
               <Link
                 href="/register"

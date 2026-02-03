@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import ErrorBoundaryWrapper from "@/components/ErrorBoundaryWrapper";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { generateWebSiteSchema, generateLocalBusinessSchema } from "@/lib/seo-utils";
 
-const inter = Inter({ subsets: ["latin"] });
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://codemasti.com";
 
@@ -15,7 +18,7 @@ export const metadata: Metadata = {
     default: "CodeMasti | Coding Education for School Students",
     template: "%s | CodeMasti",
   },
-  description: "A cost-efficient, future-ready coding education platform for school students from Class 5 to Class 10. Learn to think like a creator, not just consume technology.",
+  description: "Coding classes for kids in Class 5 to 10. Affordable, small batches, real projects. Logic first—then code. Think. Solve. Create.",
   keywords: [
     "coding education",
     "programming for kids",
@@ -65,7 +68,7 @@ export const metadata: Metadata = {
     url: siteUrl,
     siteName: "CodeMasti",
     title: "CodeMasti | Coding Education for School Students",
-    description: "A cost-efficient, future-ready coding education platform for school students from Class 5 to Class 10. Learn to think like a creator, not just consume technology.",
+    description: "Coding classes for kids in Class 5 to 10. Affordable, small batches, real projects. Logic first—then code.",
     images: [
       {
         url: `${siteUrl}/logotext.png`,
@@ -78,7 +81,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "CodeMasti | Coding Education for School Students",
-    description: "A cost-efficient, future-ready coding education platform for school students from Class 5 to Class 10.",
+    description: "Coding classes for kids in Class 5 to 10. Affordable, small batches, real projects.",
     images: [`${siteUrl}/logotext.png`],
     creator: "@codemasti",
   },
@@ -118,7 +121,7 @@ const organizationSchema = {
   "@type": "EducationalOrganization",
   name: "CodeMasti",
   alternateName: "CodeMasti - Coding Education Platform",
-  description: "A cost-efficient, future-ready coding education platform for school students from Class 5 to Class 10. Learn to think like a creator, not just consume technology.",
+  description: "Coding classes for kids in Class 5 to 10. Affordable, small batches, real projects. Logic first—then code.",
   url: siteUrl,
   logo: `${siteUrl}/logotext.png`,
   image: `${siteUrl}/logotext.png`,
@@ -143,8 +146,11 @@ const organizationSchema = {
   },
   address: {
     "@type": "PostalAddress",
+    streetAddress: "403, Amrapali Dream Valley, Techzone IV",
+    addressLocality: "Greater Noida",
+    addressRegion: "Gautam Buddha Nagar",
+    postalCode: "201318",
     addressCountry: "IN",
-    addressRegion: "India",
   },
   sameAs: [
     // Add your social media profiles here when available
@@ -192,7 +198,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${dmSans.className} antialiased`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
