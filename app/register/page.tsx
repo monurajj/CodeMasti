@@ -7,6 +7,7 @@ import Particles from "@/components/Particles";
 import { postRequest } from "@/lib/api-client";
 import { getErrorMessage, getApiErrorMessage } from "@/lib/error-messages";
 import ErrorMessage from "@/components/ErrorMessage";
+import { BROCHURE_URL } from "@/lib/constants";
 import SuccessMessage from "@/components/SuccessMessage";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import ConfirmationDialog from "@/components/ConfirmationDialog";
@@ -560,6 +561,16 @@ export default function Register() {
             <p className="text-base md:text-xl text-gray-700 mb-6 max-w-3xl mx-auto">
               Join our coding journey and transform how you learn programming. Select your batch and get started today!
             </p>
+            <a
+              href={BROCHURE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-amber-500 hover:bg-amber-600 text-black font-semibold rounded-full shadow-md transition-all focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 mb-6"
+              aria-label="View or download CodeMasti brochure (opens in new tab)"
+            >
+              📄 Download Brochure
+              <span aria-hidden>→</span>
+            </a>
             <div className="w-32 h-1.5 bg-yellow-400 mx-auto rounded-full"></div>
           </div>
 

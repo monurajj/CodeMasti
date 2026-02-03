@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { sendEmail } from '@/lib/email';
 import { appendRegistrationToSheet, registrationEmailExists } from '@/lib/google-sheets';
+import { BROCHURE_URL } from '@/lib/constants';
 
 // Batch-specific information for emails
 const batchInfo = {
@@ -185,6 +186,17 @@ function generateRegistrationEmail(batchId: string, studentName: string, student
             Our team will reach out to you within 24-48 hours to confirm your registration and provide you with all the necessary details. 
             Please keep an eye on your email (and spam folder) for updates.
           </p>
+        </div>
+
+        <!-- Brochure – attached with this thank-you email -->
+        <div style="background-color: #fef3c7; padding: 20px; border-radius: 8px; border-left: 4px solid #FCD34D; margin: 30px 0;">
+          <h3 style="color: #92400e; font-size: 18px; font-weight: 600; margin-top: 0; margin-bottom: 10px;">📄 Brochure attached with this email</h3>
+          <p style="color: #78350f; font-size: 14px; line-height: 1.6; margin: 0 0 12px 0;">
+            We’ve attached our brochure for your reference. View or download it for a quick overview of CodeMasti programs, batches, and what we offer.
+          </p>
+          <a href="${BROCHURE_URL}" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: linear-gradient(135deg, #FCD34D 0%, #f59e0b 100%); color: #1f2937; font-weight: 700; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-size: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            View / Download Brochure
+          </a>
         </div>
         
         <div style="text-align: center; margin: 40px 0;">
