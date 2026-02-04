@@ -33,8 +33,8 @@ export default function Home() {
     { src: "/codemastiheropage.png", alt: "CodeMasti - Think. Solve. Create. Coding for Class 5 to 10." },
   ];
 
-  // Midnight IST (5 Feb 2026) — same moment for all users globally
-  const platformLaunchDate = new Date("2026-02-05T00:00:00+05:30").getTime();
+  // Launch at 12:15 AM IST (5 Feb 2026) — same moment for all users globally
+  const platformLaunchDate = new Date("2026-02-05T00:15:00+05:30").getTime();
   const showRegistrationOpenHero = heroPreview === "actual" ? registrationStarted : heroPreview === "registration-open";
   const prevDiffPositiveRef = useRef(true);
 
