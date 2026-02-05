@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { sendEmail } from '@/lib/email';
 import { appendContactToSheet } from '@/lib/google-sheets';
+import { validateEmailExistence } from '@/lib/email-validation';
 
 export async function POST(request: NextRequest) {
   try {
@@ -11,6 +12,28 @@ export async function POST(request: NextRequest) {
     if (!name || !email || !message) {
       return NextResponse.json(
         { error: 'Name, email, and message are required' },
+        { status: 400 }
+      );
+    }
+
+    // Validate email existence
+    const emailValidation = await validateEmailExistence(email);
+    if (!emailValidation.isValid) {
+      return NextResponse.json(
+        { 
+          error: emailValidation.error || 'Invalid email format. Please enter a valid email address.',
+          field: 'email'
+        },
+        { status: 400 }
+      );
+    }
+
+    if (!emailValidation.isDeliverable) {
+      return NextResponse.json(
+        { 
+          error: emailValidation.error || 'This email address does not exist or cannot receive emails. Please check your email address and try again.',
+          field: 'email'
+        },
         { status: 400 }
       );
     }

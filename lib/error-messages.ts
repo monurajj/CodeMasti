@@ -134,9 +134,29 @@ export function getApiErrorMessage(
 
   // Check for specific error patterns
   if (errorText.toLowerCase().includes('email')) {
+    // Check if it's an email existence error
+    if (errorText.toLowerCase().includes('does not exist') || 
+        errorText.toLowerCase().includes('cannot receive emails')) {
+      return {
+        title: 'Invalid Email Address',
+        message: errorText || 'This email address does not exist or cannot receive emails.',
+        suggestion: 'Please check your email address for typos. Make sure the email address is correct and active.',
+      };
+    }
+    
+    // Check if it's an email format error
+    if (errorText.toLowerCase().includes('format') || 
+        errorText.toLowerCase().includes('invalid email')) {
+      return {
+        title: 'Invalid Email Format',
+        message: errorText || 'The email address format is incorrect.',
+        suggestion: 'Please enter a valid email address (e.g., yourname@example.com).',
+      };
+    }
+    
     return {
       title: 'Email Error',
-      message: 'There was a problem with the email address.',
+      message: errorText || 'There was a problem with the email address.',
       suggestion: 'Please check your email address and try again.',
     };
   }

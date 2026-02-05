@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { sendEmail } from '@/lib/email';
 import { appendNewsletterToSheet } from '@/lib/google-sheets';
+import { validateEmailExistence } from '@/lib/email-validation';
 
 export async function POST(request: NextRequest) {
   try {
@@ -11,6 +12,23 @@ export async function POST(request: NextRequest) {
     if (!email || !email.includes('@')) {
       return NextResponse.json(
         { error: 'Valid email is required' },
+        { status: 400 }
+      );
+    }
+
+    // Check if email actually exists
+    const validationResult = await validateEmailExistence(email);
+
+    if (!validationResult.isValid) {
+      return NextResponse.json(
+        { error: validationResult.error || 'Invalid email format' },
+        { status: 400 }
+      );
+    }
+
+    if (!validationResult.isDeliverable) {
+      return NextResponse.json(
+        { error: validationResult.error || 'This email address does not exist or cannot receive emails.' },
         { status: 400 }
       );
     }
@@ -171,8 +189,8 @@ export async function POST(request: NextRequest) {
 
     // Return success response
     return NextResponse.json(
-      { 
-        success: true, 
+      {
+        success: true,
         message: 'Successfully added to waitlist! We\'ll notify you when we launch.',
         emailSent: userEmailResult.success
       },
